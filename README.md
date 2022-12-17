@@ -37,13 +37,13 @@
 
         $ cd /docs/html
 
-#### TODO List
+#### Kanban - TODO
 
-        - [x] Minimal-viable kernel i2c bus module and simple configruation + fill-screen.
+- [x] release-00: Minimal-viable kernel i2c bus module and simple configruation + fill-screen.
 
-        - [ ] Add font / image support to the screen datalink layer.
+- [ ] release-01: Add font / image support to the screen datalink layer.
 
-        - [ ] Add user-space interface through sysfs.
+- [ ] release-02: Add user-space interface through sysfs.
 
-        - [ ] Develop the dinosaur game on this screen.
+- [ ] release-03: Develop the dinosaur game on this screen.
 

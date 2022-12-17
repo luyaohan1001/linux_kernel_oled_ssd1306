@@ -1,0 +1,18 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+    compatible = "brcm, bcm2835";
+    fragment@0 {
+        target = <&i2c1>;
+        __overlay__ {
+            #address-cells = <1>;
+            #size-cells = <0>;
+            my_oled: ssd1306@3c {
+                compatible = "ssd1306, oled_device";
+                status = "okay";
+                reg = <0x3c>;
+            };
+        };
+    };
+};

@@ -1,7 +1,7 @@
 obj-m := oled_driver.o
 
 # The target has two objects
-oled_driver-objs := driver.o datalink.o graphics.o
+oled_driver-objs := driver.o datalink.o graphics.o sysfs.o
 
 # Run make install-headers to install kernel headers. This only works on Raspbian Buster OS.
 KERNEL_DIR ?= /usr/src/linux-headers-$(shell uname -r)
@@ -27,7 +27,7 @@ dtoverlay: compile_dtbo
 	sudo dtoverlay oled.dtbo
 
 
-insmod: dtoverlay
+insmod: dtoverlay make
 	insmod oled_driver.ko
 
 rmmod:

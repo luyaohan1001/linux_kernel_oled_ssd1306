@@ -1,5 +1,11 @@
 ## Linux Loadable Kernel Module Driver for SSD1306 OLED.
 
+                     graphics
+                        |
+                     datalink
+                        |
+                      driver
+
     Tested on Linux raspberrypi 5.10.103-v7l+ #1529 SMP Tue Mar 8 12:24:00 GMT 2022 armv7l GNU/Linux 
     (Raspberry Pi Buster.)
 
@@ -41,7 +47,7 @@
 
 - [x] release-00: Minimal-viable kernel i2c bus module and simple configruation + fill-screen.
 
-- [ ] release-01: Add font / image support to the screen datalink layer.
+- [x] release-01: Add font / image support to the screen datalink layer.
 
 - [ ] release-02: Add user-space interface through sysfs.
 

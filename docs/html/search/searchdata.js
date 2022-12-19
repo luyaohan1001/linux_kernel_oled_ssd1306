@@ -1,10 +1,10 @@
 var indexSectionsWithContent =
 {
-  0: "delms",
-  1: "s",
-  2: "d",
-  3: "dms",
-  4: "d",
+  0: "defgilmos",
+  1: "o",
+  2: "dg",
+  3: "dmos",
+  4: "dfio",
   5: "e",
   6: "l"
 };

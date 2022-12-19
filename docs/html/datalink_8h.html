@@ -59,7 +59,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
+<a href="#define-members">Macros</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
@@ -69,10 +69,10 @@ $(function() {
 
 <p>Header file for SSD1306 controller interface.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;linux/module.h&gt;</code><br />
-<code>#include &lt;linux/init.h&gt;</code><br />
+<div class="textblock"><code>#include &lt;linux/delay.h&gt;</code><br />
 <code>#include &lt;linux/i2c.h&gt;</code><br />
-<code>#include &lt;linux/delay.h&gt;</code><br />
+<code>#include &lt;linux/init.h&gt;</code><br />
+<code>#include &lt;linux/module.h&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for datalink.h:</div>
 <div class="dyncontent">
@@ -90,19 +90,53 @@ This graph shows which files directly or indirectly include this file:</div>
 </div>
 <p><a href="datalink_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structssd1306__packet__t.html">ssd1306_packet_t</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">SSD1306 I2C/SMBus standard packet format.  <a href="structssd1306__packet__t.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a203c33a9cc01f6c7c0b186ed29a84542"><td class="memItemLeft" align="right" valign="top"><a id="a203c33a9cc01f6c7c0b186ed29a84542"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SET_MEMORY_ADDRESSING_MODE</b>&#160;&#160;&#160;0x20</td></tr>
+<tr class="separator:a203c33a9cc01f6c7c0b186ed29a84542"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a739bff02b23f586f016f76be4f9f71"><td class="memItemLeft" align="right" valign="top"><a id="a4a739bff02b23f586f016f76be4f9f71"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SET_DISPLAY_START_LINE</b>&#160;&#160;&#160;0x40</td></tr>
+<tr class="separator:a4a739bff02b23f586f016f76be4f9f71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f964255e5ab8ec8e0b98b4931e1a7b2"><td class="memItemLeft" align="right" valign="top"><a id="a5f964255e5ab8ec8e0b98b4931e1a7b2"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SET_DISPLAY_OFF</b>&#160;&#160;&#160;0xAE</td></tr>
+<tr class="separator:a5f964255e5ab8ec8e0b98b4931e1a7b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a566d18bab36023ae5405cc50e95a5cd5"><td class="memItemLeft" align="right" valign="top"><a id="a566d18bab36023ae5405cc50e95a5cd5"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SET_DISPLAY_ON</b>&#160;&#160;&#160;0xAF</td></tr>
+<tr class="separator:a566d18bab36023ae5405cc50e95a5cd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8dff4dd6f25845e3c9008820abb0ac1"><td class="memItemLeft" align="right" valign="top"><a id="ad8dff4dd6f25845e3c9008820abb0ac1"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SET_ENTIRE_DISPLAY_ON</b>&#160;&#160;&#160;0xA4</td></tr>
+<tr class="separator:ad8dff4dd6f25845e3c9008820abb0ac1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0d67668c74620e90251970355b82123"><td class="memItemLeft" align="right" valign="top"><a id="aa0d67668c74620e90251970355b82123"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SET_DISPLAY_OFFSET</b>&#160;&#160;&#160;0xD3</td></tr>
+<tr class="separator:aa0d67668c74620e90251970355b82123"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aabe127954d8cba7f8d3375b98b7396d2"><td class="memItemLeft" align="right" valign="top"><a id="aabe127954d8cba7f8d3375b98b7396d2"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SET_MUX_RATIO</b>&#160;&#160;&#160;0xA8</td></tr>
+<tr class="separator:aabe127954d8cba7f8d3375b98b7396d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64711c90253a749b13a39365e13abf75"><td class="memItemLeft" align="right" valign="top"><a id="a64711c90253a749b13a39365e13abf75"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SET_DEACTIVATE_SCROLL</b>&#160;&#160;&#160;0x2E</td></tr>
+<tr class="separator:a64711c90253a749b13a39365e13abf75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acdf1ff3a6b63789f69879c7bdfead143"><td class="memItemLeft" align="right" valign="top"><a id="acdf1ff3a6b63789f69879c7bdfead143"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SET_CONTRAST_CONTROL</b>&#160;&#160;&#160;0x81</td></tr>
+<tr class="separator:acdf1ff3a6b63789f69879c7bdfead143"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c7f3fdba1e57573bbae8a876a307265"><td class="memItemLeft" align="right" valign="top"><a id="a7c7f3fdba1e57573bbae8a876a307265"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SET_CHARGE_PUMP</b>&#160;&#160;&#160;0x8D</td></tr>
+<tr class="separator:a7c7f3fdba1e57573bbae8a876a307265"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11e81e4fca5a3a7b0607df35e539a42b"><td class="memItemLeft" align="right" valign="top"><a id="a11e81e4fca5a3a7b0607df35e539a42b"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SET_CHARGE_PUMP_ENABLE</b>&#160;&#160;&#160;0x14</td></tr>
+<tr class="separator:a11e81e4fca5a3a7b0607df35e539a42b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a826c05fdba7e8ad2d16465b2cb85c985"><td class="memItemLeft" align="right" valign="top"><a id="a826c05fdba7e8ad2d16465b2cb85c985"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SET_COLUMN_ADDRESS</b>&#160;&#160;&#160;0x21</td></tr>
+<tr class="separator:a826c05fdba7e8ad2d16465b2cb85c985"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30dc2c747cff6310f238ce28f6b80ff5"><td class="memItemLeft" align="right" valign="top"><a id="a30dc2c747cff6310f238ce28f6b80ff5"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SET_PAGE_ADDRESS</b>&#160;&#160;&#160;0x22</td></tr>
+<tr class="separator:a30dc2c747cff6310f238ce28f6b80ff5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afdc326bd5037b2251e62f398ab1b48d1"><td class="memItemLeft" align="right" valign="top"><a id="afdc326bd5037b2251e62f398ab1b48d1"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>DONT_CARE</b>&#160;&#160;&#160;0x00</td></tr>
+<tr class="separator:afdc326bd5037b2251e62f398ab1b48d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:aa3fed3cb8141b020c761c6ae36130f7b"><td class="memItemLeft" align="right" valign="top"><a id="aa3fed3cb8141b020c761c6ae36130f7b"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="datalink_8h.html#aa3fed3cb8141b020c761c6ae36130f7b">eParam_t</a> { <b>HAS_PARAM</b>, 
-<b>NO_PARAM</b>
- }<tr class="memdesc:aa3fed3cb8141b020c761c6ae36130f7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enum type for ssd1306 function to differentiate whether confirguration takes in parameters. <br /></td></tr>
-</td></tr>
-<tr class="separator:aa3fed3cb8141b020c761c6ae36130f7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad5383d2eae4c4d73f3e83c91c10354eb"><td class="memItemLeft" align="right" valign="top"><a id="ad5383d2eae4c4d73f3e83c91c10354eb"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="datalink_8h.html#ad5383d2eae4c4d73f3e83c91c10354eb">eControl_t</a> { <b>COMMAND_CONTROL</b>, 
 <b>DATA_CONTROL</b>
  }<tr class="memdesc:ad5383d2eae4c4d73f3e83c91c10354eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enum type for ssd1306 function to differentiate whether confirguration is a command type or a data byte. <br /></td></tr>
@@ -111,72 +145,16 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ac2ffa5c44d739a1d645b44c3acecfb49"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="datalink_8h.html#ac2ffa5c44d739a1d645b44c3acecfb49">ssd1306_configure</a> (<a class="el" href="datalink_8h.html#ad5383d2eae4c4d73f3e83c91c10354eb">eControl_t</a> control_option, uint8_t address, <a class="el" href="datalink_8h.html#aa3fed3cb8141b020c761c6ae36130f7b">eParam_t</a> param_option, uint8_t param)</td></tr>
-<tr class="memdesc:ac2ffa5c44d739a1d645b44c3acecfb49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure SSD1306 OLED controller.  <a href="#ac2ffa5c44d739a1d645b44c3acecfb49">More...</a><br /></td></tr>
-<tr class="separator:ac2ffa5c44d739a1d645b44c3acecfb49"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aea4e3f33f71261bbd868c72fd084f2b7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="datalink_8h.html#aea4e3f33f71261bbd868c72fd084f2b7">ssd1306_fill_all</a> (void)</td></tr>
-<tr class="memdesc:aea4e3f33f71261bbd868c72fd084f2b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fill the entire screen.  <a href="#aea4e3f33f71261bbd868c72fd084f2b7">More...</a><br /></td></tr>
-<tr class="separator:aea4e3f33f71261bbd868c72fd084f2b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1dd5e63fbbe67fa654d4f57cbf1bb235"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="datalink_8h.html#a1dd5e63fbbe67fa654d4f57cbf1bb235">ssd1306_controller_init</a> (void)</td></tr>
 <tr class="memdesc:a1dd5e63fbbe67fa654d4f57cbf1bb235"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize ssd1306 OLED controller.  <a href="#a1dd5e63fbbe67fa654d4f57cbf1bb235">More...</a><br /></td></tr>
 <tr class="separator:a1dd5e63fbbe67fa654d4f57cbf1bb235"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94da712f32741cc6850dc061fb4996a1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="datalink_8h.html#a94da712f32741cc6850dc061fb4996a1">ssd1306_write_address</a> (<a class="el" href="datalink_8h.html#ad5383d2eae4c4d73f3e83c91c10354eb">eControl_t</a> control_option, uint8_t address, uint8_t param_len, uint8_t *param)</td></tr>
+<tr class="memdesc:a94da712f32741cc6850dc061fb4996a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write to ssd1306 register address.  <a href="#a94da712f32741cc6850dc061fb4996a1">More...</a><br /></td></tr>
+<tr class="separator:a94da712f32741cc6850dc061fb4996a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Header file for SSD1306 controller interface. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="ac2ffa5c44d739a1d645b44c3acecfb49"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac2ffa5c44d739a1d645b44c3acecfb49">&#9670;&nbsp;</a></span>ssd1306_configure()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void ssd1306_configure </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="datalink_8h.html#ad5383d2eae4c4d73f3e83c91c10354eb">eControl_t</a>&#160;</td>
-          <td class="paramname"><em>control_option</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>address</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="datalink_8h.html#aa3fed3cb8141b020c761c6ae36130f7b">eParam_t</a>&#160;</td>
-          <td class="paramname"><em>param_option</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>param</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Configure SSD1306 OLED controller. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">control_option</td><td>Specify whether the control byte indicates a COMMAND or a DATA. </td></tr>
-    <tr><td class="paramname">address</td><td>Specify the register address of the configuration command. </td></tr>
-    <tr><td class="paramname">param_option</td><td>Specify whether the configuration has a parameter. </td></tr>
-    <tr><td class="paramname">param</td><td>The parameter if the configuration do have a parameter. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>None. </dd></dl>
-<dl class="section note"><dt>Note</dt><dd>The configuration is done by writing parameters to the registers addresses through I2C bus. </dd></dl>
-
-</div>
-</div>
 <a id="a1dd5e63fbbe67fa654d4f57cbf1bb235"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1dd5e63fbbe67fa654d4f57cbf1bb235">&#9670;&nbsp;</a></span>ssd1306_controller_init()</h2>
 
@@ -200,27 +178,8 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>None. </dd></dl>
-
-</div>
-</div>
-<a id="aea4e3f33f71261bbd868c72fd084f2b7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aea4e3f33f71261bbd868c72fd084f2b7">&#9670;&nbsp;</a></span>ssd1306_fill_all()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void ssd1306_fill_all </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Fill the entire screen. </p>
+<dl class="section return"><dt>Returns</dt><dd>None.</dd></dl>
+<p>Initialize ssd1306 OLED controller.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">None.</td><td></td></tr>
@@ -228,6 +187,58 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>None. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Using anonymous array to pass single parameters. </dd></dl>
+
+</div>
+</div>
+<a id="a94da712f32741cc6850dc061fb4996a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94da712f32741cc6850dc061fb4996a1">&#9670;&nbsp;</a></span>ssd1306_write_address()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ssd1306_write_address </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="datalink_8h.html#ad5383d2eae4c4d73f3e83c91c10354eb">eControl_t</a>&#160;</td>
+          <td class="paramname"><em>control_option</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>address</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>param_len</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>p_param</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Write to ssd1306 register address. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">control_option</td><td>DATA_CONTROL indicates to transmit data, COMMAND_CONTROL indicates to transmit command. </td></tr>
+    <tr><td class="paramname">address</td><td>The register address to write param to. </td></tr>
+    <tr><td class="paramname">param_len</td><td>Length of parameter if there is any. </td></tr>
+    <tr><td class="paramname">p_param</td><td>Pointer to parameter to be written. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

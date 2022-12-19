@@ -1,7 +1,7 @@
 obj-m := oled_driver.o
 
 # The target has two objects
-oled_driver-objs := driver.o datalink.o
+oled_driver-objs := driver.o datalink.o graphics.o
 
 # Run make install-headers to install kernel headers. This only works on Raspbian Buster OS.
 KERNEL_DIR ?= /usr/src/linux-headers-$(shell uname -r)
@@ -18,7 +18,7 @@ clean:
 		M=$(PWD) clean
 	rm -rf *.dtbo
 
-.PHONY: clean compile_dtbo dtoverlay insmod rmmod doxygen setup
+.PHONY: clean compile_dtbo dtoverlay insmod rmmod doxygen setup format
 
 compile_dtbo:
 	dtc oled.dts -o oled.dtbo
@@ -39,5 +39,8 @@ doxygen:
 setup:
 	apt install raspberrypi-kernel-headers
 	apt install doxygen
+
+format:
+	clang-format --style=GNU -i *.c *.h
 
 

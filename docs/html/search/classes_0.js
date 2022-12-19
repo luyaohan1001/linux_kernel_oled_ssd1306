@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ssd1306_5fpacket_5ft',['ssd1306_packet_t',['../structssd1306__packet__t.html',1,'']]]
+  ['oled_5fgraphics_5fparams_5ft',['oled_graphics_params_t',['../structoled__graphics__params__t.html',1,'']]]
 ];

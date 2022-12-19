@@ -1,57 +1,37 @@
+#ifndef DATALINK_H
+#define DATALINK_H
+
 /**
  * @file datalink.h
  * @brief Header file for SSD1306 controller interface.
-*/
-#include <linux/module.h>
-#include <linux/init.h>
-#include <linux/i2c.h>
+ */
 #include <linux/delay.h>
+#include <linux/i2c.h>
+#include <linux/init.h>
+#include <linux/module.h>
+
+/* SSD1306 I2C command table. */
+#define SET_MEMORY_ADDRESSING_MODE 0x20
+#define SET_DISPLAY_START_LINE 0x40
+#define SET_DISPLAY_OFF 0xAE
+#define SET_DISPLAY_ON 0xAF
+#define SET_ENTIRE_DISPLAY_ON 0xA4
+#define SET_DISPLAY_OFFSET 0xD3
+#define SET_MUX_RATIO 0xA8
+#define SET_DEACTIVATE_SCROLL 0x2E
+#define SET_CONTRAST_CONTROL 0x81
+#define SET_CHARGE_PUMP 0x8D
+#define SET_CHARGE_PUMP_ENABLE 0x14
+#define SET_COLUMN_ADDRESS 0x21
+#define SET_PAGE_ADDRESS 0x22
+
+#define DONT_CARE 0x00
 
 /**
- * @brief SSD1306 I2C/SMBus standard packet format.
-*/
-typedef struct {
-    uint8_t control_byte0;
-    uint8_t command;
-    uint8_t control_byte1;
-    uint8_t param;
-} ssd1306_packet_t;
-
-/**
- * @brief Enum type for ssd1306 function to differentiate whether confirguration takes in parameters.
-*/
-typedef enum {
-    HAS_PARAM,
-    NO_PARAM,
-} eParam_t;
-
-/**
- * @brief Enum type for ssd1306 function to differentiate whether confirguration is a command type or a data byte.
-*/
-typedef enum {
-    COMMAND_CONTROL,
-    DATA_CONTROL
-} eControl_t;
-
-
-/**
- * @brief Configure SSD1306 OLED controller.
- * @param control_option Specify whether the control byte indicates a COMMAND or
- * a DATA.
- * @param address Specify the register address of the configuration command.
- * @param param_option Specify whether the configuration has a parameter.
- * @param param The parameter if the configuration do have a parameter.
- * @return None.
- * @note The configuration is done by writing parameters to the registers addresses through I2C bus.
+ * @brief Enum type for ssd1306 function to differentiate whether
+ * confirguration is a command type or a data byte.
  */
-void ssd1306_configure(eControl_t control_option, uint8_t address, eParam_t param_option, uint8_t param);
-
-/**
- * @brief Fill the entire screen.
- * @param None.
- * @return None.
- */
-void ssd1306_fill_all(void);
+typedef enum { COMMAND_CONTROL, DATA_CONTROL } eControl_t;
 
 /**
  * @brief Initialize ssd1306 OLED controller.
@@ -59,3 +39,7 @@ void ssd1306_fill_all(void);
  * @return None.
  */
 void ssd1306_controller_init(void);
+
+void ssd1306_write_address(eControl_t control_option, uint8_t address,
+                           uint8_t param_len, uint8_t *param);
+#endif /* DATALINK_H */

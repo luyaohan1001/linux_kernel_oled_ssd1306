@@ -1,11 +1,15 @@
 /**
  * @file driver.c
- * @brief Kernel layers i2c device driver implementation.
+ * @brief This file implements the necessary i2c_client probe and remove
+ * callbacks on the SSD1306 I2C bus device driver. On top of driver.c, display
+ * configurations and initialization are implemented in datalink.c. On top of
+ * datalink, OLED printing / graphics are implemented in graphics.c
  */
 #include <linux/delay.h>
 #include <linux/i2c.h>
 #include <linux/module.h>
 #include "datalink.h"
+#include "graphics.h"
 
 /* Loadable kernel module license registration. */
 MODULE_LICENSE("GPL");
@@ -13,12 +17,12 @@ MODULE_AUTHOR("Luyao Han");
 MODULE_DESCRIPTION("Linux kernel module driver for ssd1306 oled display");
 
 /* Function Signatures. */
-static int driver_on_probe(struct i2c_client* client,
-                           const struct i2c_device_id* id);
-static int driver_on_remove(struct i2c_client* client);
+static int driver_on_probe(struct i2c_client *client,
+                           const struct i2c_device_id *id);
+static int driver_on_remove(struct i2c_client *client);
 
 /* File static variables. */
-struct i2c_client* i2c_client;
+struct i2c_client *i2c_client;
 
 /**
  * @brief Specifies the ".compatible" strings.
@@ -67,8 +71,8 @@ static struct i2c_driver i2c_driver = {
  * @param device_id The device id to be probed.
  * @return Error status.
  */
-static int driver_on_probe(struct i2c_client* client,
-                           const struct i2c_device_id* device_id) {
+static int driver_on_probe(struct i2c_client *client,
+                           const struct i2c_device_id *device_id) {
   int statusCode = 0;
   pr_info("Entered driver_on_probe function\n");
 
@@ -86,10 +90,21 @@ static int driver_on_probe(struct i2c_client* client,
   /* Entry to the OLED display logic. */
   ssd1306_controller_init();
 
-  /* Fill the entire display with solid color */
-  /* TODO: Print hello world fonts in the screen instead of a filled screen of
-   * color. */
-  ssd1306_fill_all();
+  /* Clear the screen. */
+  oled_fill_all(0x00);
+
+  /* Draw a Chrome dinosaur on the screen. */
+  oled_set_cursor(0, 0);
+  oled_draw_dino_map();
+
+  /* Print a string with printf style. */
+  oled_set_cursor(4, 0);
+  oled_printf(
+      "Linux kernel module \nBy luyaohan1001: "
+      "\n%d-%d-%d",
+      2022, 12, 18);
+
+  
 
 RETURN:
   return statusCode;
@@ -100,7 +115,10 @@ RETURN:
  * @param client Pointer to the i2c_client instance.
  * @return None.
  */
-static int driver_on_remove(struct i2c_client* client) { return 0; }
+static int driver_on_remove(struct i2c_client *client) {
+  pr_info("OLED with I2C address 0x3C has been successfully removed.\n");
+  return 0;
+}
 
 /* Helper macro for registering a modular I2C driver. */
 module_i2c_driver(i2c_driver);

@@ -65,6 +65,10 @@ $(function() {
 <div class="textblock"><p>graphics | datalink | driver</p>
 <p>Tested on Linux raspberrypi 5.10.103-v7l+ #1529 SMP Tue Mar 8 12:24:00 GMT 2022 armv7l GNU/Linux (Raspberry Pi Buster.)</p>
 <p>Documents generated (by doxygen) at /docs/html/files.html</p>
+<h4>Demo: Displaying text and the dinosaur from chrome browser.</h4>
+<div class="image">
+<img src="docs/misc/demo.jpg"/>
+</div>
 <h4>To compile</h4>
 <pre class="fragment">Install the kernel headers.
 $ sudo apt install raspberrypi-kernel-headers
@@ -90,7 +94,7 @@ $ sudo make
 </pre><h4>Kanban - TODO</h4>
 <ul>
 <li>[x] release-00: Minimal-viable kernel i2c bus module and simple configruation + fill-screen.</li>
-<li>[ ] release-01: Add font / image support to the screen datalink layer.</li>
+<li>[x] release-01: Add font / image support to the screen datalink layer.</li>
 <li>[ ] release-02: Add user-space interface through sysfs.</li>
 <li>[ ] release-03: Develop the dinosaur game on this screen. </li>
 </ul>

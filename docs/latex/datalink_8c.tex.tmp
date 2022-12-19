@@ -1,0 +1,93 @@
+\hypertarget{datalink_8c}{}\section{datalink.\+c File Reference}
+\label{datalink_8c}\index{datalink.\+c@{datalink.\+c}}
+
+
+Datalink layer implementation for S\+S\+D1306 O\+L\+ED Driver, I2\+C-\/based operations.  
+
+
+{\ttfamily \#include \char`\"{}datalink.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$linux/i2c.\+h$>$}\newline
+{\ttfamily \#include $<$linux/init.\+h$>$}\newline
+{\ttfamily \#include $<$linux/module.\+h$>$}\newline
+Include dependency graph for datalink.\+c\+:
+% FIG 0
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{datalink_8c_a9b383c8df502256394b8292469c251ec}{ssd1306\+\_\+write\+\_\+address} (\hyperlink{datalink_8h_ad5383d2eae4c4d73f3e83c91c10354eb}{e\+Control\+\_\+t} control\+\_\+option, uint8\+\_\+t address, uint8\+\_\+t param\+\_\+len, uint8\+\_\+t $\ast$p\+\_\+param)
+\begin{DoxyCompactList}\small\item\em Write to ssd1306 register address. \end{DoxyCompactList}\item 
+void \hyperlink{datalink_8c_a1dd5e63fbbe67fa654d4f57cbf1bb235}{ssd1306\+\_\+controller\+\_\+init} (void)
+\begin{DoxyCompactList}\small\item\em Initialize S\+S\+D1306 O\+L\+ED controller. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+struct i2c\+\_\+client $\ast$ \hyperlink{datalink_8c_a77ca3c5047325f153b5679bce4576b39}{i2c\+\_\+client}
+\begin{DoxyCompactList}\small\item\em Pointer to the i2c\+\_\+client instance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Datalink layer implementation for S\+S\+D1306 O\+L\+ED Driver, I2\+C-\/based operations. 
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{datalink_8c_a1dd5e63fbbe67fa654d4f57cbf1bb235}\label{datalink_8c_a1dd5e63fbbe67fa654d4f57cbf1bb235}} 
+\index{datalink.\+c@{datalink.\+c}!ssd1306\+\_\+controller\+\_\+init@{ssd1306\+\_\+controller\+\_\+init}}
+\index{ssd1306\+\_\+controller\+\_\+init@{ssd1306\+\_\+controller\+\_\+init}!datalink.\+c@{datalink.\+c}}
+\subsubsection{\texorpdfstring{ssd1306\+\_\+controller\+\_\+init()}{ssd1306\_controller\_init()}}
+{\footnotesize\ttfamily void ssd1306\+\_\+controller\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Initialize S\+S\+D1306 O\+L\+ED controller. 
+
+Initialize ssd1306 O\+L\+ED controller.
+
+
+\begin{DoxyParams}{Parameters}
+{\em None.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None. 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Using anonymous array to pass single parameters. 
+\end{DoxyNote}
+\mbox{\Hypertarget{datalink_8c_a9b383c8df502256394b8292469c251ec}\label{datalink_8c_a9b383c8df502256394b8292469c251ec}} 
+\index{datalink.\+c@{datalink.\+c}!ssd1306\+\_\+write\+\_\+address@{ssd1306\+\_\+write\+\_\+address}}
+\index{ssd1306\+\_\+write\+\_\+address@{ssd1306\+\_\+write\+\_\+address}!datalink.\+c@{datalink.\+c}}
+\subsubsection{\texorpdfstring{ssd1306\+\_\+write\+\_\+address()}{ssd1306\_write\_address()}}
+{\footnotesize\ttfamily void ssd1306\+\_\+write\+\_\+address (\begin{DoxyParamCaption}\item[{\hyperlink{datalink_8h_ad5383d2eae4c4d73f3e83c91c10354eb}{e\+Control\+\_\+t}}]{control\+\_\+option,  }\item[{uint8\+\_\+t}]{address,  }\item[{uint8\+\_\+t}]{param\+\_\+len,  }\item[{uint8\+\_\+t $\ast$}]{p\+\_\+param }\end{DoxyParamCaption})}
+
+
+
+Write to ssd1306 register address. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em control\+\_\+option} & D\+A\+T\+A\+\_\+\+C\+O\+N\+T\+R\+OL indicates to transmit data, C\+O\+M\+M\+A\+N\+D\+\_\+\+C\+O\+N\+T\+R\+OL indicates to transmit command. \\
+\hline
+{\em address} & The register address to write param to. \\
+\hline
+{\em param\+\_\+len} & Length of parameter if there is any. \\
+\hline
+{\em p\+\_\+param} & Pointer to parameter to be written. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{datalink_8c_a77ca3c5047325f153b5679bce4576b39}\label{datalink_8c_a77ca3c5047325f153b5679bce4576b39}} 
+\index{datalink.\+c@{datalink.\+c}!i2c\+\_\+client@{i2c\+\_\+client}}
+\index{i2c\+\_\+client@{i2c\+\_\+client}!datalink.\+c@{datalink.\+c}}
+\subsubsection{\texorpdfstring{i2c\+\_\+client}{i2c\_client}}
+{\footnotesize\ttfamily struct i2c\+\_\+client$\ast$ i2c\+\_\+client}
+
+
+
+Pointer to the i2c\+\_\+client instance. 
+
+\begin{DoxyNote}{Note}
+Original symbol declared in \hyperlink{driver_8c}{driver.\+c}. 
+\end{DoxyNote}

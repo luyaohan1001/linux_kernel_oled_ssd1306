@@ -1,0 +1,135 @@
+\hypertarget{datalink_8h}{}\section{datalink.\+h File Reference}
+\label{datalink_8h}\index{datalink.\+h@{datalink.\+h}}
+
+
+Header file for S\+S\+D1306 controller interface.  
+
+
+{\ttfamily \#include $<$linux/delay.\+h$>$}\newline
+{\ttfamily \#include $<$linux/i2c.\+h$>$}\newline
+{\ttfamily \#include $<$linux/init.\+h$>$}\newline
+{\ttfamily \#include $<$linux/module.\+h$>$}\newline
+Include dependency graph for datalink.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{datalink_8h_a203c33a9cc01f6c7c0b186ed29a84542}\label{datalink_8h_a203c33a9cc01f6c7c0b186ed29a84542}} 
+\#define {\bfseries S\+E\+T\+\_\+\+M\+E\+M\+O\+R\+Y\+\_\+\+A\+D\+D\+R\+E\+S\+S\+I\+N\+G\+\_\+\+M\+O\+DE}~0x20
+\item 
+\mbox{\Hypertarget{datalink_8h_a4a739bff02b23f586f016f76be4f9f71}\label{datalink_8h_a4a739bff02b23f586f016f76be4f9f71}} 
+\#define {\bfseries S\+E\+T\+\_\+\+D\+I\+S\+P\+L\+A\+Y\+\_\+\+S\+T\+A\+R\+T\+\_\+\+L\+I\+NE}~0x40
+\item 
+\mbox{\Hypertarget{datalink_8h_a5f964255e5ab8ec8e0b98b4931e1a7b2}\label{datalink_8h_a5f964255e5ab8ec8e0b98b4931e1a7b2}} 
+\#define {\bfseries S\+E\+T\+\_\+\+D\+I\+S\+P\+L\+A\+Y\+\_\+\+O\+FF}~0x\+AE
+\item 
+\mbox{\Hypertarget{datalink_8h_a566d18bab36023ae5405cc50e95a5cd5}\label{datalink_8h_a566d18bab36023ae5405cc50e95a5cd5}} 
+\#define {\bfseries S\+E\+T\+\_\+\+D\+I\+S\+P\+L\+A\+Y\+\_\+\+ON}~0x\+AF
+\item 
+\mbox{\Hypertarget{datalink_8h_ad8dff4dd6f25845e3c9008820abb0ac1}\label{datalink_8h_ad8dff4dd6f25845e3c9008820abb0ac1}} 
+\#define {\bfseries S\+E\+T\+\_\+\+E\+N\+T\+I\+R\+E\+\_\+\+D\+I\+S\+P\+L\+A\+Y\+\_\+\+ON}~0x\+A4
+\item 
+\mbox{\Hypertarget{datalink_8h_aa0d67668c74620e90251970355b82123}\label{datalink_8h_aa0d67668c74620e90251970355b82123}} 
+\#define {\bfseries S\+E\+T\+\_\+\+D\+I\+S\+P\+L\+A\+Y\+\_\+\+O\+F\+F\+S\+ET}~0x\+D3
+\item 
+\mbox{\Hypertarget{datalink_8h_aabe127954d8cba7f8d3375b98b7396d2}\label{datalink_8h_aabe127954d8cba7f8d3375b98b7396d2}} 
+\#define {\bfseries S\+E\+T\+\_\+\+M\+U\+X\+\_\+\+R\+A\+T\+IO}~0x\+A8
+\item 
+\mbox{\Hypertarget{datalink_8h_a64711c90253a749b13a39365e13abf75}\label{datalink_8h_a64711c90253a749b13a39365e13abf75}} 
+\#define {\bfseries S\+E\+T\+\_\+\+D\+E\+A\+C\+T\+I\+V\+A\+T\+E\+\_\+\+S\+C\+R\+O\+LL}~0x2E
+\item 
+\mbox{\Hypertarget{datalink_8h_acdf1ff3a6b63789f69879c7bdfead143}\label{datalink_8h_acdf1ff3a6b63789f69879c7bdfead143}} 
+\#define {\bfseries S\+E\+T\+\_\+\+C\+O\+N\+T\+R\+A\+S\+T\+\_\+\+C\+O\+N\+T\+R\+OL}~0x81
+\item 
+\mbox{\Hypertarget{datalink_8h_a7c7f3fdba1e57573bbae8a876a307265}\label{datalink_8h_a7c7f3fdba1e57573bbae8a876a307265}} 
+\#define {\bfseries S\+E\+T\+\_\+\+C\+H\+A\+R\+G\+E\+\_\+\+P\+U\+MP}~0x8D
+\item 
+\mbox{\Hypertarget{datalink_8h_a11e81e4fca5a3a7b0607df35e539a42b}\label{datalink_8h_a11e81e4fca5a3a7b0607df35e539a42b}} 
+\#define {\bfseries S\+E\+T\+\_\+\+C\+H\+A\+R\+G\+E\+\_\+\+P\+U\+M\+P\+\_\+\+E\+N\+A\+B\+LE}~0x14
+\item 
+\mbox{\Hypertarget{datalink_8h_a826c05fdba7e8ad2d16465b2cb85c985}\label{datalink_8h_a826c05fdba7e8ad2d16465b2cb85c985}} 
+\#define {\bfseries S\+E\+T\+\_\+\+C\+O\+L\+U\+M\+N\+\_\+\+A\+D\+D\+R\+E\+SS}~0x21
+\item 
+\mbox{\Hypertarget{datalink_8h_a30dc2c747cff6310f238ce28f6b80ff5}\label{datalink_8h_a30dc2c747cff6310f238ce28f6b80ff5}} 
+\#define {\bfseries S\+E\+T\+\_\+\+P\+A\+G\+E\+\_\+\+A\+D\+D\+R\+E\+SS}~0x22
+\item 
+\mbox{\Hypertarget{datalink_8h_afdc326bd5037b2251e62f398ab1b48d1}\label{datalink_8h_afdc326bd5037b2251e62f398ab1b48d1}} 
+\#define {\bfseries D\+O\+N\+T\+\_\+\+C\+A\+RE}~0x00
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{datalink_8h_ad5383d2eae4c4d73f3e83c91c10354eb}\label{datalink_8h_ad5383d2eae4c4d73f3e83c91c10354eb}} 
+enum \hyperlink{datalink_8h_ad5383d2eae4c4d73f3e83c91c10354eb}{e\+Control\+\_\+t} \{ {\bfseries C\+O\+M\+M\+A\+N\+D\+\_\+\+C\+O\+N\+T\+R\+OL}, 
+{\bfseries D\+A\+T\+A\+\_\+\+C\+O\+N\+T\+R\+OL}
+ \}\begin{DoxyCompactList}\small\item\em Enum type for ssd1306 function to differentiate whether confirguration is a command type or a data byte. \end{DoxyCompactList}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{datalink_8h_a1dd5e63fbbe67fa654d4f57cbf1bb235}{ssd1306\+\_\+controller\+\_\+init} (void)
+\begin{DoxyCompactList}\small\item\em Initialize ssd1306 O\+L\+ED controller. \end{DoxyCompactList}\item 
+void \hyperlink{datalink_8h_a94da712f32741cc6850dc061fb4996a1}{ssd1306\+\_\+write\+\_\+address} (\hyperlink{datalink_8h_ad5383d2eae4c4d73f3e83c91c10354eb}{e\+Control\+\_\+t} control\+\_\+option, uint8\+\_\+t address, uint8\+\_\+t param\+\_\+len, uint8\+\_\+t $\ast$param)
+\begin{DoxyCompactList}\small\item\em Write to ssd1306 register address. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Header file for S\+S\+D1306 controller interface. 
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{datalink_8h_a1dd5e63fbbe67fa654d4f57cbf1bb235}\label{datalink_8h_a1dd5e63fbbe67fa654d4f57cbf1bb235}} 
+\index{datalink.\+h@{datalink.\+h}!ssd1306\+\_\+controller\+\_\+init@{ssd1306\+\_\+controller\+\_\+init}}
+\index{ssd1306\+\_\+controller\+\_\+init@{ssd1306\+\_\+controller\+\_\+init}!datalink.\+h@{datalink.\+h}}
+\subsubsection{\texorpdfstring{ssd1306\+\_\+controller\+\_\+init()}{ssd1306\_controller\_init()}}
+{\footnotesize\ttfamily void ssd1306\+\_\+controller\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Initialize ssd1306 O\+L\+ED controller. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None.
+\end{DoxyReturn}
+Initialize ssd1306 O\+L\+ED controller.
+
+
+\begin{DoxyParams}{Parameters}
+{\em None.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None. 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Using anonymous array to pass single parameters. 
+\end{DoxyNote}
+\mbox{\Hypertarget{datalink_8h_a94da712f32741cc6850dc061fb4996a1}\label{datalink_8h_a94da712f32741cc6850dc061fb4996a1}} 
+\index{datalink.\+h@{datalink.\+h}!ssd1306\+\_\+write\+\_\+address@{ssd1306\+\_\+write\+\_\+address}}
+\index{ssd1306\+\_\+write\+\_\+address@{ssd1306\+\_\+write\+\_\+address}!datalink.\+h@{datalink.\+h}}
+\subsubsection{\texorpdfstring{ssd1306\+\_\+write\+\_\+address()}{ssd1306\_write\_address()}}
+{\footnotesize\ttfamily void ssd1306\+\_\+write\+\_\+address (\begin{DoxyParamCaption}\item[{\hyperlink{datalink_8h_ad5383d2eae4c4d73f3e83c91c10354eb}{e\+Control\+\_\+t}}]{control\+\_\+option,  }\item[{uint8\+\_\+t}]{address,  }\item[{uint8\+\_\+t}]{param\+\_\+len,  }\item[{uint8\+\_\+t $\ast$}]{p\+\_\+param }\end{DoxyParamCaption})}
+
+
+
+Write to ssd1306 register address. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em control\+\_\+option} & D\+A\+T\+A\+\_\+\+C\+O\+N\+T\+R\+OL indicates to transmit data, C\+O\+M\+M\+A\+N\+D\+\_\+\+C\+O\+N\+T\+R\+OL indicates to transmit command. \\
+\hline
+{\em address} & The register address to write param to. \\
+\hline
+{\em param\+\_\+len} & Length of parameter if there is any. \\
+\hline
+{\em p\+\_\+param} & Pointer to parameter to be written. \\
+\hline
+\end{DoxyParams}

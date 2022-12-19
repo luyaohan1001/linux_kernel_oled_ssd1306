@@ -39,8 +39,9 @@ doxygen:
 setup:
 	apt install raspberrypi-kernel-headers
 	apt install doxygen
+	sudo apt-get install -y doxygen-latex
 
 format:
-	clang-format --style=GNU -i *.c *.h
+	clang-format -i ./*.[ch]
 
 

@@ -1,0 +1,174 @@
+\hypertarget{graphics_8h}{}\section{graphics.\+h File Reference}
+\label{graphics_8h}\index{graphics.\+h@{graphics.\+h}}
+
+
+ssd1306 O\+L\+ED graphics display A\+P\+Is header.  
+
+
+{\ttfamily \#include \char`\"{}datalink.\+h\char`\"{}}\newline
+Include dependency graph for graphics.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structoled__graphics__params__t}{oled\+\_\+graphics\+\_\+params\+\_\+t}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{graphics_8h_a55e6a723585e34ea4ca584efbcf2de80}\label{graphics_8h_a55e6a723585e34ea4ca584efbcf2de80}} 
+\#define {\bfseries O\+L\+E\+D\+\_\+\+C\+A\+N\+V\+A\+S\+\_\+\+W\+I\+D\+T\+H\+\_\+\+P\+I\+X\+E\+LS}~128
+\item 
+\mbox{\Hypertarget{graphics_8h_a0d937aa0ad90ac1961a0b95534ffe272}\label{graphics_8h_a0d937aa0ad90ac1961a0b95534ffe272}} 
+\#define {\bfseries O\+L\+E\+D\+\_\+\+C\+A\+N\+V\+A\+S\+\_\+\+H\+E\+I\+G\+H\+T\+\_\+\+P\+I\+X\+E\+LS}~64
+\item 
+\mbox{\Hypertarget{graphics_8h_a369ecd38b3ab077fc235f892354bb46f}\label{graphics_8h_a369ecd38b3ab077fc235f892354bb46f}} 
+\#define {\bfseries B\+I\+T\+S\+\_\+\+P\+E\+R\+\_\+\+B\+Y\+TE}~8
+\item 
+\mbox{\Hypertarget{graphics_8h_a179b59dc36a14dddc8f25829a84c24ab}\label{graphics_8h_a179b59dc36a14dddc8f25829a84c24ab}} 
+\#define {\bfseries O\+L\+E\+D\+\_\+\+C\+O\+L\+U\+M\+N\+\_\+\+L\+E\+N\+G\+TH}~O\+L\+E\+D\+\_\+\+C\+A\+N\+V\+A\+S\+\_\+\+W\+I\+D\+T\+H\+\_\+\+P\+I\+X\+E\+LS
+\item 
+\mbox{\Hypertarget{graphics_8h_ab7f0c4213fea15f0ea529d1d04d7e7e7}\label{graphics_8h_ab7f0c4213fea15f0ea529d1d04d7e7e7}} 
+\#define {\bfseries O\+L\+E\+D\+\_\+\+C\+O\+L\+U\+M\+N\+\_\+\+M\+IN}~0
+\item 
+\mbox{\Hypertarget{graphics_8h_aa0ac6549215c5885ccc5473b97cbe12b}\label{graphics_8h_aa0ac6549215c5885ccc5473b97cbe12b}} 
+\#define {\bfseries O\+L\+E\+D\+\_\+\+C\+O\+L\+U\+M\+N\+\_\+\+M\+AX}~O\+L\+E\+D\+\_\+\+C\+A\+N\+V\+A\+S\+\_\+\+W\+I\+D\+T\+H\+\_\+\+P\+I\+X\+E\+LS -\/ 1
+\item 
+\mbox{\Hypertarget{graphics_8h_a6571e34c5aeb5cf546ec6dfc7bee7625}\label{graphics_8h_a6571e34c5aeb5cf546ec6dfc7bee7625}} 
+\#define {\bfseries O\+L\+E\+D\+\_\+\+P\+A\+G\+E\+\_\+\+L\+E\+N\+G\+TH}~(O\+L\+E\+D\+\_\+\+C\+A\+N\+V\+A\+S\+\_\+\+H\+E\+I\+G\+H\+T\+\_\+\+P\+I\+X\+E\+LS / B\+I\+T\+S\+\_\+\+P\+E\+R\+\_\+\+B\+Y\+TE)
+\item 
+\mbox{\Hypertarget{graphics_8h_a10b262872e66f61411baccc3e3e8ed1e}\label{graphics_8h_a10b262872e66f61411baccc3e3e8ed1e}} 
+\#define {\bfseries O\+L\+E\+D\+\_\+\+P\+A\+G\+E\+\_\+\+M\+IN}~0
+\item 
+\mbox{\Hypertarget{graphics_8h_a4e3ef693034aab0646b2a968db4dcf9f}\label{graphics_8h_a4e3ef693034aab0646b2a968db4dcf9f}} 
+\#define {\bfseries O\+L\+E\+D\+\_\+\+P\+A\+G\+E\+\_\+\+M\+AX}~(O\+L\+E\+D\+\_\+\+C\+A\+N\+V\+A\+S\+\_\+\+H\+E\+I\+G\+H\+T\+\_\+\+P\+I\+X\+E\+LS / B\+I\+T\+S\+\_\+\+P\+E\+R\+\_\+\+B\+Y\+TE) -\/ 1
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{graphics_8h_aeba1c58e44f1f319d67d2ad9cbd16c3b}{oled\+\_\+putc} (unsigned char c)
+\begin{DoxyCompactList}\small\item\em Print single char to the oled screen. \end{DoxyCompactList}\item 
+void \hyperlink{graphics_8h_ab28304ca48035ad1e53140b59038a525}{oled\+\_\+printf} (const char $\ast$format,...)
+\begin{DoxyCompactList}\small\item\em printf with variadic arguments to print on the oled screen. \end{DoxyCompactList}\item 
+void \hyperlink{graphics_8h_a663f564f5cb52e88483eddfab3529910}{oled\+\_\+new\+\_\+line} (void)
+\begin{DoxyCompactList}\small\item\em Change to a new line on the O\+L\+ED screen. \end{DoxyCompactList}\item 
+void \hyperlink{graphics_8h_a018578facff91b5c652decfed49a63b2}{oled\+\_\+set\+\_\+cursor} (uint8\+\_\+t line\+No, uint8\+\_\+t cursor\+Pos)
+\begin{DoxyCompactList}\small\item\em Set the cursor position, i.\+e. the start location to print. \end{DoxyCompactList}\item 
+void \hyperlink{graphics_8h_af1dd4da134af94d9ec84bb0199e634a9}{oled\+\_\+fill\+\_\+all} (uint8\+\_\+t data)
+\begin{DoxyCompactList}\small\item\em Fill the entire screen with byte pattern. \end{DoxyCompactList}\item 
+void \hyperlink{graphics_8h_a2dc61cae569e4e1495a2c1a4d4062fb9}{oled\+\_\+draw\+\_\+dino\+\_\+map} (void)
+\begin{DoxyCompactList}\small\item\em Draw a dinosaur on the oled screen. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+ssd1306 O\+L\+ED graphics display A\+P\+Is header. 
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{graphics_8h_a2dc61cae569e4e1495a2c1a4d4062fb9}\label{graphics_8h_a2dc61cae569e4e1495a2c1a4d4062fb9}} 
+\index{graphics.\+h@{graphics.\+h}!oled\+\_\+draw\+\_\+dino\+\_\+map@{oled\+\_\+draw\+\_\+dino\+\_\+map}}
+\index{oled\+\_\+draw\+\_\+dino\+\_\+map@{oled\+\_\+draw\+\_\+dino\+\_\+map}!graphics.\+h@{graphics.\+h}}
+\subsubsection{\texorpdfstring{oled\+\_\+draw\+\_\+dino\+\_\+map()}{oled\_draw\_dino\_map()}}
+{\footnotesize\ttfamily void oled\+\_\+draw\+\_\+dino\+\_\+map (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Draw a dinosaur on the oled screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{graphics_8h_af1dd4da134af94d9ec84bb0199e634a9}\label{graphics_8h_af1dd4da134af94d9ec84bb0199e634a9}} 
+\index{graphics.\+h@{graphics.\+h}!oled\+\_\+fill\+\_\+all@{oled\+\_\+fill\+\_\+all}}
+\index{oled\+\_\+fill\+\_\+all@{oled\+\_\+fill\+\_\+all}!graphics.\+h@{graphics.\+h}}
+\subsubsection{\texorpdfstring{oled\+\_\+fill\+\_\+all()}{oled\_fill\_all()}}
+{\footnotesize\ttfamily void oled\+\_\+fill\+\_\+all (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{pattern }\end{DoxyParamCaption})}
+
+
+
+Fill the entire screen with byte pattern. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pattern} & Byte pattern to fill. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{graphics_8h_a663f564f5cb52e88483eddfab3529910}\label{graphics_8h_a663f564f5cb52e88483eddfab3529910}} 
+\index{graphics.\+h@{graphics.\+h}!oled\+\_\+new\+\_\+line@{oled\+\_\+new\+\_\+line}}
+\index{oled\+\_\+new\+\_\+line@{oled\+\_\+new\+\_\+line}!graphics.\+h@{graphics.\+h}}
+\subsubsection{\texorpdfstring{oled\+\_\+new\+\_\+line()}{oled\_new\_line()}}
+{\footnotesize\ttfamily void oled\+\_\+new\+\_\+line (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Change to a new line on the O\+L\+ED screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{graphics_8h_ab28304ca48035ad1e53140b59038a525}\label{graphics_8h_ab28304ca48035ad1e53140b59038a525}} 
+\index{graphics.\+h@{graphics.\+h}!oled\+\_\+printf@{oled\+\_\+printf}}
+\index{oled\+\_\+printf@{oled\+\_\+printf}!graphics.\+h@{graphics.\+h}}
+\subsubsection{\texorpdfstring{oled\+\_\+printf()}{oled\_printf()}}
+{\footnotesize\ttfamily void oled\+\_\+printf (\begin{DoxyParamCaption}\item[{const char $\ast$}]{format,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+
+
+printf with variadic arguments to print on the oled screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em format} & Format supplied including string and/or parameters. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{graphics_8h_aeba1c58e44f1f319d67d2ad9cbd16c3b}\label{graphics_8h_aeba1c58e44f1f319d67d2ad9cbd16c3b}} 
+\index{graphics.\+h@{graphics.\+h}!oled\+\_\+putc@{oled\+\_\+putc}}
+\index{oled\+\_\+putc@{oled\+\_\+putc}!graphics.\+h@{graphics.\+h}}
+\subsubsection{\texorpdfstring{oled\+\_\+putc()}{oled\_putc()}}
+{\footnotesize\ttfamily void oled\+\_\+putc (\begin{DoxyParamCaption}\item[{unsigned char}]{ascii\+\_\+char }\end{DoxyParamCaption})}
+
+
+
+Print single char to the oled screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ascii\+\_\+char} & A\+S\+C\+II character to put. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{graphics_8h_a018578facff91b5c652decfed49a63b2}\label{graphics_8h_a018578facff91b5c652decfed49a63b2}} 
+\index{graphics.\+h@{graphics.\+h}!oled\+\_\+set\+\_\+cursor@{oled\+\_\+set\+\_\+cursor}}
+\index{oled\+\_\+set\+\_\+cursor@{oled\+\_\+set\+\_\+cursor}!graphics.\+h@{graphics.\+h}}
+\subsubsection{\texorpdfstring{oled\+\_\+set\+\_\+cursor()}{oled\_set\_cursor()}}
+{\footnotesize\ttfamily void oled\+\_\+set\+\_\+cursor (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{line,  }\item[{uint8\+\_\+t}]{position }\end{DoxyParamCaption})}
+
+
+
+Set the cursor position, i.\+e. the start location to print. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em line} & The vertical line (page) to set the cursor to. \\
+\hline
+{\em position} & The horizontal position (column) to the set the cursor to. \\
+\hline
+\end{DoxyParams}

@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['oled_5fdraw_5fdino_5fmap',['oled_draw_dino_map',['../graphics_8c.html#a2dc61cae569e4e1495a2c1a4d4062fb9',1,'oled_draw_dino_map(void):&#160;graphics.c'],['../graphics_8h.html#a2dc61cae569e4e1495a2c1a4d4062fb9',1,'oled_draw_dino_map(void):&#160;graphics.c']]],
   ['oled_5ffill_5fall',['oled_fill_all',['../graphics_8c.html#a5992d8ef6b50364b593fcd237f015c61',1,'oled_fill_all(uint8_t pattern):&#160;graphics.c'],['../graphics_8h.html#af1dd4da134af94d9ec84bb0199e634a9',1,'oled_fill_all(uint8_t data):&#160;graphics.c']]],
   ['oled_5fgraphics_5fparams',['oled_graphics_params',['../graphics_8c.html#ad7833cc3b12f3bc2e22d020ee60d2cd5',1,'graphics.c']]],
   ['oled_5fgraphics_5fparams_5ft',['oled_graphics_params_t',['../structoled__graphics__params__t.html',1,'']]],

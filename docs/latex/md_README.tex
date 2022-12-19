@@ -1,0 +1,61 @@
+graphics $\vert$ datalink $\vert$ driver
+
+Tested on Linux raspberrypi 5.\+10.\+103-\/v7l+ \#1529 S\+MP Tue Mar 8 12\+:24\+:00 G\+MT 2022 armv7l G\+N\+U/\+Linux (Raspberry Pi Buster.)
+
+Documents generated (by doxygen) at /docs/html/files.html
+
+\paragraph*{Demo\+: Displaying text and the dinosaur from chrome browser.}
+
+
+
+\paragraph*{To compile}
+
+\begin{DoxyVerb}Install the kernel headers.
+$ sudo apt install raspberrypi-kernel-headers
+
+Compile
+$ sudo make
+\end{DoxyVerb}
+
+
+\paragraph*{To run\+:}
+
+\begin{DoxyVerb}1. First apply device tree overlay by
+
+    $ sudo make dtoverlay
+
+2. Insert the kernel module
+
+    $ sudo make insmod
+\end{DoxyVerb}
+
+
+\paragraph*{To check for printk log\+:}
+
+\begin{DoxyVerb}    $ dmesg
+\end{DoxyVerb}
+
+
+\paragraph*{To remove the kernel module\+:}
+
+\begin{DoxyVerb}    $ sudo dmesg
+\end{DoxyVerb}
+
+
+\paragraph*{To generate docs by doxygen}
+
+\begin{DoxyVerb}    $ make doxygen
+
+    $ cd /docs/html
+\end{DoxyVerb}
+
+
+\paragraph*{Kanban -\/ T\+O\+DO}
+
+
+\begin{DoxyItemize}
+\item \mbox{[}x\mbox{]} release-\/00\+: Minimal-\/viable kernel i2c bus module and simple configruation + fill-\/screen.
+\item \mbox{[}x\mbox{]} release-\/01\+: Add font / image support to the screen datalink layer.
+\item \mbox{[} \mbox{]} release-\/02\+: Add user-\/space interface through sysfs.
+\item \mbox{[} \mbox{]} release-\/03\+: Develop the dinosaur game on this screen. 
+\end{DoxyItemize}

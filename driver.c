@@ -5,11 +5,11 @@
  * configurations and initialization are implemented in datalink.c. On top of
  * datalink, OLED printing / graphics are implemented in graphics.c
  */
+#include "datalink.h"
+#include "graphics.h"
 #include <linux/delay.h>
 #include <linux/i2c.h>
 #include <linux/module.h>
-#include "datalink.h"
-#include "graphics.h"
 
 /* Loadable kernel module license registration. */
 MODULE_LICENSE("GPL");
@@ -99,12 +99,9 @@ static int driver_on_probe(struct i2c_client *client,
 
   /* Print a string with printf style. */
   oled_set_cursor(4, 0);
-  oled_printf(
-      "Linux kernel module \nBy luyaohan1001: "
-      "\n%d-%d-%d",
-      2022, 12, 18);
-
-  
+  oled_printf("Linux kernel module \nBy luyaohan1001: "
+              "\n%d-%d-%d",
+              2022, 12, 18);
 
 RETURN:
   return statusCode;

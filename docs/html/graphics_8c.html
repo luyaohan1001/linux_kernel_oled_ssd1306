@@ -75,8 +75,7 @@ $(function() {
 Include dependency graph for graphics.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="graphics_8c__incl.png" border="0" usemap="#graphics_8c" alt=""/></div>
-<map name="graphics_8c" id="graphics_8c">
-</map>
+<!-- MAP 0 -->
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
@@ -87,6 +86,12 @@ Macros</h2></td></tr>
 <tr class="memitem:a895f356e37774f380631ad87b5d20ce8"><td class="memItemLeft" align="right" valign="top"><a id="a895f356e37774f380631ad87b5d20ce8"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>DEFAULT_MESSAGE_LENGTH</b>&#160;&#160;&#160;256</td></tr>
 <tr class="separator:a895f356e37774f380631ad87b5d20ce8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5da84172df9f01c3fa8f5a612bfdc6e8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="graphics_8c.html#a5da84172df9f01c3fa8f5a612bfdc6e8">DINOSAUR_BITMAP_ROWS</a>&#160;&#160;&#160;4</td></tr>
+<tr class="memdesc:a5da84172df9f01c3fa8f5a612bfdc6e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bitmap for a dinosaur.  <a href="#a5da84172df9f01c3fa8f5a612bfdc6e8">More...</a><br /></td></tr>
+<tr class="separator:a5da84172df9f01c3fa8f5a612bfdc6e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6be12997afeab74e68d29e369dfbe163"><td class="memItemLeft" align="right" valign="top"><a id="a6be12997afeab74e68d29e369dfbe163"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>DINOSAUR_BITMAP_COLUMNS</b>&#160;&#160;&#160;32</td></tr>
+<tr class="separator:a6be12997afeab74e68d29e369dfbe163"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -105,19 +110,69 @@ Functions</h2></td></tr>
 <tr class="memitem:ab28304ca48035ad1e53140b59038a525"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="graphics_8c.html#ab28304ca48035ad1e53140b59038a525">oled_printf</a> (const char *format,...)</td></tr>
 <tr class="memdesc:ab28304ca48035ad1e53140b59038a525"><td class="mdescLeft">&#160;</td><td class="mdescRight">printf with variadic arguments to print on the oled screen.  <a href="#ab28304ca48035ad1e53140b59038a525">More...</a><br /></td></tr>
 <tr class="separator:ab28304ca48035ad1e53140b59038a525"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2dc61cae569e4e1495a2c1a4d4062fb9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="graphics_8c.html#a2dc61cae569e4e1495a2c1a4d4062fb9">oled_draw_dino_map</a> (void)</td></tr>
+<tr class="memdesc:a2dc61cae569e4e1495a2c1a4d4062fb9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw a dinosaur on the oled screen.  <a href="#a2dc61cae569e4e1495a2c1a4d4062fb9">More...</a><br /></td></tr>
+<tr class="separator:a2dc61cae569e4e1495a2c1a4d4062fb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:a43d9b1e29bb71777cd7cba4014d0edb6"><td class="memItemLeft" align="right" valign="top">static const unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="graphics_8c.html#a43d9b1e29bb71777cd7cba4014d0edb6">FONT_TABLE</a> [][FONT_TABLE_CHAR_WIDTH]</td></tr>
-<tr class="memdesc:a43d9b1e29bb71777cd7cba4014d0edb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">ASCII Front table defined in hex encoding.  <a href="#a43d9b1e29bb71777cd7cba4014d0edb6">More...</a><br /></td></tr>
+<tr class="memdesc:a43d9b1e29bb71777cd7cba4014d0edb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">ASCII Font table defined in hex encoding.  <a href="#a43d9b1e29bb71777cd7cba4014d0edb6">More...</a><br /></td></tr>
 <tr class="separator:a43d9b1e29bb71777cd7cba4014d0edb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a454c5983a23e345b63da55cf3ef6b6b8"><td class="memItemLeft" align="right" valign="top">const unsigned char&#160;</td><td class="memItemRight" valign="bottom"><b>DINOSAUR_BITMAP</b> [<a class="el" href="graphics_8c.html#a5da84172df9f01c3fa8f5a612bfdc6e8">DINOSAUR_BITMAP_ROWS</a>][DINOSAUR_BITMAP_COLUMNS]</td></tr>
+<tr class="separator:a454c5983a23e345b63da55cf3ef6b6b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad7833cc3b12f3bc2e22d020ee60d2cd5"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structoled__graphics__params__t.html">oled_graphics_params_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="graphics_8c.html#ad7833cc3b12f3bc2e22d020ee60d2cd5">oled_graphics_params</a></td></tr>
 <tr class="memdesc:ad7833cc3b12f3bc2e22d020ee60d2cd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Struct that book-keeps parameters for the oled graphics.  <a href="#ad7833cc3b12f3bc2e22d020ee60d2cd5">More...</a><br /></td></tr>
 <tr class="separator:ad7833cc3b12f3bc2e22d020ee60d2cd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>ssd1306 OLED graphics display APIs implementation. </p>
-</div><h2 class="groupheader">Function Documentation</h2>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a5da84172df9f01c3fa8f5a612bfdc6e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5da84172df9f01c3fa8f5a612bfdc6e8">&#9670;&nbsp;</a></span>DINOSAUR_BITMAP_ROWS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DINOSAUR_BITMAP_ROWS&#160;&#160;&#160;4</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Bitmap for a dinosaur. </p>
+<dl class="section note"><dt>Note</dt><dd>Bitmap code generated using <a href="https://javl.github.io/image2cpp/">https://javl.github.io/image2cpp/</a> </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="a2dc61cae569e4e1495a2c1a4d4062fb9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2dc61cae569e4e1495a2c1a4d4062fb9">&#9670;&nbsp;</a></span>oled_draw_dino_map()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void oled_draw_dino_map </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Draw a dinosaur on the oled screen. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">None.</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>None. </dd></dl>
+
+</div>
+</div>
 <a id="a5992d8ef6b50364b593fcd237f015c61"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5992d8ef6b50364b593fcd237f015c61">&#9670;&nbsp;</a></span>oled_fill_all()</h2>
 
@@ -273,6 +328,20 @@ Variables</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
+<a id="a454c5983a23e345b63da55cf3ef6b6b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a454c5983a23e345b63da55cf3ef6b6b8">&#9670;&nbsp;</a></span>DINOSAUR_BITMAP</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const unsigned char DINOSAUR_BITMAP[<a class="el" href="graphics_8c.html#a5da84172df9f01c3fa8f5a612bfdc6e8">DINOSAUR_BITMAP_ROWS</a>][DINOSAUR_BITMAP_COLUMNS]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div><div class="line">        {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,</div><div class="line">         0x00, 0x00, 0x00, 0x00, 0xf0, 0xf8, 0xe8, 0xf8, 0xf8, 0xf8, 0xf8,</div><div class="line">         0xf8, 0xf8, 0xf0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00},</div><div class="line">        {0x00, 0x00, 0x00, 0x00, 0x00, 0xfc, 0xf0, 0xe0, 0xc0, 0xc0, 0xe0,</div><div class="line">         0xf0, 0xf0, 0xf8, 0xfc, 0xff, 0xff, 0xff, 0xff, 0x13, 0x32, 0x02,</div><div class="line">         0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00},</div><div class="line">        {0x00, 0x00, 0x00, 0x40, 0x40, 0x00, 0x01, 0x03, 0x07, 0x0f, 0xff,</div><div class="line">         0xbf, 0x1f, 0x0f, 0x1f, 0xff, 0x87, 0x03, 0x01, 0x00, 0x00, 0x00,</div><div class="line">         0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00},</div><div class="line">        {0xf0, 0xf0, 0xf0, 0xf0, 0xf0, 0xf0, 0xf0, 0xf0, 0xf0, 0xf0, 0xf0,</div><div class="line">         0xf0, 0xf0, 0xf0, 0xf0, 0xf0, 0xf0, 0xf0, 0xf0, 0xf0, 0xf0, 0xf0,</div><div class="line">         0xf0, 0xf0, 0xf0, 0xf0, 0xf0, 0xf0, 0xf0, 0xf0, 0xf0, 0xf0}}</div></div><!-- fragment -->
+</div>
+</div>
 <a id="a43d9b1e29bb71777cd7cba4014d0edb6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a43d9b1e29bb71777cd7cba4014d0edb6">&#9670;&nbsp;</a></span>FONT_TABLE</h2>
 
@@ -293,7 +362,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>ASCII Front table defined in hex encoding. </p>
+<p>ASCII Font table defined in hex encoding. </p>
 <dl class="section note"><dt>Note</dt><dd>This table is accessed through numerical value of a char. Each single char is rendered on screen byte by byte (per slice). Non-Alphanumeric characters are encoded 0. </dd></dl>
 
 </div>
@@ -317,7 +386,7 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= {</div><div class="line">    .line = 0, .cursor_position = 0, .font_char_width = FONT_TABLE_CHAR_WIDTH</div><div class="line">}</div></div><!-- fragment -->
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div><div class="line">    .line = 0, .cursor_position = 0, .font_char_width = FONT_TABLE_CHAR_WIDTH}</div></div><!-- fragment -->
 <p>Struct that book-keeps parameters for the oled graphics. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">

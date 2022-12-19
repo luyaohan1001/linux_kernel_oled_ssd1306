@@ -14,7 +14,11 @@
 #### Demo: Displaying text and the dinosaur from chrome browser.
 ![](docs/misc/demo.jpg)
 
-#### To compile 
+#### Documentation.
+
+![Click for full documentation](docs/latex/refman.pdf)
+
+#### To compile.
 
     Install the kernel headers.
     $ sudo apt install raspberrypi-kernel-headers

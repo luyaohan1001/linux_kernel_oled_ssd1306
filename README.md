@@ -11,6 +11,9 @@
 
     Documents generated (by doxygen) at /docs/html/files.html
 
+#### Demo: Displaying text and the dinosaur from chrome browser.
+![](docs/misc/demo.jpg)
+
 #### To compile 
 
     Install the kernel headers.

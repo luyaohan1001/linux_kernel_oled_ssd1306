@@ -2,7 +2,7 @@
 \label{graphics_8h}\index{graphics.\+h@{graphics.\+h}}
 
 
-ssd1306 O\+L\+ED graphics display A\+P\+Is header.  
+S\+S\+D1306 O\+L\+ED graphics display A\+P\+Is header.  
 
 
 {\ttfamily \#include \char`\"{}datalink.\+h\char`\"{}}\newline
@@ -14,7 +14,7 @@ This graph shows which files directly or indirectly include this file\+:
 \begin{DoxyCompactItemize}
 \item 
 struct \hyperlink{structoled__graphics__params__t}{oled\+\_\+graphics\+\_\+params\+\_\+t}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Struct that book-\/keeps parameters for the oled graphics. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
@@ -51,7 +51,7 @@ struct \hyperlink{structoled__graphics__params__t}{oled\+\_\+graphics\+\_\+param
 void \hyperlink{graphics_8h_aeba1c58e44f1f319d67d2ad9cbd16c3b}{oled\+\_\+putc} (unsigned char c)
 \begin{DoxyCompactList}\small\item\em Print single char to the oled screen. \end{DoxyCompactList}\item 
 void \hyperlink{graphics_8h_ab28304ca48035ad1e53140b59038a525}{oled\+\_\+printf} (const char $\ast$format,...)
-\begin{DoxyCompactList}\small\item\em printf with variadic arguments to print on the oled screen. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em printf on oled with variadic arguments to print on the oled screen. \end{DoxyCompactList}\item 
 void \hyperlink{graphics_8h_a663f564f5cb52e88483eddfab3529910}{oled\+\_\+new\+\_\+line} (void)
 \begin{DoxyCompactList}\small\item\em Change to a new line on the O\+L\+ED screen. \end{DoxyCompactList}\item 
 void \hyperlink{graphics_8h_a018578facff91b5c652decfed49a63b2}{oled\+\_\+set\+\_\+cursor} (uint8\+\_\+t line\+No, uint8\+\_\+t cursor\+Pos)
@@ -63,8 +63,14 @@ void \hyperlink{graphics_8h_a2dc61cae569e4e1495a2c1a4d4062fb9}{oled\+\_\+draw\+\
 
 
 \subsection{Detailed Description}
-ssd1306 O\+L\+ED graphics display A\+P\+Is header. 
+S\+S\+D1306 O\+L\+ED graphics display A\+P\+Is header. 
 
+\begin{DoxyAuthor}{Author}
+Luyao Han (\href{mailto:luyaohan1001@gmail.com}{\tt luyaohan1001@gmail.\+com}) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+12-\/21-\/2022 
+\end{DoxyDate}
 
 
 \subsection{Function Documentation}
@@ -130,7 +136,7 @@ None.
 
 
 
-printf with variadic arguments to print on the oled screen. 
+printf on oled with variadic arguments to print on the oled screen. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -155,6 +161,9 @@ Print single char to the oled screen.
 {\em ascii\+\_\+char} & A\+S\+C\+II character to put. \\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{graphics_8h_a018578facff91b5c652decfed49a63b2}\label{graphics_8h_a018578facff91b5c652decfed49a63b2}} 
 \index{graphics.\+h@{graphics.\+h}!oled\+\_\+set\+\_\+cursor@{oled\+\_\+set\+\_\+cursor}}
 \index{oled\+\_\+set\+\_\+cursor@{oled\+\_\+set\+\_\+cursor}!graphics.\+h@{graphics.\+h}}

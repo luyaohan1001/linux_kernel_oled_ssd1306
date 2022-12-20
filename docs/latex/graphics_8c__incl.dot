@@ -4,7 +4,7 @@ digraph "graphics.c"
   node [fontname="Helvetica",fontsize="10",shape=record];
   Node0 [label="graphics.c",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
   Node0 -> Node1 [color="midnightblue",fontsize="10",style="solid"];
-  Node1 [label="graphics.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$graphics_8h.html",tooltip="ssd1306 OLED graphics display APIs header. "];
+  Node1 [label="graphics.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$graphics_8h.html",tooltip="SSD1306 OLED graphics display APIs header. "];
   Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
   Node2 [label="datalink.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$datalink_8h.html",tooltip="Header file for SSD1306 controller interface. "];
   Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid"];

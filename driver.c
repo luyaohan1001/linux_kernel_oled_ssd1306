@@ -4,24 +4,33 @@
  * callbacks on the SSD1306 I2C bus device driver. On top of driver.c, display
  * configurations and initialization are implemented in datalink.c. On top of
  * datalink, OLED printing / graphics are implemented in graphics.c
+ * @author Luyao Han (luyaohan1001@gmail.com)
+ * @date 12-21-2022
  */
+
 #include "datalink.h"
 #include "graphics.h"
+#include "oled_sysfs.h"
+
 #include <linux/delay.h>
 #include <linux/i2c.h>
 #include <linux/module.h>
+#include <linux/sysfs.h>
 
 /* Loadable kernel module license registration. */
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("Luyao Han");
 MODULE_DESCRIPTION("Linux kernel module driver for ssd1306 oled display");
 
-/* Function Signatures. */
+/* Function signatures. */
 static int driver_on_probe(struct i2c_client *client,
                            const struct i2c_device_id *id);
 static int driver_on_remove(struct i2c_client *client);
 
-/* File static variables. */
+/**
+ * @brief Identifies the device (i.e. SSD1306 OLED contoller) connected to the
+ * i2c bus.
+ */
 struct i2c_client *i2c_client;
 
 /**
@@ -65,23 +74,26 @@ static struct i2c_driver i2c_driver = {
 };
 
 /**
- * @brief Callback function on probing (driver-device binding) of the device
- * driver.
+ * @brief Callback function pointer called on probing (driver-device binding) of
+ * the device driver. This function implements the following prototype defined
+ * struct i2c_driver in linux/i2c.h: int (*probe)(struct i2c_client *client,
+ * const struct i2c_device_id *id);
  * @param client Pointer to the i2c_client instance.
  * @param device_id The device id to be probed.
  * @return Error status.
  */
 static int driver_on_probe(struct i2c_client *client,
                            const struct i2c_device_id *device_id) {
-  int statusCode = 0;
+  int status_code = 0;
   pr_info("Entered driver_on_probe function\n");
 
   if (client->addr != 0x3c) {
     pr_info("Wrong I2C address.\n");
-    statusCode = -1;
+    status_code = -1;
     goto RETURN;
   } else {
-    pr_info("OLED with I2C address 0x3C has been successfully probed.\n");
+    pr_info("SSD1306 OLED device driver has been successfully probed "
+            "(inserted).\n");
   }
 
   /* Binding instance to the probed i2c client. */
@@ -103,17 +115,22 @@ static int driver_on_probe(struct i2c_client *client,
               "\n%d-%d-%d",
               2022, 12, 18);
 
+  oled_sysfs_init();
 RETURN:
-  return statusCode;
+  return status_code;
 }
 
 /**
- * @brief Callback function on the removal of the device driver.
+ * @brief Callback function pointe called on the removal of the device driver.
+ *        This function implements the following prototype defined struct
+ * i2c_driver in linux/i2c.h: void (*remove)(struct i2c_client *client);
  * @param client Pointer to the i2c_client instance.
  * @return None.
  */
 static int driver_on_remove(struct i2c_client *client) {
-  pr_info("OLED with I2C address 0x3C has been successfully removed.\n");
+  oled_sysfs_deinit();
+  pr_info("oled driver kernel module has been removed.\n");
+  pr_info("oled_sysfs kobjects have been denintialized.\n");
   return 0;
 }
 

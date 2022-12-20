@@ -1,10 +1,13 @@
-#ifndef DATALINK_H
-#define DATALINK_H
-
 /**
  * @file datalink.h
  * @brief Header file for SSD1306 controller interface.
+ * @author Luyao Han (luyaohan1001@gmail.com)
+ * @date 12-21-2022
  */
+
+#ifndef DATALINK_H
+#define DATALINK_H
+
 #include <linux/delay.h>
 #include <linux/i2c.h>
 #include <linux/init.h>
@@ -28,18 +31,26 @@
 #define DONT_CARE 0x00
 
 /**
- * @brief Enum type for ssd1306 function to differentiate whether
+ * @brief Enum type for SSD1306 function to differentiate whether
  * confirguration is a command type or a data byte.
  */
 typedef enum { COMMAND_CONTROL, DATA_CONTROL } eControl_t;
 
 /**
- * @brief Initialize ssd1306 OLED controller.
+ * @brief Initialize SSD1306 OLED controller.
  * @param None.
  * @return None.
  */
 void ssd1306_controller_init(void);
 
+/**
+ * @brief Write to SSD1306 register address.
+ * @param control_option DATA_CONTROL indicates to transmit data,
+ * COMMAND_CONTROL indicates to transmit command.
+ * @param address The register address to write param to.
+ * @param param_len Length of parameter if there is any.
+ * @param p_param Pointer to parameter to be written.
+ */
 void ssd1306_write_address(eControl_t control_option, uint8_t address,
                            uint8_t param_len, uint8_t *param);
 #endif /* DATALINK_H */

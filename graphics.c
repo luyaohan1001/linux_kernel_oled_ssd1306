@@ -1,7 +1,10 @@
 /**
  * @file graphics.c
  * @brief ssd1306 OLED graphics display APIs implementation.
+ * @author Luyao Han (luyaohan1001@gmail.com)
+ * @date 12-21-2022
  */
+
 #include "graphics.h"
 #include "stdarg.h"
 
@@ -230,6 +233,7 @@ void oled_new_line(void) {
 /**
  * @brief Print single char to the oled screen.
  * @param ascii_char ASCII character to put.
+ * @return None.
  */
 void oled_putc(unsigned char ascii_char) {
   uint8_t font_char_slice;
@@ -253,18 +257,19 @@ void oled_putc(unsigned char ascii_char) {
 }
 
 /**
- * @brief printf with variadic arguments to print on the oled screen.
+ * @brief printf on oled with variadic arguments to print on the oled screen.
  * @param format Format supplied including string and/or parameters.
  * @return None.
  */
 void oled_printf(const char *format, ...) {
   char message_buffer[DEFAULT_MESSAGE_LENGTH];
   char *p_message_buffer = NULL;
+  va_list args;
+
   memset(message_buffer, '\0', DEFAULT_MESSAGE_LENGTH);
 
   /* Initialize pointer */
   /* Append the variable argument lists. */
-  va_list args;
   va_start(args, format);
   vsprintf(message_buffer, format, args);
   va_end(args);

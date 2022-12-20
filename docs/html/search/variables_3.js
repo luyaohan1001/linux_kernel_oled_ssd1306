@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['oled_5fgraphics_5fparams',['oled_graphics_params',['../graphics_8c.html#ad7833cc3b12f3bc2e22d020ee60d2cd5',1,'graphics.c']]]
+  ['kobj_5fattr_5fdisplay_5ftext',['kobj_attr_display_text',['../oled__sysfs_8c.html#a84de8bac5c78ce178bb8f6c08a25acd1',1,'oled_sysfs.c']]]
 ];

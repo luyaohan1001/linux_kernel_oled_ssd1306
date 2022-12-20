@@ -1,0 +1,161 @@
+\hypertarget{oled__sysfs_8c}{}\section{oled\+\_\+sysfs.\+c File Reference}
+\label{oled__sysfs_8c}\index{oled\+\_\+sysfs.\+c@{oled\+\_\+sysfs.\+c}}
+
+
+Init/deinit callbacks implementation to expose user-\/control through sysfs filesystem.  
+
+
+{\ttfamily \#include \char`\"{}oled\+\_\+sysfs.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$linux/kobject.\+h$>$}\newline
+Include dependency graph for oled\+\_\+sysfs.\+c\+:
+% FIG 0
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static ssize\+\_\+t \hyperlink{oled__sysfs_8c_a03d21b16d7954528dbc35df687b25338}{kobj\+\_\+attr\+\_\+display\+\_\+text\+\_\+show} (struct kobject $\ast$kobj, struct kobj\+\_\+attribute $\ast$attr, char $\ast$buffer)
+\begin{DoxyCompactList}\small\item\em Callback function prototype for when the user read display\+\_\+text, i.\+e. cat /sys/kernel/oled\+\_\+sysfs/display\+\_\+text. The prototype implements the following function pointer in struct kobj\+\_\+attribute in linux/kobject.\+h\+: ssize\+\_\+t ($\ast$show)(struct kobject $\ast$kobj, struct kobj\+\_\+attribute $\ast$attr, char $\ast$buf);. \end{DoxyCompactList}\item 
+static ssize\+\_\+t \hyperlink{oled__sysfs_8c_ae39bd0235a55167c6fec6e4ba73e3380}{kobj\+\_\+attr\+\_\+display\+\_\+text\+\_\+store} (struct kobject $\ast$kobj, struct kobj\+\_\+attribute $\ast$attr, const char $\ast$buffer, size\+\_\+t count)
+\begin{DoxyCompactList}\small\item\em Callback function prototype for when the user write to the display\+\_\+text, i.\+e. echo \char`\"{}hello, world\char`\"{} $>$ /sys/kernel/oled\+\_\+sysfs/display\+\_\+text. The prototype implements the following function pointer in struct kobj\+\_\+attribute in linux/object.\+h. \end{DoxyCompactList}\item 
+int \hyperlink{oled__sysfs_8c_a338a3be656c59bbaf1e378764eda95b7}{oled\+\_\+sysfs\+\_\+init} (void)
+\begin{DoxyCompactList}\small\item\em Creates kobject and its attributes under sysfs. \end{DoxyCompactList}\item 
+void \hyperlink{oled__sysfs_8c_a4c61902f788ff90b7f50b6c6108b250e}{oled\+\_\+sysfs\+\_\+deinit} (void)
+\begin{DoxyCompactList}\small\item\em Cleans up the constructs created in oled\+\_\+sysfs\+\_\+init. Deletes the kernel object allocated and the sysfs folder created for oled\+\_\+kobj. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+struct kobject $\ast$ \hyperlink{oled__sysfs_8c_a92b75062c7400d3055dcca460b1552b3}{oled\+\_\+kobj}
+\begin{DoxyCompactList}\small\item\em The pointer storing a oled kernel object to be created later. \end{DoxyCompactList}\item 
+static struct kobj\+\_\+attribute \hyperlink{oled__sysfs_8c_a84de8bac5c78ce178bb8f6c08a25acd1}{kobj\+\_\+attr\+\_\+display\+\_\+text}
+\begin{DoxyCompactList}\small\item\em \char`\"{}display\+\_\+text\char`\"{} attribute, storing the current text the oled displaying. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Init/deinit callbacks implementation to expose user-\/control through sysfs filesystem. 
+
+Headers to expose user-\/control through sysfs filesystem.
+
+\begin{DoxyAuthor}{Author}
+Luyao Han (\href{mailto:luyaohan1001@gmail.com}{\tt luyaohan1001@gmail.\+com}) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+12-\/21-\/2022 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{oled__sysfs_8c_a03d21b16d7954528dbc35df687b25338}\label{oled__sysfs_8c_a03d21b16d7954528dbc35df687b25338}} 
+\index{oled\+\_\+sysfs.\+c@{oled\+\_\+sysfs.\+c}!kobj\+\_\+attr\+\_\+display\+\_\+text\+\_\+show@{kobj\+\_\+attr\+\_\+display\+\_\+text\+\_\+show}}
+\index{kobj\+\_\+attr\+\_\+display\+\_\+text\+\_\+show@{kobj\+\_\+attr\+\_\+display\+\_\+text\+\_\+show}!oled\+\_\+sysfs.\+c@{oled\+\_\+sysfs.\+c}}
+\subsubsection{\texorpdfstring{kobj\+\_\+attr\+\_\+display\+\_\+text\+\_\+show()}{kobj\_attr\_display\_text\_show()}}
+{\footnotesize\ttfamily static ssize\+\_\+t kobj\+\_\+attr\+\_\+display\+\_\+text\+\_\+show (\begin{DoxyParamCaption}\item[{struct kobject $\ast$}]{kobj,  }\item[{struct kobj\+\_\+attribute $\ast$}]{attr,  }\item[{char $\ast$}]{buffer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Callback function prototype for when the user read display\+\_\+text, i.\+e. cat /sys/kernel/oled\+\_\+sysfs/display\+\_\+text. The prototype implements the following function pointer in struct kobj\+\_\+attribute in linux/kobject.\+h\+: ssize\+\_\+t ($\ast$show)(struct kobject $\ast$kobj, struct kobj\+\_\+attribute $\ast$attr, char $\ast$buf);. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em kobj} & Kobject to which tied sysfs file is read (show). \\
+\hline
+{\em attr} & Attr.\+com/ibute to which the tied sysfs file is read (show). \\
+\hline
+{\em buffer} & Text display to the screen when the file is read. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Error status. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{oled__sysfs_8c_ae39bd0235a55167c6fec6e4ba73e3380}\label{oled__sysfs_8c_ae39bd0235a55167c6fec6e4ba73e3380}} 
+\index{oled\+\_\+sysfs.\+c@{oled\+\_\+sysfs.\+c}!kobj\+\_\+attr\+\_\+display\+\_\+text\+\_\+store@{kobj\+\_\+attr\+\_\+display\+\_\+text\+\_\+store}}
+\index{kobj\+\_\+attr\+\_\+display\+\_\+text\+\_\+store@{kobj\+\_\+attr\+\_\+display\+\_\+text\+\_\+store}!oled\+\_\+sysfs.\+c@{oled\+\_\+sysfs.\+c}}
+\subsubsection{\texorpdfstring{kobj\+\_\+attr\+\_\+display\+\_\+text\+\_\+store()}{kobj\_attr\_display\_text\_store()}}
+{\footnotesize\ttfamily static ssize\+\_\+t kobj\+\_\+attr\+\_\+display\+\_\+text\+\_\+store (\begin{DoxyParamCaption}\item[{struct kobject $\ast$}]{kobj,  }\item[{struct kobj\+\_\+attribute $\ast$}]{attr,  }\item[{const char $\ast$}]{buffer,  }\item[{size\+\_\+t}]{count }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Callback function prototype for when the user write to the display\+\_\+text, i.\+e. echo \char`\"{}hello, world\char`\"{} $>$ /sys/kernel/oled\+\_\+sysfs/display\+\_\+text. The prototype implements the following function pointer in struct kobj\+\_\+attribute in linux/object.\+h. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em kobj} & Kobject to which tied sysfs file is written (store). \\
+\hline
+{\em attr} & Attribute to which the tied sysfs file is written (store). \\
+\hline
+{\em buffer} & Text display to the screen when the file is written. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Error status. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{oled__sysfs_8c_a4c61902f788ff90b7f50b6c6108b250e}\label{oled__sysfs_8c_a4c61902f788ff90b7f50b6c6108b250e}} 
+\index{oled\+\_\+sysfs.\+c@{oled\+\_\+sysfs.\+c}!oled\+\_\+sysfs\+\_\+deinit@{oled\+\_\+sysfs\+\_\+deinit}}
+\index{oled\+\_\+sysfs\+\_\+deinit@{oled\+\_\+sysfs\+\_\+deinit}!oled\+\_\+sysfs.\+c@{oled\+\_\+sysfs.\+c}}
+\subsubsection{\texorpdfstring{oled\+\_\+sysfs\+\_\+deinit()}{oled\_sysfs\_deinit()}}
+{\footnotesize\ttfamily void oled\+\_\+sysfs\+\_\+deinit (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Cleans up the constructs created in oled\+\_\+sysfs\+\_\+init. Deletes the kernel object allocated and the sysfs folder created for oled\+\_\+kobj. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{oled__sysfs_8c_a338a3be656c59bbaf1e378764eda95b7}\label{oled__sysfs_8c_a338a3be656c59bbaf1e378764eda95b7}} 
+\index{oled\+\_\+sysfs.\+c@{oled\+\_\+sysfs.\+c}!oled\+\_\+sysfs\+\_\+init@{oled\+\_\+sysfs\+\_\+init}}
+\index{oled\+\_\+sysfs\+\_\+init@{oled\+\_\+sysfs\+\_\+init}!oled\+\_\+sysfs.\+c@{oled\+\_\+sysfs.\+c}}
+\subsubsection{\texorpdfstring{oled\+\_\+sysfs\+\_\+init()}{oled\_sysfs\_init()}}
+{\footnotesize\ttfamily int oled\+\_\+sysfs\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Creates kobject and its attributes under sysfs. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+status\+\_\+code. 
+\end{DoxyReturn}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{oled__sysfs_8c_a84de8bac5c78ce178bb8f6c08a25acd1}\label{oled__sysfs_8c_a84de8bac5c78ce178bb8f6c08a25acd1}} 
+\index{oled\+\_\+sysfs.\+c@{oled\+\_\+sysfs.\+c}!kobj\+\_\+attr\+\_\+display\+\_\+text@{kobj\+\_\+attr\+\_\+display\+\_\+text}}
+\index{kobj\+\_\+attr\+\_\+display\+\_\+text@{kobj\+\_\+attr\+\_\+display\+\_\+text}!oled\+\_\+sysfs.\+c@{oled\+\_\+sysfs.\+c}}
+\subsubsection{\texorpdfstring{kobj\+\_\+attr\+\_\+display\+\_\+text}{kobj\_attr\_display\_text}}
+{\footnotesize\ttfamily struct kobj\+\_\+attribute kobj\+\_\+attr\+\_\+display\+\_\+text\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{
+    .attr = \{.name = \textcolor{stringliteral}{"display\_text"}, .mode = 0666\},
+    .show = \hyperlink{oled__sysfs_8c_a03d21b16d7954528dbc35df687b25338}{kobj\_attr\_display\_text\_show},
+    .store = \hyperlink{oled__sysfs_8c_ae39bd0235a55167c6fec6e4ba73e3380}{kobj\_attr\_display\_text\_store}\}
+\end{DoxyCode}
+
+
+\char`\"{}display\+\_\+text\char`\"{} attribute, storing the current text the oled displaying. 
+
+\begin{DoxyNote}{Note}
+\char`\"{}display\+\_\+text\char`\"{} will show up as a file under /sys/kernel/oled\+\_\+sysfs. 
+\end{DoxyNote}
+\mbox{\Hypertarget{oled__sysfs_8c_a92b75062c7400d3055dcca460b1552b3}\label{oled__sysfs_8c_a92b75062c7400d3055dcca460b1552b3}} 
+\index{oled\+\_\+sysfs.\+c@{oled\+\_\+sysfs.\+c}!oled\+\_\+kobj@{oled\+\_\+kobj}}
+\index{oled\+\_\+kobj@{oled\+\_\+kobj}!oled\+\_\+sysfs.\+c@{oled\+\_\+sysfs.\+c}}
+\subsubsection{\texorpdfstring{oled\+\_\+kobj}{oled\_kobj}}
+{\footnotesize\ttfamily struct kobject$\ast$ oled\+\_\+kobj}
+
+
+
+The pointer storing a oled kernel object to be created later. 
+
+\begin{DoxyNote}{Note}
+The kobject, once created, will show up as a directory under /sys/kernel/. 
+\end{DoxyNote}

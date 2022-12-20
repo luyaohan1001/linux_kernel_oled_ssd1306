@@ -7,9 +7,11 @@ This file implements the necessary i2c\+\_\+client probe and remove callbacks on
 
 {\ttfamily \#include \char`\"{}datalink.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}graphics.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}oled\+\_\+sysfs.\+h\char`\"{}}\newline
 {\ttfamily \#include $<$linux/delay.\+h$>$}\newline
 {\ttfamily \#include $<$linux/i2c.\+h$>$}\newline
 {\ttfamily \#include $<$linux/module.\+h$>$}\newline
+{\ttfamily \#include $<$linux/sysfs.\+h$>$}\newline
 Include dependency graph for driver.\+c\+:
 % FIG 0
 \subsection*{Functions}
@@ -25,9 +27,9 @@ Include dependency graph for driver.\+c\+:
 {\bfseries M\+O\+D\+U\+L\+E\+\_\+\+D\+E\+S\+C\+R\+I\+P\+T\+I\+ON} (\char`\"{}Linux kernel module driver for ssd1306 oled display\char`\"{})
 \item 
 static int \hyperlink{driver_8c_ac2ce7e7fa1f20b7193e04c34583885a2}{driver\+\_\+on\+\_\+probe} (struct \hyperlink{driver_8c_a77ca3c5047325f153b5679bce4576b39}{i2c\+\_\+client} $\ast$client, const struct i2c\+\_\+device\+\_\+id $\ast$device\+\_\+id)
-\begin{DoxyCompactList}\small\item\em Callback function on probing (driver-\/device binding) of the device driver. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Callback function pointer called on probing (driver-\/device binding) of the device driver. This function implements the following prototype defined struct i2c\+\_\+driver in linux/i2c.\+h\+: int ($\ast$probe)(struct i2c\+\_\+client $\ast$client, const struct i2c\+\_\+device\+\_\+id $\ast$id);. \end{DoxyCompactList}\item 
 static int \hyperlink{driver_8c_a1e690de4cdba34c6389cf7bdc76e13fa}{driver\+\_\+on\+\_\+remove} (struct \hyperlink{driver_8c_a77ca3c5047325f153b5679bce4576b39}{i2c\+\_\+client} $\ast$client)
-\begin{DoxyCompactList}\small\item\em Callback function on the removal of the device driver. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Callback function pointe called on the removal of the device driver. This function implements the following prototype defined struct i2c\+\_\+driver in linux/i2c.\+h\+: void ($\ast$remove)(struct i2c\+\_\+client $\ast$client);. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{driver_8c_a0b2b1f66cb85cfa5ba687405cfea6be7}\label{driver_8c_a0b2b1f66cb85cfa5ba687405cfea6be7}} 
 \hyperlink{driver_8c_a0b2b1f66cb85cfa5ba687405cfea6be7}{M\+O\+D\+U\+L\+E\+\_\+\+D\+E\+V\+I\+C\+E\+\_\+\+T\+A\+B\+LE} (of, \hyperlink{driver_8c_ade8e0b3b58db81e759d44841b22828f4}{driver\+\_\+id})
 \begin{DoxyCompactList}\small\item\em This macro describes which devices each specific driver can support. At compilation time, the build process extracts this information out of the driver and builds a table. \end{DoxyCompactList}\item 
@@ -41,7 +43,7 @@ static int \hyperlink{driver_8c_a1e690de4cdba34c6389cf7bdc76e13fa}{driver\+\_\+o
 \begin{DoxyCompactItemize}
 \item 
 struct i2c\+\_\+client $\ast$ \hyperlink{driver_8c_a77ca3c5047325f153b5679bce4576b39}{i2c\+\_\+client}
-\begin{DoxyCompactList}\small\item\em Pointer to the i2c\+\_\+client instance. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Identifies the device (i.\+e. S\+S\+D1306 O\+L\+ED contoller) connected to the i2c bus. \end{DoxyCompactList}\item 
 static struct of\+\_\+device\+\_\+id \hyperlink{driver_8c_ade8e0b3b58db81e759d44841b22828f4}{driver\+\_\+id} \mbox{[}$\,$\mbox{]}
 \begin{DoxyCompactList}\small\item\em Specifies the \char`\"{}.\+compatible\char`\"{} strings. of\+\_\+device\+\_\+id array should store the same value as corresponding node\textquotesingle{}s \char`\"{}compatible\char`\"{} field in the device tree. In this case the oled.\+dts in the same directory has the \char`\"{}compatible\char`\"{} field. When the .compatible field here matches the device tree, the I2C device will be probed. \end{DoxyCompactList}\item 
 static struct i2c\+\_\+device\+\_\+id \hyperlink{driver_8c_a43765295ecc04729376fab5e4e243172}{driver\+\_\+device\+\_\+id} \mbox{[}$\,$\mbox{]}
@@ -53,6 +55,12 @@ static struct i2c\+\_\+driver {\bfseries i2c\+\_\+driver}
 \subsection{Detailed Description}
 This file implements the necessary i2c\+\_\+client probe and remove callbacks on the S\+S\+D1306 I2C bus device driver. On top of \hyperlink{driver_8c}{driver.\+c}, display configurations and initialization are implemented in \hyperlink{datalink_8c}{datalink.\+c}. On top of datalink, O\+L\+ED printing / graphics are implemented in \hyperlink{graphics_8c}{graphics.\+c}. 
 
+\begin{DoxyAuthor}{Author}
+Luyao Han (\href{mailto:luyaohan1001@gmail.com}{\tt luyaohan1001@gmail.\+com}) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+12-\/21-\/2022 
+\end{DoxyDate}
 
 
 \subsection{Function Documentation}
@@ -64,7 +72,7 @@ This file implements the necessary i2c\+\_\+client probe and remove callbacks on
 
 
 
-Callback function on probing (driver-\/device binding) of the device driver. 
+Callback function pointer called on probing (driver-\/device binding) of the device driver. This function implements the following prototype defined struct i2c\+\_\+driver in linux/i2c.\+h\+: int ($\ast$probe)(struct i2c\+\_\+client $\ast$client, const struct i2c\+\_\+device\+\_\+id $\ast$id);. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -84,7 +92,7 @@ Error status.
 
 
 
-Callback function on the removal of the device driver. 
+Callback function pointe called on the removal of the device driver. This function implements the following prototype defined struct i2c\+\_\+driver in linux/i2c.\+h\+: void ($\ast$remove)(struct i2c\+\_\+client $\ast$client);. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -135,12 +143,9 @@ Specifies the \char`\"{}.\+compatible\char`\"{} strings. of\+\_\+device\+\_\+id 
 
 
 
-Pointer to the i2c\+\_\+client instance. 
+Identifies the device (i.\+e. S\+S\+D1306 O\+L\+ED contoller) connected to the i2c bus. 
 
-\begin{DoxyNote}{Note}
-Original symbol declared in \hyperlink{driver_8c}{driver.\+c}. 
-\end{DoxyNote}
-\mbox{\Hypertarget{driver_8c_a407109b15209241099d7a1b7c3ae0ae0}\label{driver_8c_a407109b15209241099d7a1b7c3ae0ae0}} 
+Pointer to the i2c\+\_\+client instance. \mbox{\Hypertarget{driver_8c_a407109b15209241099d7a1b7c3ae0ae0}\label{driver_8c_a407109b15209241099d7a1b7c3ae0ae0}} 
 \index{driver.\+c@{driver.\+c}!i2c\+\_\+driver@{i2c\+\_\+driver}}
 \index{i2c\+\_\+driver@{i2c\+\_\+driver}!driver.\+c@{driver.\+c}}
 \subsubsection{\texorpdfstring{i2c\+\_\+driver}{i2c\_driver}}

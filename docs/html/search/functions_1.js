@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['module_5fdevice_5ftable',['MODULE_DEVICE_TABLE',['../driver_8c.html#a0b2b1f66cb85cfa5ba687405cfea6be7',1,'driver.c']]]
+  ['kobj_5fattr_5fdisplay_5ftext_5fshow',['kobj_attr_display_text_show',['../oled__sysfs_8c.html#a03d21b16d7954528dbc35df687b25338',1,'oled_sysfs.c']]],
+  ['kobj_5fattr_5fdisplay_5ftext_5fstore',['kobj_attr_display_text_store',['../oled__sysfs_8c.html#ae39bd0235a55167c6fec6e4ba73e3380',1,'oled_sysfs.c']]]
 ];

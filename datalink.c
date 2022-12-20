@@ -2,9 +2,11 @@
  * @file datalink.c
  * @brief Datalink layer implementation for SSD1306 OLED Driver, I2C-based
  * operations.
+ * @author Luyao Han (luyaohan1001@gmail.com)
+ * @date 12-21-2022
  */
-
 #include "datalink.h"
+
 #include <linux/i2c.h>
 #include <linux/init.h>
 #include <linux/module.h>
@@ -16,7 +18,7 @@
 extern struct i2c_client *i2c_client;
 
 /**
- * @brief Write to ssd1306 register address.
+ * @brief Write to SSD1306 register address.
  * @param control_option DATA_CONTROL indicates to transmit data,
  * COMMAND_CONTROL indicates to transmit command.
  * @param address The register address to write param to.

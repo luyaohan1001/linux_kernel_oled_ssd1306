@@ -15,7 +15,7 @@ Include dependency graph for datalink.\+c\+:
 \begin{DoxyCompactItemize}
 \item 
 void \hyperlink{datalink_8c_a9b383c8df502256394b8292469c251ec}{ssd1306\+\_\+write\+\_\+address} (\hyperlink{datalink_8h_ad5383d2eae4c4d73f3e83c91c10354eb}{e\+Control\+\_\+t} control\+\_\+option, uint8\+\_\+t address, uint8\+\_\+t param\+\_\+len, uint8\+\_\+t $\ast$p\+\_\+param)
-\begin{DoxyCompactList}\small\item\em Write to ssd1306 register address. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Write to S\+S\+D1306 register address. \end{DoxyCompactList}\item 
 void \hyperlink{datalink_8c_a1dd5e63fbbe67fa654d4f57cbf1bb235}{ssd1306\+\_\+controller\+\_\+init} (void)
 \begin{DoxyCompactList}\small\item\em Initialize S\+S\+D1306 O\+L\+ED controller. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Variables}
@@ -28,6 +28,12 @@ struct i2c\+\_\+client $\ast$ \hyperlink{datalink_8c_a77ca3c5047325f153b5679bce4
 \subsection{Detailed Description}
 Datalink layer implementation for S\+S\+D1306 O\+L\+ED Driver, I2\+C-\/based operations. 
 
+\begin{DoxyAuthor}{Author}
+Luyao Han (\href{mailto:luyaohan1001@gmail.com}{\tt luyaohan1001@gmail.\+com}) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+12-\/21-\/2022 
+\end{DoxyDate}
 
 
 \subsection{Function Documentation}
@@ -40,8 +46,6 @@ Datalink layer implementation for S\+S\+D1306 O\+L\+ED Driver, I2\+C-\/based ope
 
 
 Initialize S\+S\+D1306 O\+L\+ED controller. 
-
-Initialize ssd1306 O\+L\+ED controller.
 
 
 \begin{DoxyParams}{Parameters}
@@ -62,7 +66,7 @@ Using anonymous array to pass single parameters.
 
 
 
-Write to ssd1306 register address. 
+Write to S\+S\+D1306 register address. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -89,5 +93,6 @@ Write to ssd1306 register address.
 Pointer to the i2c\+\_\+client instance. 
 
 \begin{DoxyNote}{Note}
-Original symbol declared in \hyperlink{driver_8c}{driver.\+c}. 
+Original symbol declared in \hyperlink{driver_8c}{driver.\+c}.
 \end{DoxyNote}
+Pointer to the i2c\+\_\+client instance. 

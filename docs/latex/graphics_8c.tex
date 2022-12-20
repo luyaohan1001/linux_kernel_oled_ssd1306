@@ -35,7 +35,7 @@ void \hyperlink{graphics_8c_a663f564f5cb52e88483eddfab3529910}{oled\+\_\+new\+\_
 void \hyperlink{graphics_8c_a177fc5a3b0f5435c137f28363b937809}{oled\+\_\+putc} (unsigned char ascii\+\_\+char)
 \begin{DoxyCompactList}\small\item\em Print single char to the oled screen. \end{DoxyCompactList}\item 
 void \hyperlink{graphics_8c_ab28304ca48035ad1e53140b59038a525}{oled\+\_\+printf} (const char $\ast$format,...)
-\begin{DoxyCompactList}\small\item\em printf with variadic arguments to print on the oled screen. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em printf on oled with variadic arguments to print on the oled screen. \end{DoxyCompactList}\item 
 void \hyperlink{graphics_8c_a2dc61cae569e4e1495a2c1a4d4062fb9}{oled\+\_\+draw\+\_\+dino\+\_\+map} (void)
 \begin{DoxyCompactList}\small\item\em Draw a dinosaur on the oled screen. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Variables}
@@ -52,6 +52,12 @@ static \hyperlink{structoled__graphics__params__t}{oled\+\_\+graphics\+\_\+param
 \subsection{Detailed Description}
 ssd1306 O\+L\+ED graphics display A\+P\+Is implementation. 
 
+\begin{DoxyAuthor}{Author}
+Luyao Han (\href{mailto:luyaohan1001@gmail.com}{\tt luyaohan1001@gmail.\+com}) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+12-\/21-\/2022 
+\end{DoxyDate}
 
 
 \subsection{Macro Definition Documentation}
@@ -133,7 +139,7 @@ None.
 
 
 
-printf with variadic arguments to print on the oled screen. 
+printf on oled with variadic arguments to print on the oled screen. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -158,6 +164,9 @@ Print single char to the oled screen.
 {\em ascii\+\_\+char} & A\+S\+C\+II character to put. \\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{graphics_8c_a79534d16b54173fbcc70adaa1d68d9c3}\label{graphics_8c_a79534d16b54173fbcc70adaa1d68d9c3}} 
 \index{graphics.\+c@{graphics.\+c}!oled\+\_\+set\+\_\+cursor@{oled\+\_\+set\+\_\+cursor}}
 \index{oled\+\_\+set\+\_\+cursor@{oled\+\_\+set\+\_\+cursor}!graphics.\+c@{graphics.\+c}}

@@ -62,19 +62,42 @@ $(function() {
 <div class="title">Linux Loadable Kernel Module Driver for SSD1306 OLED. </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>graphics | datalink | driver</p>
-<p>Tested on Linux raspberrypi 5.10.103-v7l+ #1529 SMP Tue Mar 8 12:24:00 GMT 2022 armv7l GNU/Linux (Raspberry Pi Buster.)</p>
-<p>Documents generated (by doxygen) at /docs/html/files.html</p>
+<div class="textblock"><p>Source code hierarchy: </p><pre class="fragment">            oled_sysfs
+                |
+             graphics
+                |
+             datalink
+                |
+          driver  oled.dts
+</pre><p>Tested on Linux raspberrypi 5.10.103-v7l+ #1529 SMP Tue Mar 8 12:24:00 GMT 2022 armv7l GNU/Linux (Raspberry Pi Buster.)</p>
+<p>PDF documents generated (by doxygen) at /docs/latex/refman.pdf</p>
 <h4>Demo: Displaying text and the dinosaur from chrome browser.</h4>
 <div class="image">
 <img src="docs/misc/demo.jpg"/>
 </div>
-<h4>To compile</h4>
+<h4>Documentation.</h4>
+<div class="image">
+<img src="docs/latex/refman.pdf" alt="Click for full documentation"/>
+</div>
+<h4>To compile.</h4>
 <pre class="fragment">Install the kernel headers.
 $ sudo apt install raspberrypi-kernel-headers
 
 Compile
 $ sudo make
+
+Successful compile message example:
+pi@raspberrypi:~/Projects/raspberrypi-4b/drivers/oled $ make
+    make -C /usr/src/linux-headers-5.10.103-v7l+ \
+            ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- \
+            M=/home/pi/Projects/raspberrypi-4b/drivers/oled modules
+    make[1]: Entering directory '/usr/src/linux-headers-5.10.103-v7l+'
+      CC [M]  /home/pi/Projects/raspberrypi-4b/drivers/oled/oled_sysfs.o
+      LD [M]  /home/pi/Projects/raspberrypi-4b/drivers/oled/oled_driver.o
+      MODPOST /home/pi/Projects/raspberrypi-4b/drivers/oled/Module.symvers
+      CC [M]  /home/pi/Projects/raspberrypi-4b/drivers/oled/oled_driver.mod.o
+      LD [M]  /home/pi/Projects/raspberrypi-4b/drivers/oled/oled_driver.ko
+    make[1]: Leaving directory '/usr/src/linux-headers-5.10.103-v7l+'
 </pre><h4>To run:</h4>
 <pre class="fragment">1. First apply device tree overlay by
 
@@ -93,10 +116,31 @@ $ sudo make
     $ cd /docs/html
 </pre><h4>Kanban - TODO</h4>
 <ul>
-<li>[x] release-00: Minimal-viable kernel i2c bus module and simple configruation + fill-screen.</li>
-<li>[x] release-01: Add font / image support to the screen datalink layer.</li>
-<li>[ ] release-02: Add user-space interface through sysfs.</li>
-<li>[ ] release-03: Develop the dinosaur game on this screen. </li>
+<li>[x] release-00: Minimal-viable kernel i2c bus module and simple configruation + fill-screen.<ul>
+<li>Constructing Makefile, setup build-environment (linux kernel headers)</li>
+<li>Understanding struct i2c_client , struct i2c_driver.</li>
+<li>Implementing probe and remove callbacks when the kernel inserts/remove the driver.</li>
+</ul>
+</li>
+<li>[x] release-01: Add font / image support to the screen datalink layer.<ul>
+<li>Reading and coding various display functionalities according to SSD1306 I2C interface defined by Solomon Systech datasheet.</li>
+</ul>
+</li>
+<li>[x] release-02: Add user-space interface through sysfs.<ul>
+<li>Understanding struct kobject, kobj_attrbute.</li>
+<li>Providing implementation on the creation of the oled device as a sysfs folder.</li>
+<li>Providing implementation on the creation of oled attributes such as display_text, brightness, etc. as files in that sysfs folder.</li>
+</ul>
+</li>
+<li>[ ] release-03: Develop the dinosaur game on this screen.<ul>
+<li>Add multi-threading protection to critical sections.</li>
+<li>Develop user-space dinosaur game, interacting with the kernel module through oled_sysfs.</li>
+</ul>
+</li>
+<li>[ ] release-04: Unit testing.<ul>
+<li>TBD </li>
+</ul>
+</li>
 </ul>
 </div></div><!-- contents -->
 <!-- start footer part -->

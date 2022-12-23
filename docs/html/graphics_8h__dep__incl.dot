@@ -7,4 +7,6 @@ digraph "graphics.h"
   Node7 [label="driver.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$driver_8c.html",tooltip="This file implements the necessary i2c_client probe and remove callbacks on the SSD1306 I2C bus devic..."];
   Node6 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node8 [label="graphics.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$graphics_8c.html",tooltip="ssd1306 OLED graphics display APIs implementation. "];
+  Node6 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="oled_sysfs.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$oled__sysfs_8c.html",tooltip="Init/deinit callbacks implementation to expose user-control through sysfs filesystem. "];
 }

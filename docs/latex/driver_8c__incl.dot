@@ -20,7 +20,9 @@ digraph "driver.c"
   Node7 [label="oled_sysfs.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$oled__sysfs_8h_source.html"];
   Node0 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
   Node0 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
-  Node0 -> Node5 [color="midnightblue",fontsize="10",style="solid"];
   Node0 -> Node8 [color="midnightblue",fontsize="10",style="solid"];
-  Node8 [label="linux/sysfs.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node8 [label="linux/kthread.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node0 -> Node5 [color="midnightblue",fontsize="10",style="solid"];
+  Node0 -> Node9 [color="midnightblue",fontsize="10",style="solid"];
+  Node9 [label="linux/sysfs.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
 }

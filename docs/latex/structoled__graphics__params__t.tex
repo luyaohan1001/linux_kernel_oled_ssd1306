@@ -2,37 +2,36 @@
 \label{structoled__graphics__params__t}\index{oled\+\_\+graphics\+\_\+params\+\_\+t@{oled\+\_\+graphics\+\_\+params\+\_\+t}}
 
 
-Struct that book-\/keeps parameters for the oled graphics.  
+Struct used to book-\/keep parameters for the oled graphics.  
 
 
 
 
 {\ttfamily \#include $<$graphics.\+h$>$}
 
+
+
+Collaboration diagram for oled\+\_\+graphics\+\_\+params\+\_\+t\+:
+% FIG 0
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{structoled__graphics__params__t_a935849122ab6104f2c37fc0a0ede6030}\label{structoled__graphics__params__t_a935849122ab6104f2c37fc0a0ede6030}} 
-uint8\+\_\+t {\bfseries line}
+\mbox{\Hypertarget{structoled__graphics__params__t_ae5c9feac043e1ac73912a888ff0dc565}\label{structoled__graphics__params__t_ae5c9feac043e1ac73912a888ff0dc565}} 
+\hyperlink{structoled__cursor__coordinate__t}{oled\+\_\+cursor\+\_\+coordinate\+\_\+t} {\bfseries cursor\+\_\+coordinate}
 \item 
-\mbox{\Hypertarget{structoled__graphics__params__t_ae2b6e0c9eaa48f8fbdb79e16ed3ad05d}\label{structoled__graphics__params__t_ae2b6e0c9eaa48f8fbdb79e16ed3ad05d}} 
-uint8\+\_\+t {\bfseries cursor\+\_\+position}
-\item 
-\mbox{\Hypertarget{structoled__graphics__params__t_ac0dc31a850b44af05036f527d7a42e36}\label{structoled__graphics__params__t_ac0dc31a850b44af05036f527d7a42e36}} 
-uint8\+\_\+t {\bfseries font\+\_\+char\+\_\+width}
+\mbox{\Hypertarget{structoled__graphics__params__t_ae4c9acfadcda617477e284fa42f7709f}\label{structoled__graphics__params__t_ae4c9acfadcda617477e284fa42f7709f}} 
+char {\bfseries display\+\_\+text} \mbox{[}D\+E\+F\+A\+U\+L\+T\+\_\+\+T\+E\+X\+T\+\_\+\+L\+E\+N\+G\+TH\mbox{]}
 \end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-Struct that book-\/keeps parameters for the oled graphics. 
+Struct used to book-\/keep parameters for the oled graphics. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em line} & Current line (page) the cursor is on. \\
+{\em cursor\+\_\+coordinate} & Keeps track of the coordinate of current cursor. \\
 \hline
-{\em cursor\+\_\+position} & Current position (column) the cursor is on. \\
-\hline
-{\em font\+\_\+char\+\_\+width} & A\+S\+C\+II char width for estimation of potential colunm overrun. \\
+{\em display\+\_\+text} & Buffers/keeps track of the current text on the oled\+\_\+screen. \\
 \hline
 \end{DoxyParams}
 

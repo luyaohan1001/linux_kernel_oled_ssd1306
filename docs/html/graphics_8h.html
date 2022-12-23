@@ -61,6 +61,7 @@ $(function() {
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#define-members">Macros</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">graphics.h File Reference</div>  </div>
@@ -87,8 +88,10 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structoled__cursor__coordinate__t.html">oled_cursor_coordinate_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structoled__graphics__params__t.html">oled_graphics_params_t</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Struct that book-keeps parameters for the oled graphics.  <a href="structoled__graphics__params__t.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Struct used to book-keep parameters for the oled graphics.  <a href="structoled__graphics__params__t.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
@@ -120,6 +123,17 @@ Macros</h2></td></tr>
 <tr class="memitem:a4e3ef693034aab0646b2a968db4dcf9f"><td class="memItemLeft" align="right" valign="top"><a id="a4e3ef693034aab0646b2a968db4dcf9f"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>OLED_PAGE_MAX</b>&#160;&#160;&#160;(OLED_CANVAS_HEIGHT_PIXELS / BITS_PER_BYTE) - 1</td></tr>
 <tr class="separator:a4e3ef693034aab0646b2a968db4dcf9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7dcc01b9437cd022f5eff18c168bacbf"><td class="memItemLeft" align="right" valign="top"><a id="a7dcc01b9437cd022f5eff18c168bacbf"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>DEFAULT_TEXT_LENGTH</b>&#160;&#160;&#160;256</td></tr>
+<tr class="separator:a7dcc01b9437cd022f5eff18c168bacbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:ace78a0eac3153f7898b698bf4115f02a"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="graphics_8h.html#ace78a0eac3153f7898b698bf4115f02a">oled_new_line_options</a> { <b>START_OF_NEW_LINE</b>, 
+<b>SAME_CURSOR_POSITION</b>
+ }<tr class="memdesc:ace78a0eac3153f7898b698bf4115f02a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enum type defining options when printing to a new line (page).  <a href="graphics_8h.html#ace78a0eac3153f7898b698bf4115f02a">More...</a><br /></td></tr>
+</td></tr>
+<tr class="separator:ace78a0eac3153f7898b698bf4115f02a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -129,26 +143,50 @@ Functions</h2></td></tr>
 <tr class="memitem:ab28304ca48035ad1e53140b59038a525"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="graphics_8h.html#ab28304ca48035ad1e53140b59038a525">oled_printf</a> (const char *format,...)</td></tr>
 <tr class="memdesc:ab28304ca48035ad1e53140b59038a525"><td class="mdescLeft">&#160;</td><td class="mdescRight">printf on oled with variadic arguments to print on the oled screen.  <a href="#ab28304ca48035ad1e53140b59038a525">More...</a><br /></td></tr>
 <tr class="separator:ab28304ca48035ad1e53140b59038a525"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a663f564f5cb52e88483eddfab3529910"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="graphics_8h.html#a663f564f5cb52e88483eddfab3529910">oled_new_line</a> (void)</td></tr>
-<tr class="memdesc:a663f564f5cb52e88483eddfab3529910"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change to a new line on the OLED screen.  <a href="#a663f564f5cb52e88483eddfab3529910">More...</a><br /></td></tr>
-<tr class="separator:a663f564f5cb52e88483eddfab3529910"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a018578facff91b5c652decfed49a63b2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="graphics_8h.html#a018578facff91b5c652decfed49a63b2">oled_set_cursor</a> (uint8_t lineNo, uint8_t cursorPos)</td></tr>
-<tr class="memdesc:a018578facff91b5c652decfed49a63b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the cursor position, i.e. the start location to print.  <a href="#a018578facff91b5c652decfed49a63b2">More...</a><br /></td></tr>
-<tr class="separator:a018578facff91b5c652decfed49a63b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af1dd4da134af94d9ec84bb0199e634a9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="graphics_8h.html#af1dd4da134af94d9ec84bb0199e634a9">oled_fill_all</a> (uint8_t data)</td></tr>
-<tr class="memdesc:af1dd4da134af94d9ec84bb0199e634a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fill the entire screen with byte pattern.  <a href="#af1dd4da134af94d9ec84bb0199e634a9">More...</a><br /></td></tr>
-<tr class="separator:af1dd4da134af94d9ec84bb0199e634a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2dc61cae569e4e1495a2c1a4d4062fb9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="graphics_8h.html#a2dc61cae569e4e1495a2c1a4d4062fb9">oled_draw_dino_map</a> (void)</td></tr>
-<tr class="memdesc:a2dc61cae569e4e1495a2c1a4d4062fb9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw a dinosaur on the oled screen.  <a href="#a2dc61cae569e4e1495a2c1a4d4062fb9">More...</a><br /></td></tr>
-<tr class="separator:a2dc61cae569e4e1495a2c1a4d4062fb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a700e288e07b6f5509edb182af90943fd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="graphics_8h.html#a700e288e07b6f5509edb182af90943fd">oled_new_line</a> (<a class="el" href="graphics_8h.html#ace78a0eac3153f7898b698bf4115f02a">oled_new_line_options</a> new_line_option)</td></tr>
+<tr class="memdesc:a700e288e07b6f5509edb182af90943fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change to a new line on the OLED screen.  <a href="#a700e288e07b6f5509edb182af90943fd">More...</a><br /></td></tr>
+<tr class="separator:a700e288e07b6f5509edb182af90943fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3f391463fd4d96ed2fb2a8e1fb58272"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="graphics_8h.html#ad3f391463fd4d96ed2fb2a8e1fb58272">oled_set_cursor</a> (<a class="el" href="structoled__cursor__coordinate__t.html">oled_cursor_coordinate_t</a> cursor_coordinate)</td></tr>
+<tr class="memdesc:ad3f391463fd4d96ed2fb2a8e1fb58272"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the cursor position, i.e. the start location to print.  <a href="#ad3f391463fd4d96ed2fb2a8e1fb58272">More...</a><br /></td></tr>
+<tr class="separator:ad3f391463fd4d96ed2fb2a8e1fb58272"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5992d8ef6b50364b593fcd237f015c61"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="graphics_8h.html#a5992d8ef6b50364b593fcd237f015c61">oled_fill_all</a> (uint8_t pattern)</td></tr>
+<tr class="memdesc:a5992d8ef6b50364b593fcd237f015c61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fill the entire screen with byte pattern.  <a href="#a5992d8ef6b50364b593fcd237f015c61">More...</a><br /></td></tr>
+<tr class="separator:a5992d8ef6b50364b593fcd237f015c61"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f18f29e7162690be73963213735fd81"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="graphics_8h.html#a6f18f29e7162690be73963213735fd81">oled_draw_dino_map</a> (<a class="el" href="structoled__cursor__coordinate__t.html">oled_cursor_coordinate_t</a> cursor_coordinate)</td></tr>
+<tr class="memdesc:a6f18f29e7162690be73963213735fd81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw a dinosaur on the oled screen.  <a href="#a6f18f29e7162690be73963213735fd81">More...</a><br /></td></tr>
+<tr class="separator:a6f18f29e7162690be73963213735fd81"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>SSD1306 OLED graphics display APIs header. </p>
 <dl class="section author"><dt>Author</dt><dd>Luyao Han (<a href="#" onclick="location.href='mai'+'lto:'+'luy'+'ao'+'han'+'10'+'01@'+'gm'+'ail'+'.c'+'om'; return false;">luyao<span style="display: none;">.nosp@m.</span>han1<span style="display: none;">.nosp@m.</span>001@g<span style="display: none;">.nosp@m.</span>mail<span style="display: none;">.nosp@m.</span>.com</a>) </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>12-21-2022 </dd></dl>
-</div><h2 class="groupheader">Function Documentation</h2>
-<a id="a2dc61cae569e4e1495a2c1a4d4062fb9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2dc61cae569e4e1495a2c1a4d4062fb9">&#9670;&nbsp;</a></span>oled_draw_dino_map()</h2>
+</div><h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="ace78a0eac3153f7898b698bf4115f02a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace78a0eac3153f7898b698bf4115f02a">&#9670;&nbsp;</a></span>oled_new_line_options</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="graphics_8h.html#ace78a0eac3153f7898b698bf4115f02a">oled_new_line_options</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Enum type defining options when printing to a new line (page). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">START_OF_NEW_LINE</td><td>For example, when printing a sentence, it is expected to be printed to the start of the new line. </td></tr>
+    <tr><td class="paramname">SAME_CURSOR_POSITION</td><td>For exapmle, when printing an image, it is expected to be printed to the same cursor position. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="a6f18f29e7162690be73963213735fd81"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f18f29e7162690be73963213735fd81">&#9670;&nbsp;</a></span>oled_draw_dino_map()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -156,8 +194,8 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void oled_draw_dino_map </td>
           <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structoled__cursor__coordinate__t.html">oled_cursor_coordinate_t</a>&#160;</td>
+          <td class="paramname"><em>cursor_coordinate</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -166,7 +204,14 @@ Functions</h2></td></tr>
 <p>Draw a dinosaur on the oled screen. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">None.</td><td></td></tr>
+    <tr><td class="paramname">cursor_coordinate</td><td>Set to this coordinate as the start pixel drawing the dinosaur. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>None.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cursor_coordinate</td><td>Set to this coordinate as the start pixel and draw the dinosaur. </td></tr>
   </table>
   </dd>
 </dl>
@@ -174,8 +219,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="af1dd4da134af94d9ec84bb0199e634a9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af1dd4da134af94d9ec84bb0199e634a9">&#9670;&nbsp;</a></span>oled_fill_all()</h2>
+<a id="a5992d8ef6b50364b593fcd237f015c61"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5992d8ef6b50364b593fcd237f015c61">&#9670;&nbsp;</a></span>oled_fill_all()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -201,8 +246,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a663f564f5cb52e88483eddfab3529910"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a663f564f5cb52e88483eddfab3529910">&#9670;&nbsp;</a></span>oled_new_line()</h2>
+<a id="a700e288e07b6f5509edb182af90943fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a700e288e07b6f5509edb182af90943fd">&#9670;&nbsp;</a></span>oled_new_line()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -210,8 +255,8 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void oled_new_line </td>
           <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype"><a class="el" href="graphics_8h.html#ace78a0eac3153f7898b698bf4115f02a">oled_new_line_options</a>&#160;</td>
+          <td class="paramname"><em>new_line_option</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -220,7 +265,7 @@ Functions</h2></td></tr>
 <p>Change to a new line on the OLED screen. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">None.</td><td></td></tr>
+    <tr><td class="paramname">oled_new_line_options</td><td>START_OF_NEW_LINE to print to the start of the new line. SAME_CURSOR_POSITION to print the next line the same cursor position. </td></tr>
   </table>
   </dd>
 </dl>
@@ -288,12 +333,20 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>None.</dd></dl>
+<p>Print single char to the oled screen.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ascii_char</td><td>ASCII character to put. </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>Returns</dt><dd>None. </dd></dl>
 
 </div>
 </div>
-<a id="a018578facff91b5c652decfed49a63b2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a018578facff91b5c652decfed49a63b2">&#9670;&nbsp;</a></span>oled_set_cursor()</h2>
+<a id="ad3f391463fd4d96ed2fb2a8e1fb58272"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3f391463fd4d96ed2fb2a8e1fb58272">&#9670;&nbsp;</a></span>oled_set_cursor()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -301,19 +354,9 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void oled_set_cursor </td>
           <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>line</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype"><a class="el" href="structoled__cursor__coordinate__t.html">oled_cursor_coordinate_t</a>&#160;</td>
+          <td class="paramname"><em>cursor_coordinate</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>position</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -321,8 +364,7 @@ Functions</h2></td></tr>
 <p>Set the cursor position, i.e. the start location to print. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">line</td><td>The vertical line (page) to set the cursor to. </td></tr>
-    <tr><td class="paramname">position</td><td>The horizontal position (column) to the set the cursor to. </td></tr>
+    <tr><td class="paramname">cursor_coordinate</td><td>The pixel coordinate to set the cursor to. </td></tr>
   </table>
   </dd>
 </dl>

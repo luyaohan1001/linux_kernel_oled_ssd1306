@@ -1,56 +1,59 @@
 \begin{theindex}
 
   \item {D\+I\+N\+O\+S\+A\+U\+R\+\_\+\+B\+I\+T\+M\+A\+P\+\_\+\+R\+O\+WS}
-    \subitem {graphics.\+c}, \hyperpage{15}
+    \subitem {graphics.\+c}, \hyperpage{16}
   \item {D\+I\+N\+O\+S\+A\+U\+R\+\_\+\+B\+I\+T\+M\+AP}
-    \subitem {graphics.\+c}, \hyperpage{18}
+    \subitem {graphics.\+c}, \hyperpage{19}
   \item {datalink.\+c}, \hyperpage{9}
   \item {datalink.\+h}, \hyperpage{9}
     \subitem {ssd1306\+\_\+controller\+\_\+init}, \hyperpage{10}
     \subitem {ssd1306\+\_\+write\+\_\+address}, \hyperpage{11}
   \item {driver.\+c}, \hyperpage{11}
-    \subitem {driver\+\_\+device\+\_\+id}, \hyperpage{13}
-    \subitem {driver\+\_\+id}, \hyperpage{13}
-    \subitem {driver\+\_\+on\+\_\+probe}, \hyperpage{12}
+    \subitem {driver\+\_\+device\+\_\+id}, \hyperpage{14}
+    \subitem {driver\+\_\+id}, \hyperpage{14}
+    \subitem {driver\+\_\+on\+\_\+probe}, \hyperpage{13}
     \subitem {driver\+\_\+on\+\_\+remove}, \hyperpage{13}
     \subitem {i2c\+\_\+client}, \hyperpage{14}
     \subitem {i2c\+\_\+driver}, \hyperpage{14}
+    \subitem {oled\+\_\+display\+\_\+text\+\_\+thread}, \hyperpage{13}
+    \subitem {oled\+\_\+graphics\+\_\+params}, \hyperpage{15}
   \item {driver\+\_\+device\+\_\+id}
-    \subitem {driver.\+c}, \hyperpage{13}
+    \subitem {driver.\+c}, \hyperpage{14}
   \item {driver\+\_\+id}
-    \subitem {driver.\+c}, \hyperpage{13}
+    \subitem {driver.\+c}, \hyperpage{14}
   \item {driver\+\_\+on\+\_\+probe}
-    \subitem {driver.\+c}, \hyperpage{12}
+    \subitem {driver.\+c}, \hyperpage{13}
   \item {driver\+\_\+on\+\_\+remove}
     \subitem {driver.\+c}, \hyperpage{13}
 
   \indexspace
 
   \item {F\+O\+N\+T\+\_\+\+T\+A\+B\+LE}
-    \subitem {graphics.\+c}, \hyperpage{18}
+    \subitem {graphics.\+c}, \hyperpage{19}
 
   \indexspace
 
-  \item {graphics.\+c}, \hyperpage{14}
+  \item {graphics.\+c}, \hyperpage{15}
     \subitem {D\+I\+N\+O\+S\+A\+U\+R\+\_\+\+B\+I\+T\+M\+A\+P\+\_\+\+R\+O\+WS}, 
-		\hyperpage{15}
+		\hyperpage{16}
     \subitem {D\+I\+N\+O\+S\+A\+U\+R\+\_\+\+B\+I\+T\+M\+AP}, 
-		\hyperpage{18}
-    \subitem {F\+O\+N\+T\+\_\+\+T\+A\+B\+LE}, \hyperpage{18}
-    \subitem {oled\+\_\+draw\+\_\+dino\+\_\+map}, \hyperpage{16}
-    \subitem {oled\+\_\+fill\+\_\+all}, \hyperpage{16}
-    \subitem {oled\+\_\+graphics\+\_\+params}, \hyperpage{18}
-    \subitem {oled\+\_\+new\+\_\+line}, \hyperpage{16}
-    \subitem {oled\+\_\+printf}, \hyperpage{17}
-    \subitem {oled\+\_\+putc}, \hyperpage{17}
+		\hyperpage{19}
+    \subitem {F\+O\+N\+T\+\_\+\+T\+A\+B\+LE}, \hyperpage{19}
+    \subitem {oled\+\_\+draw\+\_\+dino\+\_\+map}, \hyperpage{17}
+    \subitem {oled\+\_\+fill\+\_\+all}, \hyperpage{17}
+    \subitem {oled\+\_\+graphics\+\_\+params}, \hyperpage{19}
+    \subitem {oled\+\_\+new\+\_\+line}, \hyperpage{17}
+    \subitem {oled\+\_\+printf}, \hyperpage{18}
+    \subitem {oled\+\_\+putc}, \hyperpage{18}
     \subitem {oled\+\_\+set\+\_\+cursor}, \hyperpage{18}
-  \item {graphics.\+h}, \hyperpage{19}
-    \subitem {oled\+\_\+draw\+\_\+dino\+\_\+map}, \hyperpage{20}
-    \subitem {oled\+\_\+fill\+\_\+all}, \hyperpage{20}
-    \subitem {oled\+\_\+new\+\_\+line}, \hyperpage{21}
-    \subitem {oled\+\_\+printf}, \hyperpage{21}
-    \subitem {oled\+\_\+putc}, \hyperpage{22}
-    \subitem {oled\+\_\+set\+\_\+cursor}, \hyperpage{22}
+  \item {graphics.\+h}, \hyperpage{20}
+    \subitem {oled\+\_\+draw\+\_\+dino\+\_\+map}, \hyperpage{21}
+    \subitem {oled\+\_\+fill\+\_\+all}, \hyperpage{22}
+    \subitem {oled\+\_\+new\+\_\+line}, \hyperpage{22}
+    \subitem {oled\+\_\+new\+\_\+line\+\_\+options}, \hyperpage{21}
+    \subitem {oled\+\_\+printf}, \hyperpage{22}
+    \subitem {oled\+\_\+putc}, \hyperpage{23}
+    \subitem {oled\+\_\+set\+\_\+cursor}, \hyperpage{23}
 
   \indexspace
 
@@ -62,50 +65,62 @@
   \indexspace
 
   \item {kobj\+\_\+attr\+\_\+display\+\_\+text}
-    \subitem {oled\+\_\+sysfs.\+c}, \hyperpage{25}
+    \subitem {oled\+\_\+sysfs.\+c}, \hyperpage{27}
   \item {kobj\+\_\+attr\+\_\+display\+\_\+text\+\_\+show}
-    \subitem {oled\+\_\+sysfs.\+c}, \hyperpage{23}
+    \subitem {oled\+\_\+sysfs.\+c}, \hyperpage{26}
   \item {kobj\+\_\+attr\+\_\+display\+\_\+text\+\_\+store}
-    \subitem {oled\+\_\+sysfs.\+c}, \hyperpage{24}
+    \subitem {oled\+\_\+sysfs.\+c}, \hyperpage{26}
 
   \indexspace
 
+  \item {oled\+\_\+cursor\+\_\+coordinate\+\_\+t}, \hyperpage{7}
+  \item {oled\+\_\+display\+\_\+text\+\_\+thread}
+    \subitem {driver.\+c}, \hyperpage{13}
   \item {oled\+\_\+draw\+\_\+dino\+\_\+map}
-    \subitem {graphics.\+c}, \hyperpage{16}
-    \subitem {graphics.\+h}, \hyperpage{20}
+    \subitem {graphics.\+c}, \hyperpage{17}
+    \subitem {graphics.\+h}, \hyperpage{21}
   \item {oled\+\_\+fill\+\_\+all}
-    \subitem {graphics.\+c}, \hyperpage{16}
-    \subitem {graphics.\+h}, \hyperpage{20}
+    \subitem {graphics.\+c}, \hyperpage{17}
+    \subitem {graphics.\+h}, \hyperpage{22}
   \item {oled\+\_\+graphics\+\_\+params}
-    \subitem {graphics.\+c}, \hyperpage{18}
+    \subitem {driver.\+c}, \hyperpage{15}
+    \subitem {graphics.\+c}, \hyperpage{19}
+    \subitem {oled\+\_\+sysfs.\+c}, \hyperpage{28}
   \item {oled\+\_\+graphics\+\_\+params\+\_\+t}, \hyperpage{7}
   \item {oled\+\_\+kobj}
-    \subitem {oled\+\_\+sysfs.\+c}, \hyperpage{25}
+    \subitem {oled\+\_\+sysfs.\+c}, \hyperpage{28}
   \item {oled\+\_\+new\+\_\+line}
-    \subitem {graphics.\+c}, \hyperpage{16}
+    \subitem {graphics.\+c}, \hyperpage{17}
+    \subitem {graphics.\+h}, \hyperpage{22}
+  \item {oled\+\_\+new\+\_\+line\+\_\+options}
     \subitem {graphics.\+h}, \hyperpage{21}
   \item {oled\+\_\+printf}
-    \subitem {graphics.\+c}, \hyperpage{17}
-    \subitem {graphics.\+h}, \hyperpage{21}
-  \item {oled\+\_\+putc}
-    \subitem {graphics.\+c}, \hyperpage{17}
-    \subitem {graphics.\+h}, \hyperpage{22}
-  \item {oled\+\_\+set\+\_\+cursor}
     \subitem {graphics.\+c}, \hyperpage{18}
     \subitem {graphics.\+h}, \hyperpage{22}
-  \item {oled\+\_\+sysfs.\+c}, \hyperpage{22}
-    \subitem {kobj\+\_\+attr\+\_\+display\+\_\+text}, \hyperpage{25}
+  \item {oled\+\_\+putc}
+    \subitem {graphics.\+c}, \hyperpage{18}
+    \subitem {graphics.\+h}, \hyperpage{23}
+  \item {oled\+\_\+set\+\_\+cursor}
+    \subitem {graphics.\+c}, \hyperpage{18}
+    \subitem {graphics.\+h}, \hyperpage{23}
+  \item {oled\+\_\+sysfs.\+c}, \hyperpage{25}
+    \subitem {kobj\+\_\+attr\+\_\+display\+\_\+text}, \hyperpage{27}
     \subitem {kobj\+\_\+attr\+\_\+display\+\_\+text\+\_\+show}, 
-		\hyperpage{23}
+		\hyperpage{26}
     \subitem {kobj\+\_\+attr\+\_\+display\+\_\+text\+\_\+store}, 
-		\hyperpage{24}
-    \subitem {oled\+\_\+kobj}, \hyperpage{25}
-    \subitem {oled\+\_\+sysfs\+\_\+deinit}, \hyperpage{24}
-    \subitem {oled\+\_\+sysfs\+\_\+init}, \hyperpage{25}
+		\hyperpage{26}
+    \subitem {oled\+\_\+graphics\+\_\+params}, \hyperpage{28}
+    \subitem {oled\+\_\+kobj}, \hyperpage{28}
+    \subitem {oled\+\_\+sysfs\+\_\+deinit}, \hyperpage{27}
+    \subitem {oled\+\_\+sysfs\+\_\+init}, \hyperpage{27}
   \item {oled\+\_\+sysfs\+\_\+deinit}
-    \subitem {oled\+\_\+sysfs.\+c}, \hyperpage{24}
+    \subitem {oled\+\_\+sysfs.\+c}, \hyperpage{27}
   \item {oled\+\_\+sysfs\+\_\+init}
-    \subitem {oled\+\_\+sysfs.\+c}, \hyperpage{25}
+    \subitem {oled\+\_\+sysfs.\+c}, \hyperpage{27}
+
+  \indexspace
+
+  \item {Pixel}, \hyperpage{8}
 
   \indexspace
 

@@ -6,6 +6,7 @@ Init/deinit callbacks implementation to expose user-\/control through sysfs file
 
 
 {\ttfamily \#include \char`\"{}oled\+\_\+sysfs.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}graphics.\+h\char`\"{}}\newline
 {\ttfamily \#include $<$linux/kobject.\+h$>$}\newline
 Include dependency graph for oled\+\_\+sysfs.\+c\+:
 % FIG 0
@@ -25,6 +26,8 @@ void \hyperlink{oled__sysfs_8c_a4c61902f788ff90b7f50b6c6108b250e}{oled\+\_\+sysf
 \item 
 struct kobject $\ast$ \hyperlink{oled__sysfs_8c_a92b75062c7400d3055dcca460b1552b3}{oled\+\_\+kobj}
 \begin{DoxyCompactList}\small\item\em The pointer storing a oled kernel object to be created later. \end{DoxyCompactList}\item 
+\hyperlink{structoled__graphics__params__t}{oled\+\_\+graphics\+\_\+params\+\_\+t} \hyperlink{oled__sysfs_8c_ad7833cc3b12f3bc2e22d020ee60d2cd5}{oled\+\_\+graphics\+\_\+params}
+\begin{DoxyCompactList}\small\item\em Link the symbol to its spawn in \hyperlink{graphics_8c}{graphics.\+c}. \end{DoxyCompactList}\item 
 static struct kobj\+\_\+attribute \hyperlink{oled__sysfs_8c_a84de8bac5c78ce178bb8f6c08a25acd1}{kobj\+\_\+attr\+\_\+display\+\_\+text}
 \begin{DoxyCompactList}\small\item\em \char`\"{}display\+\_\+text\char`\"{} attribute, storing the current text the oled displaying. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -85,8 +88,11 @@ Callback function prototype for when the user write to the display\+\_\+text, i.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Error status. 
+Number of characters written. 
 \end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Returning status code is wrong, and could cause the system looping in store function. 
+\end{DoxyNote}
 \mbox{\Hypertarget{oled__sysfs_8c_a4c61902f788ff90b7f50b6c6108b250e}\label{oled__sysfs_8c_a4c61902f788ff90b7f50b6c6108b250e}} 
 \index{oled\+\_\+sysfs.\+c@{oled\+\_\+sysfs.\+c}!oled\+\_\+sysfs\+\_\+deinit@{oled\+\_\+sysfs\+\_\+deinit}}
 \index{oled\+\_\+sysfs\+\_\+deinit@{oled\+\_\+sysfs\+\_\+deinit}!oled\+\_\+sysfs.\+c@{oled\+\_\+sysfs.\+c}}
@@ -146,6 +152,25 @@ status\+\_\+code.
 \begin{DoxyNote}{Note}
 \char`\"{}display\+\_\+text\char`\"{} will show up as a file under /sys/kernel/oled\+\_\+sysfs. 
 \end{DoxyNote}
+\mbox{\Hypertarget{oled__sysfs_8c_ad7833cc3b12f3bc2e22d020ee60d2cd5}\label{oled__sysfs_8c_ad7833cc3b12f3bc2e22d020ee60d2cd5}} 
+\index{oled\+\_\+sysfs.\+c@{oled\+\_\+sysfs.\+c}!oled\+\_\+graphics\+\_\+params@{oled\+\_\+graphics\+\_\+params}}
+\index{oled\+\_\+graphics\+\_\+params@{oled\+\_\+graphics\+\_\+params}!oled\+\_\+sysfs.\+c@{oled\+\_\+sysfs.\+c}}
+\subsubsection{\texorpdfstring{oled\+\_\+graphics\+\_\+params}{oled\_graphics\_params}}
+{\footnotesize\ttfamily \hyperlink{structoled__graphics__params__t}{oled\+\_\+graphics\+\_\+params\+\_\+t} oled\+\_\+graphics\+\_\+params}
+
+
+
+Link the symbol to its spawn in \hyperlink{graphics_8c}{graphics.\+c}. 
+
+Link the symbol to its spawn in \hyperlink{graphics_8c}{graphics.\+c}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cursor\+\_\+coordinate} & Keeps track of the coordinate of current cursor. \\
+\hline
+{\em display\+\_\+text} & Buffers/keeps track of the current text on the oled\+\_\+screen. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{oled__sysfs_8c_a92b75062c7400d3055dcca460b1552b3}\label{oled__sysfs_8c_a92b75062c7400d3055dcca460b1552b3}} 
 \index{oled\+\_\+sysfs.\+c@{oled\+\_\+sysfs.\+c}!oled\+\_\+kobj@{oled\+\_\+kobj}}
 \index{oled\+\_\+kobj@{oled\+\_\+kobj}!oled\+\_\+sysfs.\+c@{oled\+\_\+sysfs.\+c}}

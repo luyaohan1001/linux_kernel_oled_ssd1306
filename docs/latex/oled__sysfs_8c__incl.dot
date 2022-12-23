@@ -6,5 +6,17 @@ digraph "oled_sysfs.c"
   Node0 -> Node1 [color="midnightblue",fontsize="10",style="solid"];
   Node1 [label="oled_sysfs.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$oled__sysfs_8h_source.html"];
   Node0 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
-  Node2 [label="linux/kobject.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node2 [label="graphics.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$graphics_8h.html",tooltip="SSD1306 OLED graphics display APIs header. "];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="datalink.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$datalink_8h.html",tooltip="Header file for SSD1306 controller interface. "];
+  Node3 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="linux/delay.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node3 -> Node5 [color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="linux/i2c.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node3 -> Node6 [color="midnightblue",fontsize="10",style="solid"];
+  Node6 [label="linux/init.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node3 -> Node7 [color="midnightblue",fontsize="10",style="solid"];
+  Node7 [label="linux/module.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node0 -> Node8 [color="midnightblue",fontsize="10",style="solid"];
+  Node8 [label="linux/kobject.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
 }

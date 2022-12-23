@@ -24,11 +24,15 @@ extern struct i2c_client *i2c_client;
  * @param address The register address to write param to.
  * @param param_len Length of parameter if there is any.
  * @param p_param Pointer to parameter to be written.
+ * @note  The I2C bus interface write-data scheme is explained in
+ * section 8.1.5.1 in SSD1306 datasheet by Solomon Systech.
  */
 void ssd1306_write_address(eControl_t control_option, uint8_t address,
                            uint8_t param_len, uint8_t *p_param) {
   uint8_t control_byte = 0;
   uint8_t repeat = 0;
+  /* A 2-byte tuple that consists of control and address/data bytes to abstract
+   * ssd1306 i2c communication. */
   uint8_t packet[2];
 
   /* Differentiate COMMAND versus DATA control. */

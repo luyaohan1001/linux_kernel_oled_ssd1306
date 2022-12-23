@@ -73,6 +73,7 @@ $(function() {
 <code>#include &quot;oled_sysfs.h&quot;</code><br />
 <code>#include &lt;linux/delay.h&gt;</code><br />
 <code>#include &lt;linux/i2c.h&gt;</code><br />
+<code>#include &lt;linux/kthread.h&gt;</code><br />
 <code>#include &lt;linux/module.h&gt;</code><br />
 <code>#include &lt;linux/sysfs.h&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
@@ -99,6 +100,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a1e690de4cdba34c6389cf7bdc76e13fa"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver_8c.html#a1e690de4cdba34c6389cf7bdc76e13fa">driver_on_remove</a> (struct <a class="el" href="driver_8c.html#a77ca3c5047325f153b5679bce4576b39">i2c_client</a> *client)</td></tr>
 <tr class="memdesc:a1e690de4cdba34c6389cf7bdc76e13fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback function pointe called on the removal of the device driver. This function implements the following prototype defined struct i2c_driver in linux/i2c.h: void (*remove)(struct i2c_client *client);.  <a href="#a1e690de4cdba34c6389cf7bdc76e13fa">More...</a><br /></td></tr>
 <tr class="separator:a1e690de4cdba34c6389cf7bdc76e13fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3548630b2e8f1cda5127a5f940922edf"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver_8c.html#a3548630b2e8f1cda5127a5f940922edf">oled_display_text_thread</a> (void *parameters)</td></tr>
+<tr class="memdesc:a3548630b2e8f1cda5127a5f940922edf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Thread implementing for deploying oled_graphics_params.display_text to oled screen.  <a href="#a3548630b2e8f1cda5127a5f940922edf">More...</a><br /></td></tr>
+<tr class="separator:a3548630b2e8f1cda5127a5f940922edf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0b2b1f66cb85cfa5ba687405cfea6be7"><td class="memItemLeft" align="right" valign="top"><a id="a0b2b1f66cb85cfa5ba687405cfea6be7"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver_8c.html#a0b2b1f66cb85cfa5ba687405cfea6be7">MODULE_DEVICE_TABLE</a> (of, <a class="el" href="driver_8c.html#ade8e0b3b58db81e759d44841b22828f4">driver_id</a>)</td></tr>
 <tr class="memdesc:a0b2b1f66cb85cfa5ba687405cfea6be7"><td class="mdescLeft">&#160;</td><td class="mdescRight">This macro describes which devices each specific driver can support. At compilation time, the build process extracts this information out of the driver and builds a table. <br /></td></tr>
@@ -115,6 +119,13 @@ Variables</h2></td></tr>
 <tr class="memitem:a77ca3c5047325f153b5679bce4576b39"><td class="memItemLeft" align="right" valign="top">struct i2c_client *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver_8c.html#a77ca3c5047325f153b5679bce4576b39">i2c_client</a></td></tr>
 <tr class="memdesc:a77ca3c5047325f153b5679bce4576b39"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifies the device (i.e. SSD1306 OLED contoller) connected to the i2c bus.  <a href="#a77ca3c5047325f153b5679bce4576b39">More...</a><br /></td></tr>
 <tr class="separator:a77ca3c5047325f153b5679bce4576b39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada6aba8eaf924334f8cf13ee9edf8700"><td class="memItemLeft" align="right" valign="top"><a id="ada6aba8eaf924334f8cf13ee9edf8700"></a>
+struct task_struct *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver_8c.html#ada6aba8eaf924334f8cf13ee9edf8700">handle_display_text_thread</a></td></tr>
+<tr class="memdesc:ada6aba8eaf924334f8cf13ee9edf8700"><td class="mdescLeft">&#160;</td><td class="mdescRight">Points to the oled_display_text_thread created. <br /></td></tr>
+<tr class="separator:ada6aba8eaf924334f8cf13ee9edf8700"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7833cc3b12f3bc2e22d020ee60d2cd5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structoled__graphics__params__t.html">oled_graphics_params_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver_8c.html#ad7833cc3b12f3bc2e22d020ee60d2cd5">oled_graphics_params</a></td></tr>
+<tr class="memdesc:ad7833cc3b12f3bc2e22d020ee60d2cd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Link the symbol to its spawn in <a class="el" href="graphics_8c.html" title="ssd1306 OLED graphics display APIs implementation. ">graphics.c</a>.  <a href="#ad7833cc3b12f3bc2e22d020ee60d2cd5">More...</a><br /></td></tr>
+<tr class="separator:ad7833cc3b12f3bc2e22d020ee60d2cd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ade8e0b3b58db81e759d44841b22828f4"><td class="memItemLeft" align="right" valign="top">static struct of_device_id&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="driver_8c.html#ade8e0b3b58db81e759d44841b22828f4">driver_id</a> []</td></tr>
 <tr class="memdesc:ade8e0b3b58db81e759d44841b22828f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Specifies the ".compatible" strings. of_device_id array should store the same value as corresponding node's "compatible" field in the device tree. In this case the oled.dts in the same directory has the "compatible" field. When the .compatible field here matches the device tree, the I2C device will be probed.  <a href="#ade8e0b3b58db81e759d44841b22828f4">More...</a><br /></td></tr>
 <tr class="separator:ade8e0b3b58db81e759d44841b22828f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -210,6 +221,41 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="a3548630b2e8f1cda5127a5f940922edf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3548630b2e8f1cda5127a5f940922edf">&#9670;&nbsp;</a></span>oled_display_text_thread()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int oled_display_text_thread </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>parameters</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Thread implementing for deploying oled_graphics_params.display_text to oled screen. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">None.</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>None. </dd></dl>
+
+</div>
+</div>
 <h2 class="groupheader">Variable Documentation</h2>
 <a id="a43765295ecc04729376fab5e4e243172"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a43765295ecc04729376fab5e4e243172">&#9670;&nbsp;</a></span>driver_device_id</h2>
@@ -295,11 +341,35 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= {</div><div class="line">    </div><div class="line">    .probe = <a class="code" href="driver_8c.html#ac2ce7e7fa1f20b7193e04c34583885a2">driver_on_probe</a>,</div><div class="line">    .remove = <a class="code" href="driver_8c.html#a1e690de4cdba34c6389cf7bdc76e13fa">driver_on_remove</a>,</div><div class="line">    .id_table = <a class="code" href="driver_8c.html#a43765295ecc04729376fab5e4e243172">driver_device_id</a>,</div><div class="line">    .driver =</div><div class="line">        {</div><div class="line">            .name = <span class="stringliteral">&quot;oled_device&quot;</span>,</div><div class="line">            .of_match_table = <a class="code" href="driver_8c.html#ade8e0b3b58db81e759d44841b22828f4">driver_id</a>,</div><div class="line">        },</div><div class="line">}</div><div class="ttc" id="driver_8c_html_a1e690de4cdba34c6389cf7bdc76e13fa"><div class="ttname"><a href="driver_8c.html#a1e690de4cdba34c6389cf7bdc76e13fa">driver_on_remove</a></div><div class="ttdeci">static int driver_on_remove(struct i2c_client *client)</div><div class="ttdoc">Callback function pointe called on the removal of the device driver. This function implements the fol...</div><div class="ttdef"><b>Definition:</b> driver.c:130</div></div>
-<div class="ttc" id="driver_8c_html_ade8e0b3b58db81e759d44841b22828f4"><div class="ttname"><a href="driver_8c.html#ade8e0b3b58db81e759d44841b22828f4">driver_id</a></div><div class="ttdeci">static struct of_device_id driver_id[]</div><div class="ttdoc">Specifies the &quot;.compatible&quot; strings. of_device_id array should store the same value as corresponding ...</div><div class="ttdef"><b>Definition:</b> driver.c:43</div></div>
-<div class="ttc" id="driver_8c_html_ac2ce7e7fa1f20b7193e04c34583885a2"><div class="ttname"><a href="driver_8c.html#ac2ce7e7fa1f20b7193e04c34583885a2">driver_on_probe</a></div><div class="ttdeci">static int driver_on_probe(struct i2c_client *client, const struct i2c_device_id *id)</div><div class="ttdoc">Callback function pointer called on probing (driver-device binding) of the device driver...</div><div class="ttdef"><b>Definition:</b> driver.c:85</div></div>
-<div class="ttc" id="driver_8c_html_a43765295ecc04729376fab5e4e243172"><div class="ttname"><a href="driver_8c.html#a43765295ecc04729376fab5e4e243172">driver_device_id</a></div><div class="ttdeci">static struct i2c_device_id driver_device_id[]</div><div class="ttdoc">This array is pointed by the id_table field of struct i2c_driver. The id_table is used for non-DT bas...</div><div class="ttdef"><b>Definition:</b> driver.c:58</div></div>
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div><div class="line">    </div><div class="line">    .probe = <a class="code" href="driver_8c.html#ac2ce7e7fa1f20b7193e04c34583885a2">driver_on_probe</a>,</div><div class="line">    .remove = <a class="code" href="driver_8c.html#a1e690de4cdba34c6389cf7bdc76e13fa">driver_on_remove</a>,</div><div class="line">    .id_table = <a class="code" href="driver_8c.html#a43765295ecc04729376fab5e4e243172">driver_device_id</a>,</div><div class="line">    .driver =</div><div class="line">        {</div><div class="line">            .name = <span class="stringliteral">&quot;oled_device&quot;</span>,</div><div class="line">            .of_match_table = <a class="code" href="driver_8c.html#ade8e0b3b58db81e759d44841b22828f4">driver_id</a>,</div><div class="line">        },</div><div class="line">}</div><div class="ttc" id="driver_8c_html_a1e690de4cdba34c6389cf7bdc76e13fa"><div class="ttname"><a href="driver_8c.html#a1e690de4cdba34c6389cf7bdc76e13fa">driver_on_remove</a></div><div class="ttdeci">static int driver_on_remove(struct i2c_client *client)</div><div class="ttdoc">Callback function pointe called on the removal of the device driver. This function implements the fol...</div><div class="ttdef"><b>Definition:</b> driver.c:137</div></div>
+<div class="ttc" id="driver_8c_html_ade8e0b3b58db81e759d44841b22828f4"><div class="ttname"><a href="driver_8c.html#ade8e0b3b58db81e759d44841b22828f4">driver_id</a></div><div class="ttdeci">static struct of_device_id driver_id[]</div><div class="ttdoc">Specifies the &quot;.compatible&quot; strings. of_device_id array should store the same value as corresponding ...</div><div class="ttdef"><b>Definition:</b> driver.c:55</div></div>
+<div class="ttc" id="driver_8c_html_ac2ce7e7fa1f20b7193e04c34583885a2"><div class="ttname"><a href="driver_8c.html#ac2ce7e7fa1f20b7193e04c34583885a2">driver_on_probe</a></div><div class="ttdeci">static int driver_on_probe(struct i2c_client *client, const struct i2c_device_id *id)</div><div class="ttdoc">Callback function pointer called on probing (driver-device binding) of the device driver...</div><div class="ttdef"><b>Definition:</b> driver.c:97</div></div>
+<div class="ttc" id="driver_8c_html_a43765295ecc04729376fab5e4e243172"><div class="ttname"><a href="driver_8c.html#a43765295ecc04729376fab5e4e243172">driver_device_id</a></div><div class="ttdeci">static struct i2c_device_id driver_device_id[]</div><div class="ttdoc">This array is pointed by the id_table field of struct i2c_driver. The id_table is used for non-DT bas...</div><div class="ttdef"><b>Definition:</b> driver.c:70</div></div>
 </div><!-- fragment -->
+</div>
+</div>
+<a id="ad7833cc3b12f3bc2e22d020ee60d2cd5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7833cc3b12f3bc2e22d020ee60d2cd5">&#9670;&nbsp;</a></span>oled_graphics_params</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structoled__graphics__params__t.html">oled_graphics_params_t</a> oled_graphics_params</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Link the symbol to its spawn in <a class="el" href="graphics_8c.html" title="ssd1306 OLED graphics display APIs implementation. ">graphics.c</a>. </p>
+<p>Link the symbol to its spawn in <a class="el" href="graphics_8c.html" title="ssd1306 OLED graphics display APIs implementation. ">graphics.c</a>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cursor_coordinate</td><td>Keeps track of the coordinate of current cursor. </td></tr>
+    <tr><td class="paramname">display_text</td><td>Buffers/keeps track of the current text on the oled_screen. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 </div><!-- contents -->

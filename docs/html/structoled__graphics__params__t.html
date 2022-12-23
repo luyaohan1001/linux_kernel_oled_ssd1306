@@ -66,30 +66,32 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Struct that book-keeps parameters for the oled graphics.  
+<p>Struct used to book-keep parameters for the oled graphics.  
  <a href="structoled__graphics__params__t.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="graphics_8h_source.html">graphics.h</a>&gt;</code></p>
+<div class="dynheader">
+Collaboration diagram for oled_graphics_params_t:</div>
+<div class="dyncontent">
+<div class="center"><img src="structoled__graphics__params__t__coll__graph.png" border="0" usemap="#oled__graphics__params__t_coll__map" alt="Collaboration graph"/></div>
+<!-- MAP 0 -->
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a935849122ab6104f2c37fc0a0ede6030"><td class="memItemLeft" align="right" valign="top"><a id="a935849122ab6104f2c37fc0a0ede6030"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>line</b></td></tr>
-<tr class="separator:a935849122ab6104f2c37fc0a0ede6030"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae2b6e0c9eaa48f8fbdb79e16ed3ad05d"><td class="memItemLeft" align="right" valign="top"><a id="ae2b6e0c9eaa48f8fbdb79e16ed3ad05d"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>cursor_position</b></td></tr>
-<tr class="separator:ae2b6e0c9eaa48f8fbdb79e16ed3ad05d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac0dc31a850b44af05036f527d7a42e36"><td class="memItemLeft" align="right" valign="top"><a id="ac0dc31a850b44af05036f527d7a42e36"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>font_char_width</b></td></tr>
-<tr class="separator:ac0dc31a850b44af05036f527d7a42e36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5c9feac043e1ac73912a888ff0dc565"><td class="memItemLeft" align="right" valign="top"><a id="ae5c9feac043e1ac73912a888ff0dc565"></a>
+<a class="el" href="structoled__cursor__coordinate__t.html">oled_cursor_coordinate_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>cursor_coordinate</b></td></tr>
+<tr class="separator:ae5c9feac043e1ac73912a888ff0dc565"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4c9acfadcda617477e284fa42f7709f"><td class="memItemLeft" align="right" valign="top"><a id="ae4c9acfadcda617477e284fa42f7709f"></a>
+char&#160;</td><td class="memItemRight" valign="bottom"><b>display_text</b> [DEFAULT_TEXT_LENGTH]</td></tr>
+<tr class="separator:ae4c9acfadcda617477e284fa42f7709f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Struct that book-keeps parameters for the oled graphics. </p>
+<div class="textblock"><p>Struct used to book-keep parameters for the oled graphics. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">line</td><td>Current line (page) the cursor is on. </td></tr>
-    <tr><td class="paramname">cursor_position</td><td>Current position (column) the cursor is on. </td></tr>
-    <tr><td class="paramname">font_char_width</td><td>ASCII char width for estimation of potential colunm overrun. </td></tr>
+    <tr><td class="paramname">cursor_coordinate</td><td>Keeps track of the coordinate of current cursor. </td></tr>
+    <tr><td class="paramname">display_text</td><td>Buffers/keeps track of the current text on the oled_screen. </td></tr>
   </table>
   </dd>
 </dl>

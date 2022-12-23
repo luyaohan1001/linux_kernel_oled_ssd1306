@@ -7,6 +7,7 @@
  */
 
 #include "oled_sysfs.h"
+#include "graphics.h"
 
 #include <linux/kobject.h>
 
@@ -24,6 +25,11 @@ static ssize_t kobj_attr_display_text_store(struct kobject *kobj,
  * /sys/kernel/.
  */
 struct kobject *oled_kobj;
+
+/**
+ * @brief Link the symbol to its spawn in graphics.c
+ */
+extern oled_graphics_params_t oled_graphics_params;
 
 /**
  * @brief "display_text" attribute, storing the current text the oled
@@ -70,14 +76,22 @@ static ssize_t kobj_attr_display_text_show(struct kobject *kobj,
  * @param attr Attribute to which the tied sysfs file is written (store).
  * @param buffer Text display to the screen when the file is written.
  * @return Number of characters written.
- * @note   Returning status code is wrong, and could cause the system looping in store function.
+ * @note   Returning status code is wrong, and could cause the system looping in
+ * store function.
  */
 static ssize_t kobj_attr_display_text_store(struct kobject *kobj,
                                             struct kobj_attribute *attr,
                                             const char *buffer, size_t count) {
+  /* Print to kernel log. */
   pr_info("'%s' has been written to /sys/kernel/%s/%s through "
           "kobj_attr_display_text_store. \n",
           buffer, kobj->name, attr->attr.name);
+
+  /* Store the buffer (text written to the file) to graphics data structure. */
+  /* The display_text will be deployed to oled screen through
+   * oled_display_text_thread in driver.c. */
+  /* TODO: Add multithread protection. */
+  sprintf(oled_graphics_params.display_text, "%s", buffer);
   return count;
 }
 

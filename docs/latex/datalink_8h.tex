@@ -134,6 +134,17 @@ Write to S\+S\+D1306 register address.
 \hline
 {\em param\+\_\+len} & Length of parameter if there is any. \\
 \hline
+{\em p\+\_\+param} & Pointer to parameter to be written.\\
+\hline
+{\em control\+\_\+option} & D\+A\+T\+A\+\_\+\+C\+O\+N\+T\+R\+OL indicates to transmit data, C\+O\+M\+M\+A\+N\+D\+\_\+\+C\+O\+N\+T\+R\+OL indicates to transmit command. \\
+\hline
+{\em address} & The register address to write param to. \\
+\hline
+{\em param\+\_\+len} & Length of parameter if there is any. \\
+\hline
 {\em p\+\_\+param} & Pointer to parameter to be written. \\
 \hline
 \end{DoxyParams}
+\begin{DoxyNote}{Note}
+The I2C bus interface write-\/data scheme is explained in section 8.\+1.\+5.\+1 in S\+S\+D1306 datasheet by Solomon Systech. 
+\end{DoxyNote}

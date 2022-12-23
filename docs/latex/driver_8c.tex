@@ -10,6 +10,7 @@ This file implements the necessary i2c\+\_\+client probe and remove callbacks on
 {\ttfamily \#include \char`\"{}oled\+\_\+sysfs.\+h\char`\"{}}\newline
 {\ttfamily \#include $<$linux/delay.\+h$>$}\newline
 {\ttfamily \#include $<$linux/i2c.\+h$>$}\newline
+{\ttfamily \#include $<$linux/kthread.\+h$>$}\newline
 {\ttfamily \#include $<$linux/module.\+h$>$}\newline
 {\ttfamily \#include $<$linux/sysfs.\+h$>$}\newline
 Include dependency graph for driver.\+c\+:
@@ -30,6 +31,8 @@ static int \hyperlink{driver_8c_ac2ce7e7fa1f20b7193e04c34583885a2}{driver\+\_\+o
 \begin{DoxyCompactList}\small\item\em Callback function pointer called on probing (driver-\/device binding) of the device driver. This function implements the following prototype defined struct i2c\+\_\+driver in linux/i2c.\+h\+: int ($\ast$probe)(struct i2c\+\_\+client $\ast$client, const struct i2c\+\_\+device\+\_\+id $\ast$id);. \end{DoxyCompactList}\item 
 static int \hyperlink{driver_8c_a1e690de4cdba34c6389cf7bdc76e13fa}{driver\+\_\+on\+\_\+remove} (struct \hyperlink{driver_8c_a77ca3c5047325f153b5679bce4576b39}{i2c\+\_\+client} $\ast$client)
 \begin{DoxyCompactList}\small\item\em Callback function pointe called on the removal of the device driver. This function implements the following prototype defined struct i2c\+\_\+driver in linux/i2c.\+h\+: void ($\ast$remove)(struct i2c\+\_\+client $\ast$client);. \end{DoxyCompactList}\item 
+static int \hyperlink{driver_8c_a3548630b2e8f1cda5127a5f940922edf}{oled\+\_\+display\+\_\+text\+\_\+thread} (void $\ast$parameters)
+\begin{DoxyCompactList}\small\item\em Thread implementing for deploying oled\+\_\+graphics\+\_\+params.\+display\+\_\+text to oled screen. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{driver_8c_a0b2b1f66cb85cfa5ba687405cfea6be7}\label{driver_8c_a0b2b1f66cb85cfa5ba687405cfea6be7}} 
 \hyperlink{driver_8c_a0b2b1f66cb85cfa5ba687405cfea6be7}{M\+O\+D\+U\+L\+E\+\_\+\+D\+E\+V\+I\+C\+E\+\_\+\+T\+A\+B\+LE} (of, \hyperlink{driver_8c_ade8e0b3b58db81e759d44841b22828f4}{driver\+\_\+id})
 \begin{DoxyCompactList}\small\item\em This macro describes which devices each specific driver can support. At compilation time, the build process extracts this information out of the driver and builds a table. \end{DoxyCompactList}\item 
@@ -44,6 +47,11 @@ static int \hyperlink{driver_8c_a1e690de4cdba34c6389cf7bdc76e13fa}{driver\+\_\+o
 \item 
 struct i2c\+\_\+client $\ast$ \hyperlink{driver_8c_a77ca3c5047325f153b5679bce4576b39}{i2c\+\_\+client}
 \begin{DoxyCompactList}\small\item\em Identifies the device (i.\+e. S\+S\+D1306 O\+L\+ED contoller) connected to the i2c bus. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{driver_8c_ada6aba8eaf924334f8cf13ee9edf8700}\label{driver_8c_ada6aba8eaf924334f8cf13ee9edf8700}} 
+struct task\+\_\+struct $\ast$ \hyperlink{driver_8c_ada6aba8eaf924334f8cf13ee9edf8700}{handle\+\_\+display\+\_\+text\+\_\+thread}
+\begin{DoxyCompactList}\small\item\em Points to the oled\+\_\+display\+\_\+text\+\_\+thread created. \end{DoxyCompactList}\item 
+\hyperlink{structoled__graphics__params__t}{oled\+\_\+graphics\+\_\+params\+\_\+t} \hyperlink{driver_8c_ad7833cc3b12f3bc2e22d020ee60d2cd5}{oled\+\_\+graphics\+\_\+params}
+\begin{DoxyCompactList}\small\item\em Link the symbol to its spawn in \hyperlink{graphics_8c}{graphics.\+c}. \end{DoxyCompactList}\item 
 static struct of\+\_\+device\+\_\+id \hyperlink{driver_8c_ade8e0b3b58db81e759d44841b22828f4}{driver\+\_\+id} \mbox{[}$\,$\mbox{]}
 \begin{DoxyCompactList}\small\item\em Specifies the \char`\"{}.\+compatible\char`\"{} strings. of\+\_\+device\+\_\+id array should store the same value as corresponding node\textquotesingle{}s \char`\"{}compatible\char`\"{} field in the device tree. In this case the oled.\+dts in the same directory has the \char`\"{}compatible\char`\"{} field. When the .compatible field here matches the device tree, the I2C device will be probed. \end{DoxyCompactList}\item 
 static struct i2c\+\_\+device\+\_\+id \hyperlink{driver_8c_a43765295ecc04729376fab5e4e243172}{driver\+\_\+device\+\_\+id} \mbox{[}$\,$\mbox{]}
@@ -97,6 +105,24 @@ Callback function pointe called on the removal of the device driver. This functi
 
 \begin{DoxyParams}{Parameters}
 {\em client} & Pointer to the i2c\+\_\+client instance. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{driver_8c_a3548630b2e8f1cda5127a5f940922edf}\label{driver_8c_a3548630b2e8f1cda5127a5f940922edf}} 
+\index{driver.\+c@{driver.\+c}!oled\+\_\+display\+\_\+text\+\_\+thread@{oled\+\_\+display\+\_\+text\+\_\+thread}}
+\index{oled\+\_\+display\+\_\+text\+\_\+thread@{oled\+\_\+display\+\_\+text\+\_\+thread}!driver.\+c@{driver.\+c}}
+\subsubsection{\texorpdfstring{oled\+\_\+display\+\_\+text\+\_\+thread()}{oled\_display\_text\_thread()}}
+{\footnotesize\ttfamily static int oled\+\_\+display\+\_\+text\+\_\+thread (\begin{DoxyParamCaption}\item[{void $\ast$}]{parameters }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Thread implementing for deploying oled\+\_\+graphics\+\_\+params.\+display\+\_\+text to oled screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None.} & \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -165,3 +191,22 @@ Pointer to the i2c\+\_\+client instance. \mbox{\Hypertarget{driver_8c_a407109b15
         \},
 \}
 \end{DoxyCode}
+\mbox{\Hypertarget{driver_8c_ad7833cc3b12f3bc2e22d020ee60d2cd5}\label{driver_8c_ad7833cc3b12f3bc2e22d020ee60d2cd5}} 
+\index{driver.\+c@{driver.\+c}!oled\+\_\+graphics\+\_\+params@{oled\+\_\+graphics\+\_\+params}}
+\index{oled\+\_\+graphics\+\_\+params@{oled\+\_\+graphics\+\_\+params}!driver.\+c@{driver.\+c}}
+\subsubsection{\texorpdfstring{oled\+\_\+graphics\+\_\+params}{oled\_graphics\_params}}
+{\footnotesize\ttfamily \hyperlink{structoled__graphics__params__t}{oled\+\_\+graphics\+\_\+params\+\_\+t} oled\+\_\+graphics\+\_\+params}
+
+
+
+Link the symbol to its spawn in \hyperlink{graphics_8c}{graphics.\+c}. 
+
+Link the symbol to its spawn in \hyperlink{graphics_8c}{graphics.\+c}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cursor\+\_\+coordinate} & Keeps track of the coordinate of current cursor. \\
+\hline
+{\em display\+\_\+text} & Buffers/keeps track of the current text on the oled\+\_\+screen. \\
+\hline
+\end{DoxyParams}

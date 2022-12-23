@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2022.12.19)  20 DEC 2022 03:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2022.12.19)  22 DEC 2022 18:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -890,11 +890,13 @@ LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 (Font)              scaled to size 6.29996pt on input line 1.
  [1
 
-])
+] [2])
 \tf@toc=\write5
 \openout5 = `refman.toc'.
 
- [2]
+ [3] [4
+
+]
 Package hyperref Info: Option `pageanchor' set `true' on input line 138.
 
 Chapter 1.
@@ -919,7 +921,6 @@ LaTeX Font Info:    Font shape `T1/phv/bc/n' will be
 (Font)              scaled to size 8.99994pt on input line 15.
 
 [1
-
 
 ]
 LaTeX Font Info:    Try loading font information for TS1+phv on input line 82.
@@ -951,16 +952,24 @@ LaTeX Warning: Reference `oled__sysfs_8h' on page 5 undefined on input line 9.
 
 ]
 Chapter 4.
-(./structoled__graphics__params__t.tex
+(./structoled__cursor__coordinate__t.tex
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <12> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 12.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 3.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 10.79993pt on input line 12.
+(Font)              scaled to size 10.79993pt on input line 3.
 LaTeX Font Info:    Font shape `T1/phv/bc/n' will be
-(Font)              scaled to size 10.79993pt on input line 12.
-) [7] [8
+(Font)              scaled to size 10.79993pt on input line 3.
+)
+(./structoled__graphics__params__t.tex
+Overfull \vbox (20.83665pt too high) has occurred while \output is active []
 
-]
+
+[7]) (./structPixel.tex
+Underfull \hbox (badness 10000) detected at line 13
+[][][]
+ []
+
+) [8]
 Chapter 5.
 (./datalink_8c.tex) (./datalink_8h.tex
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
@@ -969,7 +978,9 @@ LaTeX Font Info:    Font shape `T1/phv/m/it' in size <9> not available
 (Font)              Font shape `T1/phv/m/sl' tried instead on input line 67.
 LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
 (Font)              scaled to size 8.09995pt on input line 67.
- [9]
+ [9
+
+]
 Underfull \hbox (badness 10000) detected at line 81
 [][][]
  []
@@ -1001,32 +1012,42 @@ Underfull \hbox (badness 10000) detected at line 116
 
 LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <7> not available
 (Font)              Font shape `T1/pcr/m/sl' tried instead on input line 123.
+
+Underfull \hbox (badness 10000) detected at line 148
+[][][]
+ []
+
 ) (./driver_8c.tex [11]
 LaTeX Font Info:    Font shape `TS1/phv/m/it' in size <9> not available
-(Font)              Font shape `TS1/phv/m/sl' tried instead on input line 48.
+(Font)              Font shape `TS1/phv/m/sl' tried instead on input line 56.
 LaTeX Font Info:    Font shape `TS1/phv/m/sl' will be
-(Font)              scaled to size 8.09995pt on input line 48.
+(Font)              scaled to size 8.09995pt on input line 56.
 
-Underfull \hbox (badness 10000) detected at line 58
+Underfull \hbox (badness 10000) detected at line 66
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 61
+Underfull \hbox (badness 10000) detected at line 69
 [][][]
  []
 
 [12]
-Underfull \hbox (badness 10000) detected at line 84
+Underfull \hbox (badness 10000) detected at line 92
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 102
+Underfull \hbox (badness 10000) detected at line 110
 [][][]
  []
 
-[13]) (./graphics_8c.tex [14]
+[13]
+Underfull \hbox (badness 10000) detected at line 128
+[][][]
+ []
+
+[14]) (./graphics_8c.tex [15]
 Underfull \hbox (badness 10000) detected at line 55
 [][][]
  []
@@ -1041,7 +1062,7 @@ Underfull \hbox (badness 10000) detected at line 74
 [][][]
  []
 
-[15]
+[16]
 Underfull \hbox (badness 10000) detected at line 95
 [][][]
  []
@@ -1051,7 +1072,7 @@ Underfull \hbox (badness 10000) detected at line 113
 [][][]
  []
 
-[16]
+[17]
 Underfull \hbox (badness 10000) detected at line 131
 [][][]
  []
@@ -1061,118 +1082,134 @@ Underfull \hbox (badness 10000) detected at line 149
 [][][]
  []
 
-[17]
-Underfull \hbox (badness 10000) detected at line 167
+
+Underfull \hbox (badness 10000) detected at line 169
 [][][]
  []
 
-
+[18]
 Underfull \hbox (badness 10000) detected at line 222
 [][][]
  []
 
-[18]) (./graphics_8h.tex [19]
+[19]) (./graphics_8h.tex [20]
+Underfull \hbox (badness 10000) detected at line 80
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 83
+[][][]
+ []
+
+[21]
+Underfull \hbox (badness 10000) detected at line 124
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 132
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 150
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 168
+[][][]
+ []
+
+[22]
+Underfull \hbox (badness 10000) detected at line 186
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 204
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 214
+[][][]
+ []
+
+[23] [24]) (./oled__sysfs_8c.tex
+Underfull \hbox (badness 10000) detected at line 40
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 43
+[][][]
+ []
+
+[25]
 Underfull \hbox (badness 10000) detected at line 68
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 71
+Underfull \hbox (badness 10000) detected at line 90
+[][][]
+ []
+
+[26]
+Underfull \hbox (badness 10000) detected at line 93
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 92
-[][][]
- []
-
-[20]
-Underfull \hbox (badness 10000) detected at line 110
+Underfull \hbox (badness 10000) detected at line 111
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 128
+Underfull \hbox (badness 10000) detected at line 129
 [][][]
  []
 
-[21]
-Underfull \hbox (badness 10000) detected at line 146
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 164
-[][][]
- []
-
-) (./oled__sysfs_8c.tex [22]
-Underfull \hbox (badness 10000) detected at line 37
+[27]
+Underfull \hbox (badness 10000) detected at line 152
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 40
+Underfull \hbox (badness 10000) detected at line 184
 [][][]
  []
 
-[23]
-Underfull \hbox (badness 10000) detected at line 65
-[][][]
- []
+) [28] (./refman.ind [29
 
 
-Underfull \hbox (badness 10000) detected at line 87
-[][][]
- []
 
-[24]
-Underfull \hbox (badness 10000) detected at line 105
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 123
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 146
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 159
-[][][]
- []
-
-) [25] [26
-
-] (./refman.ind [27
-
+] [30
 
 ])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 168.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 168.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 170.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 170.
  (./refman.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 168.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 168.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 170.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 170.
 Package rerunfilecheck Info: File `refman.out' has not changed.
-(rerunfilecheck)             Checksum: F728C510A73B68B059BFEEEE4AEC28F8;12086.
+(rerunfilecheck)             Checksum: 9D53910096933F50063425ABB77A16E6;14041.
 
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 168.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 170.
  ) 
 Here is how much of TeX's memory you used:
- 15217 strings out of 494561
- 221985 string characters out of 6177453
- 323714 words of memory out of 5000000
- 18412 multiletter control sequences out of 15000+600000
+ 15283 strings out of 494561
+ 223412 string characters out of 6177453
+ 328523 words of memory out of 5000000
+ 18444 multiletter control sequences out of 15000+600000
  68131 words of font info for 93 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 53i,15n,92p,2434b,632s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 53i,16n,92p,2434b,632s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/
@@ -1186,10 +1223,10 @@ msfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
 mf-dist/fonts/type1/urw/helvetic/uhvb8ac.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw
 /helvetic/uhvro8a.pfb>
-Output written on refman.pdf (31 pages, 174339 bytes).
+Output written on refman.pdf (36 pages, 185916 bytes).
 PDF statistics:
- 803 PDF objects out of 1000 (max. 8388607)
- 749 compressed objects within 8 object streams
- 208 named destinations out of 1000 (max. 500000)
- 481 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 937 PDF objects out of 1000 (max. 8388607)
+ 877 compressed objects within 9 object streams
+ 238 named destinations out of 1000 (max. 500000)
+ 545 words of extra memory for PDF output out of 10000 (max. 10000000)
 

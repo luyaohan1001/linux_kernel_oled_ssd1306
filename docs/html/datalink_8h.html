@@ -234,10 +234,15 @@ Functions</h2></td></tr>
     <tr><td class="paramname">control_option</td><td>DATA_CONTROL indicates to transmit data, COMMAND_CONTROL indicates to transmit command. </td></tr>
     <tr><td class="paramname">address</td><td>The register address to write param to. </td></tr>
     <tr><td class="paramname">param_len</td><td>Length of parameter if there is any. </td></tr>
+    <tr><td class="paramname">p_param</td><td>Pointer to parameter to be written.</td></tr>
+    <tr><td class="paramname">control_option</td><td>DATA_CONTROL indicates to transmit data, COMMAND_CONTROL indicates to transmit command. </td></tr>
+    <tr><td class="paramname">address</td><td>The register address to write param to. </td></tr>
+    <tr><td class="paramname">param_len</td><td>Length of parameter if there is any. </td></tr>
     <tr><td class="paramname">p_param</td><td>Pointer to parameter to be written. </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section note"><dt>Note</dt><dd>The I2C bus interface write-data scheme is explained in section 8.1.5.1 in SSD1306 datasheet by Solomon Systech. </dd></dl>
 
 </div>
 </div>

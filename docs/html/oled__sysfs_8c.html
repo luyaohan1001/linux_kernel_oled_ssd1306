@@ -69,6 +69,7 @@ $(function() {
 <p>Init/deinit callbacks implementation to expose user-control through sysfs filesystem.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;oled_sysfs.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="graphics_8h_source.html">graphics.h</a>&quot;</code><br />
 <code>#include &lt;linux/kobject.h&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for oled_sysfs.c:</div>
@@ -97,6 +98,9 @@ Variables</h2></td></tr>
 <tr class="memitem:a92b75062c7400d3055dcca460b1552b3"><td class="memItemLeft" align="right" valign="top">struct kobject *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="oled__sysfs_8c.html#a92b75062c7400d3055dcca460b1552b3">oled_kobj</a></td></tr>
 <tr class="memdesc:a92b75062c7400d3055dcca460b1552b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">The pointer storing a oled kernel object to be created later.  <a href="#a92b75062c7400d3055dcca460b1552b3">More...</a><br /></td></tr>
 <tr class="separator:a92b75062c7400d3055dcca460b1552b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7833cc3b12f3bc2e22d020ee60d2cd5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structoled__graphics__params__t.html">oled_graphics_params_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="oled__sysfs_8c.html#ad7833cc3b12f3bc2e22d020ee60d2cd5">oled_graphics_params</a></td></tr>
+<tr class="memdesc:ad7833cc3b12f3bc2e22d020ee60d2cd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Link the symbol to its spawn in <a class="el" href="graphics_8c.html" title="ssd1306 OLED graphics display APIs implementation. ">graphics.c</a>.  <a href="#ad7833cc3b12f3bc2e22d020ee60d2cd5">More...</a><br /></td></tr>
+<tr class="separator:ad7833cc3b12f3bc2e22d020ee60d2cd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a84de8bac5c78ce178bb8f6c08a25acd1"><td class="memItemLeft" align="right" valign="top">static struct kobj_attribute&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="oled__sysfs_8c.html#a84de8bac5c78ce178bb8f6c08a25acd1">kobj_attr_display_text</a></td></tr>
 <tr class="memdesc:a84de8bac5c78ce178bb8f6c08a25acd1"><td class="mdescLeft">&#160;</td><td class="mdescRight">"display_text" attribute, storing the current text the oled displaying.  <a href="#a84de8bac5c78ce178bb8f6c08a25acd1">More...</a><br /></td></tr>
 <tr class="separator:a84de8bac5c78ce178bb8f6c08a25acd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -215,7 +219,8 @@ Variables</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Error status. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Number of characters written. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Returning status code is wrong, and could cause the system looping in store function. </dd></dl>
 
 </div>
 </div>
@@ -293,11 +298,35 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= {</div><div class="line">    .attr = {.name = <span class="stringliteral">&quot;display_text&quot;</span>, .mode = 0666},</div><div class="line">    .show = <a class="code" href="oled__sysfs_8c.html#a03d21b16d7954528dbc35df687b25338">kobj_attr_display_text_show</a>,</div><div class="line">    .store = <a class="code" href="oled__sysfs_8c.html#ae39bd0235a55167c6fec6e4ba73e3380">kobj_attr_display_text_store</a>}</div><div class="ttc" id="oled__sysfs_8c_html_a03d21b16d7954528dbc35df687b25338"><div class="ttname"><a href="oled__sysfs_8c.html#a03d21b16d7954528dbc35df687b25338">kobj_attr_display_text_show</a></div><div class="ttdeci">static ssize_t kobj_attr_display_text_show(struct kobject *kobj, struct kobj_attribute *attr, char *buffer)</div><div class="ttdoc">Callback function prototype for when the user read display_text, i.e. cat /sys/kernel/oled_sysfs/disp...</div><div class="ttdef"><b>Definition:</b> oled_sysfs.c:49</div></div>
-<div class="ttc" id="oled__sysfs_8c_html_ae39bd0235a55167c6fec6e4ba73e3380"><div class="ttname"><a href="oled__sysfs_8c.html#ae39bd0235a55167c6fec6e4ba73e3380">kobj_attr_display_text_store</a></div><div class="ttdeci">static ssize_t kobj_attr_display_text_store(struct kobject *kobj, struct kobj_attribute *attr, const char *buffer, size_t count)</div><div class="ttdoc">Callback function prototype for when the user write to the display_text, i.e. echo &quot;hello...</div><div class="ttdef"><b>Definition:</b> oled_sysfs.c:74</div></div>
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div><div class="line">    .attr = {.name = <span class="stringliteral">&quot;display_text&quot;</span>, .mode = 0666},</div><div class="line">    .show = <a class="code" href="oled__sysfs_8c.html#a03d21b16d7954528dbc35df687b25338">kobj_attr_display_text_show</a>,</div><div class="line">    .store = <a class="code" href="oled__sysfs_8c.html#ae39bd0235a55167c6fec6e4ba73e3380">kobj_attr_display_text_store</a>}</div><div class="ttc" id="oled__sysfs_8c_html_a03d21b16d7954528dbc35df687b25338"><div class="ttname"><a href="oled__sysfs_8c.html#a03d21b16d7954528dbc35df687b25338">kobj_attr_display_text_show</a></div><div class="ttdeci">static ssize_t kobj_attr_display_text_show(struct kobject *kobj, struct kobj_attribute *attr, char *buffer)</div><div class="ttdoc">Callback function prototype for when the user read display_text, i.e. cat /sys/kernel/oled_sysfs/disp...</div><div class="ttdef"><b>Definition:</b> oled_sysfs.c:55</div></div>
+<div class="ttc" id="oled__sysfs_8c_html_ae39bd0235a55167c6fec6e4ba73e3380"><div class="ttname"><a href="oled__sysfs_8c.html#ae39bd0235a55167c6fec6e4ba73e3380">kobj_attr_display_text_store</a></div><div class="ttdeci">static ssize_t kobj_attr_display_text_store(struct kobject *kobj, struct kobj_attribute *attr, const char *buffer, size_t count)</div><div class="ttdoc">Callback function prototype for when the user write to the display_text, i.e. echo &quot;hello...</div><div class="ttdef"><b>Definition:</b> oled_sysfs.c:82</div></div>
 </div><!-- fragment -->
 <p>"display_text" attribute, storing the current text the oled displaying. </p>
 <dl class="section note"><dt>Note</dt><dd>"display_text" will show up as a file under /sys/kernel/oled_sysfs. </dd></dl>
+
+</div>
+</div>
+<a id="ad7833cc3b12f3bc2e22d020ee60d2cd5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7833cc3b12f3bc2e22d020ee60d2cd5">&#9670;&nbsp;</a></span>oled_graphics_params</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structoled__graphics__params__t.html">oled_graphics_params_t</a> oled_graphics_params</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Link the symbol to its spawn in <a class="el" href="graphics_8c.html" title="ssd1306 OLED graphics display APIs implementation. ">graphics.c</a>. </p>
+<p>Link the symbol to its spawn in <a class="el" href="graphics_8c.html" title="ssd1306 OLED graphics display APIs implementation. ">graphics.c</a>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cursor_coordinate</td><td>Keeps track of the coordinate of current cursor. </td></tr>
+    <tr><td class="paramname">display_text</td><td>Buffers/keeps track of the current text on the oled_screen. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

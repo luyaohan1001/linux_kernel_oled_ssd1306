@@ -14,6 +14,7 @@
 
 #include <linux/delay.h>
 #include <linux/i2c.h>
+#include <linux/kthread.h>
 #include <linux/module.h>
 #include <linux/sysfs.h>
 
@@ -26,12 +27,23 @@ MODULE_DESCRIPTION("Linux kernel module driver for ssd1306 oled display");
 static int driver_on_probe(struct i2c_client *client,
                            const struct i2c_device_id *id);
 static int driver_on_remove(struct i2c_client *client);
+static int oled_display_text_thread(void *parameters);
 
 /**
  * @brief Identifies the device (i.e. SSD1306 OLED contoller) connected to the
  * i2c bus.
  */
 struct i2c_client *i2c_client;
+
+/**
+ * @brief Points to the oled_display_text_thread created.
+ */
+struct task_struct *handle_display_text_thread;
+
+/**
+ * @brief Link the symbol to its spawn in graphics.c
+ */
+extern oled_graphics_params_t oled_graphics_params;
 
 /**
  * @brief Specifies the ".compatible" strings.
@@ -84,7 +96,9 @@ static struct i2c_driver i2c_driver = {
  */
 static int driver_on_probe(struct i2c_client *client,
                            const struct i2c_device_id *device_id) {
+  /* Store function return status. */
   int status_code = 0;
+
   pr_info("Entered driver_on_probe function\n");
 
   if (client->addr != 0x3c) {
@@ -102,20 +116,13 @@ static int driver_on_probe(struct i2c_client *client,
   /* Entry to the OLED display logic. */
   ssd1306_controller_init();
 
-  /* Clear the screen. */
-  oled_fill_all(0x00);
-
-  /* Draw a Chrome dinosaur on the screen. */
-  oled_set_cursor(0, 0);
-  oled_draw_dino_map();
-
-  /* Print a string with printf style. */
-  oled_set_cursor(4, 0);
-  oled_printf("Linux kernel module \nBy luyaohan1001: "
-              "\n%d-%d-%d",
-              2022, 12, 18);
-
+  /* Invoke sysfs initialization from oled_sysfs.c. */
   oled_sysfs_init();
+
+  /* Create thread for oled_display_text_task function and run it. */
+  handle_display_text_thread =
+      kthread_run(oled_display_text_thread, NULL, "display_text_thread");
+
 RETURN:
   return status_code;
 }
@@ -128,11 +135,53 @@ RETURN:
  * @return None.
  */
 static int driver_on_remove(struct i2c_client *client) {
+  int status_code = 0;
+  /* Deinitialize oled_sysfs. */
   oled_sysfs_deinit();
-  pr_info("oled driver kernel module has been removed.\n");
   pr_info("oled_sysfs kobjects have been denintialized.\n");
+
+  /* Stop all kernel threads. */
+  status_code = kthread_stop(handle_display_text_thread);
+
+  pr_info("oled driver kernel module has been removed.\n");
+  // return status_code;
   return 0;
 }
 
 /* Helper macro for registering a modular I2C driver. */
 module_i2c_driver(i2c_driver);
+
+/**
+ * @brief Thread implementing for deploying oled_graphics_params.display_text to
+ * oled screen.
+ * @param None.
+ * @return None.
+ */
+static int oled_display_text_thread(void *parameters) {
+  oled_cursor_coordinate_t cursor_coordinate;
+
+  /* Clear the screen. */
+  oled_fill_all(0x00);
+
+  /* Draw a Chrome dinosaur on the screen. */
+  cursor_coordinate.line = 2;
+  cursor_coordinate.position = 40;
+  oled_draw_dino_map(cursor_coordinate);
+
+  while (true) {
+    /* Print the display_text in graphics structure to the oled screen. */
+    cursor_coordinate.line = 3;
+    cursor_coordinate.position = 0;
+    oled_set_cursor(cursor_coordinate);
+    oled_printf(oled_graphics_params.display_text);
+
+    msleep(100);
+
+    /* When other threads calls kthread_stop on this thread. */
+    if (kthread_should_stop() == true) {
+      /* Exit this current thread.*/
+      do_exit(0);
+    }
+  }
+  return 0;
+}

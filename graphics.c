@@ -8,16 +8,18 @@
 #include "graphics.h"
 #include "stdarg.h"
 
-#define FONT_TABLE_CHAR_WIDTH 6
-#define DEFAULT_MESSAGE_LENGTH 256
+#define FONT_CHAR_WIDTH 6
+#define ASCII_TABLE_LENGTH 128
 
 /**
  * @brief ASCII Font table defined in hex encoding.
  * @note This table is accessed through numerical value of a char.
  *       Each single char is rendered on screen byte by byte (per slice).
- *       Non-Alphanumeric characters are encoded 0.
+ *       Non-Alphanumeric characters are encoded 0; they are meaningless for
+ * printing but including them avoids remapping when interpreting ascii numeric
+ * value as the access index to this table.
  */
-static const unsigned char FONT_TABLE[][FONT_TABLE_CHAR_WIDTH] = {
+static const unsigned char FONT_TABLE[ASCII_TABLE_LENGTH][FONT_CHAR_WIDTH] = {
     {0x00, 0x00, 0x00, 0x00, 0x00, 0x00}, // 'NUL'
     {0x00, 0x00, 0x00, 0x00, 0x00, 0x00}, // 'SOH'
     {0x00, 0x00, 0x00, 0x00, 0x00, 0x00}, // 'STX'
@@ -144,7 +146,8 @@ static const unsigned char FONT_TABLE[][FONT_TABLE_CHAR_WIDTH] = {
     {0x00, 0x10, 0x7C, 0x82, 0x00, 0x00}, // '{'
     {0x00, 0x00, 0xFF, 0x00, 0x00, 0x00}, // '|'
     {0x00, 0x82, 0x7C, 0x10, 0x00, 0x00}, // '}'
-    {0x00, 0x06, 0x09, 0x09, 0x06, 0x00}  // '~'
+    {0x00, 0x06, 0x09, 0x09, 0x06, 0x00}, // '~'
+    {0x00, 0x00, 0x00, 0x00, 0x00, 0x00}  // 'DEL'
 };
 
 /**
@@ -169,14 +172,13 @@ const unsigned char
          0xf0, 0xf0, 0xf0, 0xf0, 0xf0, 0xf0, 0xf0, 0xf0, 0xf0, 0xf0}};
 
 /**
- * @brief Struct that book-keeps parameters for the oled graphics.
- * @param line Current line (page) the cursor is on.
- * @param cursor_position Current position (column) the cursor is on.
- * @param font_char_width ASCII char width for estimation of potential colunm
- * overrun.
+ * @brief Book-keeps parameters for the oled graphics.
+ * @param cursor_coordinate Keeps track of the coordinate of current cursor.
+ * @param display_text Buffers/keeps track of the current text on the
+ * oled_screen.
  */
-static oled_graphics_params_t oled_graphics_params = {
-    .line = 0, .cursor_position = 0, .font_char_width = FONT_TABLE_CHAR_WIDTH};
+oled_graphics_params_t oled_graphics_params = {
+    .cursor_coordinate = {.line = 0, .position = 0}, .display_text = "\0"};
 
 /**
  * @brief Fill the entire screen with byte pattern.
@@ -184,10 +186,12 @@ static oled_graphics_params_t oled_graphics_params = {
  * @return None.
  */
 void oled_fill_all(uint8_t pattern) {
+  oled_cursor_coordinate_t cursor_coordinate = {.line = 0, .position = 0};
+
   static const int TOTAL_PIXELS = OLED_COLUMN_LENGTH * OLED_PAGE_LENGTH;
   uint32_t pixel = 0;
 
-  oled_set_cursor(0, 0);
+  oled_set_cursor(cursor_coordinate);
 
   for (pixel = 0; pixel < TOTAL_PIXELS; ++pixel) {
     ssd1306_write_address(DATA_CONTROL, DONT_CARE, 1, &pattern);
@@ -196,42 +200,56 @@ void oled_fill_all(uint8_t pattern) {
 
 /**
  * @brief Set the cursor position, i.e. the start location to print.
- * @param line The vertical line (page) to set the cursor to.
- * @param position The horizontal position (column) to the set the cursor to.
+ * @param cursor_coordinate The pixel coordinate to set the cursor to.
  */
-void oled_set_cursor(uint8_t line, uint8_t position) {
+void oled_set_cursor(oled_cursor_coordinate_t cursor_coordinate) {
   uint8_t packet[2];
   /* Move the Cursor to specified position only if it is in range */
-  if ((line <= OLED_PAGE_MAX) && (position < OLED_COLUMN_MAX)) {
-    oled_graphics_params.line = line;
-    oled_graphics_params.cursor_position = position;
-
-    /* Specify column start and end address. */
-    memcpy(packet, (uint8_t[]){position, OLED_COLUMN_MAX}, 2);
-    ssd1306_write_address(COMMAND_CONTROL, SET_COLUMN_ADDRESS, 2, packet);
+  if ((cursor_coordinate.line <= OLED_PAGE_MAX) &&
+      (cursor_coordinate.position < OLED_COLUMN_MAX)) {
+    memcpy(&oled_graphics_params.cursor_coordinate, &cursor_coordinate,
+           sizeof(oled_cursor_coordinate_t));
 
     /* Specify page (rows) start and end address. */
-    memcpy(packet, (uint8_t[]){line, OLED_PAGE_MAX}, 2);
+    memcpy(
+        packet,
+        (uint8_t[]){oled_graphics_params.cursor_coordinate.line, OLED_PAGE_MAX},
+        2);
     ssd1306_write_address(COMMAND_CONTROL, SET_PAGE_ADDRESS, 2, packet);
+
+    /* Specify column start and end address. */
+    memcpy(packet,
+           (uint8_t[]){oled_graphics_params.cursor_coordinate.position,
+                       OLED_COLUMN_MAX},
+           2);
+    ssd1306_write_address(COMMAND_CONTROL, SET_COLUMN_ADDRESS, 2, packet);
   }
 }
 
 /**
  * @brief Change to a new line on the OLED screen.
- * @param None.
+ * @param oled_new_line_options
+ * START_OF_NEW_LINE to print to the start of the new line.
+ * SAME_CURSOR_POSITION to print the next line the same cursor position.
  * @return None.
  */
-void oled_new_line(void) {
+void oled_new_line(oled_new_line_options new_line_option) {
   /* Increment and wrap-around to avoid overrun. */
-  oled_graphics_params.line += 1;
-  oled_graphics_params.line &= OLED_PAGE_MAX;
+  oled_graphics_params.cursor_coordinate.line += 1;
+  oled_graphics_params.cursor_coordinate.line &= OLED_PAGE_MAX;
 
-  /* Set cursor to the new line. */
-  oled_set_cursor(oled_graphics_params.line, 0);
+  if (new_line_option == START_OF_NEW_LINE) {
+    /* Set cursor to the beginning of the line, thus position 0. */
+    oled_graphics_params.cursor_coordinate.position = 0;
+  } else if (new_line_option == SAME_CURSOR_POSITION) {
+    /* No change to the cursor_position. */
+  }
+
+  oled_set_cursor(oled_graphics_params.cursor_coordinate);
 }
 
 /**
- * @brief Print single char to the oled screen.
+ * @brief Put single char to the oled screen.
  * @param ascii_char ASCII character to put.
  * @return None.
  */
@@ -240,18 +258,18 @@ void oled_putc(unsigned char ascii_char) {
   uint8_t slice = 0;
 
   /* Change-of-line detection. */
-  if (((oled_graphics_params.cursor_position +
-        oled_graphics_params.font_char_width) >= OLED_COLUMN_LENGTH) ||
+  if (((oled_graphics_params.cursor_coordinate.position + FONT_CHAR_WIDTH) >=
+       OLED_COLUMN_LENGTH) ||
       (ascii_char == '\n')) {
-    oled_new_line();
+    oled_new_line(START_OF_NEW_LINE);
   }
 
   /* Print the character from the hex font table, slice by slice. */
   if (ascii_char != '\n') {
-    for (slice = 0; slice < oled_graphics_params.font_char_width; slice += 1) {
+    for (slice = 0; slice < FONT_CHAR_WIDTH; slice += 1) {
       font_char_slice = FONT_TABLE[ascii_char][slice];
       ssd1306_write_address(DATA_CONTROL, DONT_CARE, 1, &font_char_slice);
-      oled_graphics_params.cursor_position += 1;
+      oled_graphics_params.cursor_coordinate.position += 1;
     }
   }
 }
@@ -262,11 +280,11 @@ void oled_putc(unsigned char ascii_char) {
  * @return None.
  */
 void oled_printf(const char *format, ...) {
-  char message_buffer[DEFAULT_MESSAGE_LENGTH];
+  char message_buffer[DEFAULT_TEXT_LENGTH];
   char *p_message_buffer = NULL;
   va_list args;
 
-  memset(message_buffer, '\0', DEFAULT_MESSAGE_LENGTH);
+  memset(message_buffer, '\0', DEFAULT_TEXT_LENGTH);
 
   /* Initialize pointer */
   /* Append the variable argument lists. */
@@ -283,18 +301,21 @@ void oled_printf(const char *format, ...) {
 
 /**
  * @brief Draw a dinosaur on the oled screen.
- * @param None.
+ * @param cursor_coordinate Set to this coordinate as the start pixel and draw
+ * the dinosaur.
  * @return None.
  */
-void oled_draw_dino_map(void) {
+void oled_draw_dino_map(oled_cursor_coordinate_t cursor_coordinate) {
   uint8_t slice;
   int row, column;
 
+  oled_set_cursor(cursor_coordinate);
+
   for (row = 0; row < DINOSAUR_BITMAP_ROWS; row += 1) {
-    for (column = 0; column < 32; column += 1) {
+    for (column = 0; column < DINOSAUR_BITMAP_COLUMNS; column += 1) {
       slice = DINOSAUR_BITMAP[row][column];
       ssd1306_write_address(DATA_CONTROL, DONT_CARE, 1, &slice);
     }
-    oled_new_line();
+    oled_new_line(SAME_CURSOR_POSITION);
   }
 }

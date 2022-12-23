@@ -8,11 +8,15 @@ Source code hierarchy\+: \begin{DoxyVerb}            oled_sysfs
 \end{DoxyVerb}
 
 
-Tested on Linux raspberrypi 5.\+10.\+103-\/v7l+ \#1529 S\+MP Tue Mar 8 12\+:24\+:00 G\+MT 2022 armv7l G\+N\+U/\+Linux (Raspberry Pi Buster.)
+Tested on Linux raspberrypi 5.\+10.\+103-\/v7l+ \#1529 S\+MP Tue Mar 8 12\+:24\+:00 G\+MT 2022 armv7l G\+N\+U/\+Linux. (Raspberry Pi Buster.)
 
-P\+DF documents generated (by doxygen) at /docs/latex/refman.pdf
+P\+DF documents generated (by doxygen) at /docs/latex/refman.pdf To read the compiled pdf, git clone this repository, and open the softlink oled\+\_\+driver\+\_\+manual.\+pdf.
 
-\paragraph*{Demo\+: Displaying text and the dinosaur from chrome browser.}
+\paragraph*{Demo\+: Displaying text and the dinosaur graphics from chrome browser.}
+
+
+
+\paragraph*{Demo\+: Displaying oled\+\_\+sysfs (kobject-\/mapped directory) from terminal.}
 
 
 
@@ -22,8 +26,8 @@ P\+DF documents generated (by doxygen) at /docs/latex/refman.pdf
 
 \paragraph*{To compile.}
 
-\begin{DoxyVerb}Install the kernel headers.
-$ sudo apt install raspberrypi-kernel-headers
+\begin{DoxyVerb}Setup compile environment
+$ sudo make setup
 
 Compile
 $ sudo make
@@ -45,25 +49,21 @@ pi@raspberrypi:~/Projects/raspberrypi-4b/drivers/oled $ make
 
 \paragraph*{To run\+:}
 
-\begin{DoxyVerb}1. First apply device tree overlay by
-
-    $ sudo make dtoverlay
-
-2. Insert the kernel module
+\begin{DoxyVerb}Insert the kernel module
 
     $ sudo make insmod
+\end{DoxyVerb}
+
+
+\paragraph*{To remove the kernel module\+:}
+
+\begin{DoxyVerb}    $ sudo make rmmod
 \end{DoxyVerb}
 
 
 \paragraph*{To check for printk log\+:}
 
 \begin{DoxyVerb}    $ dmesg
-\end{DoxyVerb}
-
-
-\paragraph*{To remove the kernel module\+:}
-
-\begin{DoxyVerb}    $ sudo dmesg
 \end{DoxyVerb}
 
 
@@ -79,7 +79,7 @@ pi@raspberrypi:~/Projects/raspberrypi-4b/drivers/oled $ make
 
 
 \begin{DoxyItemize}
-\item \mbox{[}x\mbox{]} release-\/00\+: Minimal-\/viable kernel i2c bus module and simple configruation + fill-\/screen.
+\item \mbox{[}x\mbox{]} release-\/00\+: Minimal-\/viable kernel i2c bus module and simple configruation + fill-\/screen function.
 \begin{DoxyItemize}
 \item Constructing Makefile, setup build-\/environment (linux kernel headers)
 \item Understanding struct i2c\+\_\+client , struct i2c\+\_\+driver.
@@ -87,18 +87,19 @@ pi@raspberrypi:~/Projects/raspberrypi-4b/drivers/oled $ make
 \end{DoxyItemize}
 \item \mbox{[}x\mbox{]} release-\/01\+: Add font / image support to the screen datalink layer.
 \begin{DoxyItemize}
-\item Reading and coding various display functionalities according to S\+S\+D1306 I2C interface defined by Solomon Systech datasheet.
+\item Reading and implementing various display utitlities (change line, clear screen, set coordinate...etc) according to S\+S\+D1306 datasheet by Solomon Systech.
 \end{DoxyItemize}
-\item \mbox{[}x\mbox{]} release-\/02\+: Add user-\/space interface through sysfs.
+\item \mbox{[}x\mbox{]} release-\/02\+: Add oled\+\_\+sysfs as an interface to user-\/space.
 \begin{DoxyItemize}
 \item Understanding struct kobject, kobj\+\_\+attrbute.
-\item Providing implementation on the creation of the oled device as a sysfs folder.
-\item Providing implementation on the creation of oled attributes such as display\+\_\+text, brightness, etc. as files in that sysfs folder.
+\item Implementing the creation of the oled device as a sysfs folder.
+\item Implementing the creation of oled attributes such as display\+\_\+text, brightness, etc. as files in that sysfs folder.
+\item Implementing kthread in \hyperlink{driver_8c}{driver.\+c} that flushes display\+\_\+text stored through sysfs onto the screen.
 \end{DoxyItemize}
-\item \mbox{[} \mbox{]} release-\/03\+: Develop the dinosaur game on this screen.
+\item \mbox{[} \mbox{]} release-\/03\+: Develop the dinosaur game displaying on this screen.
 \begin{DoxyItemize}
 \item Add multi-\/threading protection to critical sections.
-\item Develop user-\/space dinosaur game, interacting with the kernel module through oled\+\_\+sysfs.
+\item Developing the Chrome dinosaur game, interacting with the kernel module through oled\+\_\+sysfs.
 \end{DoxyItemize}
 \item \mbox{[} \mbox{]} release-\/04\+: Unit testing.
 \begin{DoxyItemize}

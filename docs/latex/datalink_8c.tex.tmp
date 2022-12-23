@@ -79,6 +79,9 @@ Write to S\+S\+D1306 register address.
 {\em p\+\_\+param} & Pointer to parameter to be written. \\
 \hline
 \end{DoxyParams}
+\begin{DoxyNote}{Note}
+The I2C bus interface write-\/data scheme is explained in section 8.\+1.\+5.\+1 in S\+S\+D1306 datasheet by Solomon Systech. 
+\end{DoxyNote}
 
 
 \subsection{Variable Documentation}

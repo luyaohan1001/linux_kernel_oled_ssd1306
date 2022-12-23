@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>SSD1306_OLED_Device_Driver: Linux Loadable Kernel Module Driver for SSD1306 OLED.</title>
+<title>SSD1306_OLED_Device_Driver: GNU/Linux Loadable Kernel Module Driver for SSD1306 OLED/PLED Driver.</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -59,7 +59,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">Linux Loadable Kernel Module Driver for SSD1306 OLED. </div>  </div>
+<div class="title">GNU/Linux Loadable Kernel Module Driver for SSD1306 OLED/PLED Driver. </div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>Source code hierarchy: </p><pre class="fragment">            oled_sysfs
@@ -69,19 +69,23 @@ $(function() {
              datalink
                 |
           driver  oled.dts
-</pre><p>Tested on Linux raspberrypi 5.10.103-v7l+ #1529 SMP Tue Mar 8 12:24:00 GMT 2022 armv7l GNU/Linux (Raspberry Pi Buster.)</p>
-<p>PDF documents generated (by doxygen) at /docs/latex/refman.pdf</p>
-<h4>Demo: Displaying text and the dinosaur from chrome browser.</h4>
+</pre><p>Tested on Linux raspberrypi 5.10.103-v7l+ #1529 SMP Tue Mar 8 12:24:00 GMT 2022 armv7l GNU/Linux. (Raspberry Pi Buster.)</p>
+<p>PDF documents generated (by doxygen) at /docs/latex/refman.pdf To read the compiled pdf, git clone this repository, and open the softlink oled_driver_manual.pdf.</p>
+<h4>Demo: Displaying text and the dinosaur graphics from chrome browser.</h4>
 <div class="image">
-<img src="docs/misc/demo.jpg"/>
+<img src="docs/misc/demo_graphics.jpg"/>
+</div>
+<h4>Demo: Displaying oled_sysfs (kobject-mapped directory) from terminal.</h4>
+<div class="image">
+<img src="docs/misc/demo_oled_sysfs.png"/>
 </div>
 <h4>Documentation.</h4>
 <div class="image">
 <img src="docs/latex/refman.pdf" alt="Click for full documentation"/>
 </div>
 <h4>To compile.</h4>
-<pre class="fragment">Install the kernel headers.
-$ sudo apt install raspberrypi-kernel-headers
+<pre class="fragment">Setup compile environment
+$ sudo make setup
 
 Compile
 $ sudo make
@@ -99,42 +103,39 @@ pi@raspberrypi:~/Projects/raspberrypi-4b/drivers/oled $ make
       LD [M]  /home/pi/Projects/raspberrypi-4b/drivers/oled/oled_driver.ko
     make[1]: Leaving directory '/usr/src/linux-headers-5.10.103-v7l+'
 </pre><h4>To run:</h4>
-<pre class="fragment">1. First apply device tree overlay by
-
-    $ sudo make dtoverlay
-
-2. Insert the kernel module
+<pre class="fragment">Insert the kernel module
 
     $ sudo make insmod
+</pre><h4>To remove the kernel module:</h4>
+<pre class="fragment">    $ sudo make rmmod
 </pre><h4>To check for printk log:</h4>
 <pre class="fragment">    $ dmesg
-</pre><h4>To remove the kernel module:</h4>
-<pre class="fragment">    $ sudo dmesg
 </pre><h4>To generate docs by doxygen</h4>
 <pre class="fragment">    $ make doxygen
 
     $ cd /docs/html
 </pre><h4>Kanban - TODO</h4>
 <ul>
-<li>[x] release-00: Minimal-viable kernel i2c bus module and simple configruation + fill-screen.<ul>
+<li>[x] release-00: Minimal-viable kernel i2c bus module and simple configruation + fill-screen function.<ul>
 <li>Constructing Makefile, setup build-environment (linux kernel headers)</li>
 <li>Understanding struct i2c_client , struct i2c_driver.</li>
 <li>Implementing probe and remove callbacks when the kernel inserts/remove the driver.</li>
 </ul>
 </li>
 <li>[x] release-01: Add font / image support to the screen datalink layer.<ul>
-<li>Reading and coding various display functionalities according to SSD1306 I2C interface defined by Solomon Systech datasheet.</li>
+<li>Reading and implementing various display utitlities (change line, clear screen, set coordinate...etc) according to SSD1306 datasheet by Solomon Systech.</li>
 </ul>
 </li>
-<li>[x] release-02: Add user-space interface through sysfs.<ul>
+<li>[x] release-02: Add oled_sysfs as an interface to user-space.<ul>
 <li>Understanding struct kobject, kobj_attrbute.</li>
-<li>Providing implementation on the creation of the oled device as a sysfs folder.</li>
-<li>Providing implementation on the creation of oled attributes such as display_text, brightness, etc. as files in that sysfs folder.</li>
+<li>Implementing the creation of the oled device as a sysfs folder.</li>
+<li>Implementing the creation of oled attributes such as display_text, brightness, etc. as files in that sysfs folder.</li>
+<li>Implementing kthread in <a class="el" href="driver_8c.html" title="This file implements the necessary i2c_client probe and remove callbacks on the SSD1306 I2C bus devic...">driver.c</a> that flushes display_text stored through sysfs onto the screen.</li>
 </ul>
 </li>
-<li>[ ] release-03: Develop the dinosaur game on this screen.<ul>
+<li>[ ] release-03: Develop the dinosaur game displaying on this screen.<ul>
 <li>Add multi-threading protection to critical sections.</li>
-<li>Develop user-space dinosaur game, interacting with the kernel module through oled_sysfs.</li>
+<li>Developing the Chrome dinosaur game, interacting with the kernel module through oled_sysfs.</li>
 </ul>
 </li>
 <li>[ ] release-04: Unit testing.<ul>

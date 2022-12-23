@@ -22,18 +22,54 @@
 #define OLED_PAGE_MIN 0
 #define OLED_PAGE_MAX (OLED_CANVAS_HEIGHT_PIXELS / BITS_PER_BYTE) - 1
 
+#define DEFAULT_TEXT_LENGTH 256
+
 /**
- * @brief Struct that book-keeps parameters for the oled graphics.
- * @param line Current line (page) the cursor is on.
- * @param cursor_position Current position (column) the cursor is on.
- * @param font_char_width ASCII char width for estimation of potential colunm
- * overrun.
+ * @struct Pixel location on the screen.
+ * @param line The horizontal line (page).
+ * @param position The vertical position (column).
+ * @note Page and columns are formal terms defined in SSD1306 datasheet, Figure
+ * 10-3. In this program we have renamed them respectively line and
+ * position as more intuitive names. The screen is 128x64 pixels.
+ * However, since data are written in slices (one byte) at a time, there are 64
+ * / 8 = 8 lines.
+ *
+ * Visualize:
+ *                    ------- 128 positions / columns --------
+ *                    |||||||| |||||||| ||||....... |||||||| ||||||||
+ *                  -
+ *                  -
+ *                  -
+ *  8 lines/pages   -
+ *                  -
+ *                  -
+ *                  -
+ *                  -
  */
 typedef struct {
-  uint8_t line;
-  uint8_t cursor_position;
-  uint8_t font_char_width;
+  uint8_t line;     /* Valid range 0 - 7 */
+  uint8_t position; /* Valid range 0 - 127 */
+} oled_cursor_coordinate_t;
+
+/**
+ * @brief Struct used to book-keep parameters for the oled graphics.
+ * @param cursor_coordinate Keeps track of the coordinate of current cursor.
+ * @param display_text Buffers/keeps track of the current text on the
+ * oled_screen.
+ */
+typedef struct {
+  oled_cursor_coordinate_t cursor_coordinate;
+  char display_text[DEFAULT_TEXT_LENGTH];
 } oled_graphics_params_t;
+
+/**
+ * @brief Enum type defining options when printing to a new line (page).
+ * @param START_OF_NEW_LINE For example, when printing a sentence, it is
+ * expected to be printed to the start of the new line.
+ * @param SAME_CURSOR_POSITION For exapmle, when printing an image, it is
+ * expected to be printed to the same cursor position.
+ */
+typedef enum { START_OF_NEW_LINE, SAME_CURSOR_POSITION } oled_new_line_options;
 
 /**
  * @brief Print single char to the oled screen.
@@ -51,30 +87,32 @@ void oled_printf(const char *format, ...);
 
 /**
  * @brief Change to a new line on the OLED screen.
- * @param None.
+ * @param oled_new_line_options
+ * START_OF_NEW_LINE to print to the start of the new line.
+ * SAME_CURSOR_POSITION to print the next line the same cursor position.
  * @return None.
  */
-void oled_new_line(void);
+void oled_new_line(oled_new_line_options new_line_option);
 
 /**
  * @brief Set the cursor position, i.e. the start location to print.
- * @param line The vertical line (page) to set the cursor to.
- * @param position The horizontal position (column) to the set the cursor to.
+ * @param cursor_coordinate The pixel coordinate to set the cursor to.
  */
-void oled_set_cursor(uint8_t lineNo, uint8_t cursorPos);
+void oled_set_cursor(oled_cursor_coordinate_t cursor_coordinate);
 
 /**
  * @brief Fill the entire screen with byte pattern.
  * @param pattern Byte pattern to fill.
  * @return None.
  */
-void oled_fill_all(uint8_t data);
+void oled_fill_all(uint8_t pattern);
 
 /**
  * @brief Draw a dinosaur on the oled screen.
- * @param None.
+ * @param cursor_coordinate Set to this coordinate as the start pixel drawing
+ * the dinosaur.
  * @return None.
  */
-void oled_draw_dino_map(void);
+void oled_draw_dino_map(oled_cursor_coordinate_t cursor_coordinate);
 
 #endif /* GRAPHICS_H */

@@ -1,0 +1,29 @@
+\hypertarget{structPixel}{}\section{Pixel Struct Reference}
+\label{structPixel}\index{Pixel@{Pixel}}
+
+
+\subsection{Detailed Description}
+the screen. 
+\begin{DoxyParams}{Parameters}
+{\em line} & The horizontal line (page). \\
+\hline
+{\em position} & The vertical position (column). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Page and columns are formal terms defined in S\+S\+D1306 datasheet, Figure 10-\/3. In this program we have renamed them respectively line and position as more intuitive names. The screen is 128x64 pixels. However, since data are written in slices (one byte) at a time, there are 64 / 8 = 8 lines.
+\end{DoxyNote}
+Visualize\+: -\/-\/-\/-\/--- 128 positions / columns -\/-\/-\/-\/-\/--- $\vert$$\vert$$\vert$$\vert$$\vert$$\vert$$\vert$$\vert$ $\vert$$\vert$$\vert$$\vert$$\vert$$\vert$$\vert$$\vert$ $\vert$$\vert$$\vert$$\vert$....... $\vert$$\vert$$\vert$$\vert$$\vert$$\vert$$\vert$$\vert$ $\vert$$\vert$$\vert$$\vert$$\vert$$\vert$$\vert$$\vert$
+\begin{DoxyItemize}
+\item 
+\item 
+\item 8 lines/pages -\/
+\item 
+\item 
+\item 
+\item 
+\end{DoxyItemize}
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{graphics_8h}{graphics.\+h}\end{DoxyCompactItemize}

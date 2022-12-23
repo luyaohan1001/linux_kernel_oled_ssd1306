@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['kobj_5fattr_5fdisplay_5ftext',['kobj_attr_display_text',['../oled__sysfs_8c.html#a84de8bac5c78ce178bb8f6c08a25acd1',1,'oled_sysfs.c']]]
+  ['i2c_5fclient',['i2c_client',['../datalink_8c.html#a77ca3c5047325f153b5679bce4576b39',1,'i2c_client():&#160;driver.c'],['../driver_8c.html#a77ca3c5047325f153b5679bce4576b39',1,'i2c_client():&#160;driver.c']]]
 ];

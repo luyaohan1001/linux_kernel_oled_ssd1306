@@ -38,12 +38,16 @@ dtoverlay: compile_dtbo
 	sudo dtoverlay oled.dtbo
 
 # Insert this kernel module.
-insmod: dtoverlay
+insmod: dtoverlay rmmod
 	insmod oled_driver.ko
 
-# Remove this kernel module.
+# Remove this kernel module if it is already inserted.
+# '@' supresses the printing of following command when it is invoked.
 rmmod:
-	rmmod oled_driver
+# Remove the existed module first.
+	@ if lsmod | grep -q oled_driver; then \
+		rmmod oled_driver; \
+    fi
 
 # Generate documents with doxygen.
 doxygen:

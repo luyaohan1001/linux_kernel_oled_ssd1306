@@ -27,7 +27,6 @@ MODULE_DESCRIPTION("Linux kernel module driver for ssd1306 oled display");
 static int driver_on_probe(struct i2c_client *client,
                            const struct i2c_device_id *id);
 static int driver_on_remove(struct i2c_client *client);
-static int oled_display_text_thread(void *parameters);
 
 /**
  * @brief Identifies the device (i.e. SSD1306 OLED contoller) connected to the
@@ -38,7 +37,8 @@ struct i2c_client *i2c_client;
 /**
  * @brief Points to the oled_display_text_thread created.
  */
-struct task_struct *handle_display_text_thread;
+struct task_struct *handle_uisplay_text_thread;
+struct task_struct *handle_running_dinosaur_thread;
 
 /**
  * @brief Link the symbol to its spawn in graphics.c
@@ -120,8 +120,9 @@ static int driver_on_probe(struct i2c_client *client,
   oled_sysfs_init();
 
   /* Create thread for oled_display_text_task function and run it. */
-  handle_display_text_thread =
-      kthread_run(oled_display_text_thread, NULL, "display_text_thread");
+  handle_running_dinosaur_thread =
+      kthread_run(oled_display_running_dinosaur_thread, NULL,
+                  "display_running_dinosaur_thread");
 
 RETURN:
   return status_code;
@@ -141,7 +142,7 @@ static int driver_on_remove(struct i2c_client *client) {
   pr_info("oled_sysfs kobjects have been denintialized.\n");
 
   /* Stop all kernel threads. */
-  status_code = kthread_stop(handle_display_text_thread);
+  status_code = kthread_stop(handle_running_dinosaur_thread);
 
   pr_info("oled driver kernel module has been removed.\n");
   // return status_code;
@@ -150,38 +151,3 @@ static int driver_on_remove(struct i2c_client *client) {
 
 /* Helper macro for registering a modular I2C driver. */
 module_i2c_driver(i2c_driver);
-
-/**
- * @brief Thread implementing for deploying oled_graphics_params.display_text to
- * oled screen.
- * @param None.
- * @return None.
- */
-static int oled_display_text_thread(void *parameters) {
-  oled_cursor_coordinate_t cursor_coordinate;
-
-  /* Clear the screen. */
-  oled_fill_all(0x00);
-
-  /* Draw a Chrome dinosaur on the screen. */
-  cursor_coordinate.line = 2;
-  cursor_coordinate.position = 40;
-  oled_draw_dino_map(cursor_coordinate);
-
-  while (true) {
-    /* Print the display_text in graphics structure to the oled screen. */
-    cursor_coordinate.line = 3;
-    cursor_coordinate.position = 0;
-    oled_set_cursor(cursor_coordinate);
-    oled_printf(oled_graphics_params.display_text);
-
-    msleep(100);
-
-    /* When other threads calls kthread_stop on this thread. */
-    if (kthread_should_stop() == true) {
-      /* Exit this current thread.*/
-      do_exit(0);
-    }
-  }
-  return 0;
-}

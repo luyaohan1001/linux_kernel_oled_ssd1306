@@ -108,11 +108,30 @@ void oled_set_cursor(oled_cursor_coordinate_t cursor_coordinate);
 void oled_fill_all(uint8_t pattern);
 
 /**
- * @brief Draw a dinosaur on the oled screen.
- * @param cursor_coordinate Set to this coordinate as the start pixel drawing
- * the dinosaur.
+ * @brief Draw a bitmap image on the oled screen.
+ * @param bitmap Pointer to the bitmap image encoded as 2D hex array.
+ * @param max_rows Max numbers of rows of the bitmap images.
+ * @param max_columns Max number of columns of the bitmap image.
+ * @param cursor_coordinate Set to this coordinate as the start pixel and draw.
  * @return None.
  */
-void oled_draw_dino_map(oled_cursor_coordinate_t cursor_coordinate);
+void oled_draw_bitmap(unsigned char *bitmap, const unsigned char max_rows,
+                      const unsigned char max_columns,
+                      oled_cursor_coordinate_t cursor_coordinate);
+
+/**
+ * @brief Thread deploying oled_graphics_params.display_text to
+ * oled screen.
+ * @param parameters Pointer to thread parameters, unused.
+ * @return None.
+ */
+int oled_display_text_thread(void *parameters);
+
+/**
+ * @brief Thread that makes an animation showing a running dinosaur.
+ * @param parameters Pointer to thread parameters, unused.
+ * @return None.
+ */
+int oled_display_running_dinosaur_thread(void *parameters);
 
 #endif /* GRAPHICS_H */

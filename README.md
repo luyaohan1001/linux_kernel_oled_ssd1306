@@ -91,3 +91,26 @@
 - [ ] release-04: Unit testing.
     - TBD
 
+#### An important lesson.
+
+    When refactoring function oled_draw_bitmap in graphics, passing 2D array (bitmap images encoded in hex) caused NULL pointer-dereference and triggered kernel Oops.
+
+![](docs/misc/2d_array_mistake_oops.png)
+
+    It must be caution that a Double Pointer (i.e. **p) is NOT equvilent to a 2D-Array.
+
+    When passing a 2d array, we pass it as a single pointer.
+
+    For example, for bitmap[M][N], when can pass it to a function, we can pass as:
+
+    draw_bitmap((char const *)bitmap, max_rows, max_cols).
+
+    We can then access its element by:
+
+    bitmap(M, N) = *(bitmap + M * max_cols + N), where M indicates the Mth row, N indicates the Nth column.
+
+        bitmap ==> Start address
+
+        M * max_cols ==> skipped whole rows
+
+        N ==>  column offset
